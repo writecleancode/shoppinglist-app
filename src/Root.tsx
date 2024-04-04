@@ -1,10 +1,11 @@
+import { Header } from './components/atoms/Header/Header';
+import { ProgressBar } from './components/atoms/ProgressBar/ProgressBar';
+
 export const Root = () => {
 	return (
 		<>
-			<header>
-				<h1>ShoppingList</h1>
-			</header>
-			<div className='progressBas'></div>
+			<Header />
+			<ProgressBar currentProgress={20} />
 			<ul>
 				<li>
 					<button className='check'></button>
