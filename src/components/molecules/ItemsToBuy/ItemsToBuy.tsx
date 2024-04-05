@@ -1,5 +1,6 @@
 import { StyledList } from './ItemsToBuy.styles';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
+import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import styled from 'styled-components';
 
 export const ItemToBuy = styled.li`
@@ -15,17 +16,17 @@ export const ItemsToBuy = () => {
 			<ItemToBuy>
 				<StatusButton />
 				<p>ketchup</p>
-				<div className='category icon'></div>
+				<CategoryIcon />
 			</ItemToBuy>
 			<ItemToBuy>
 				<StatusButton />
 				<p>ketchup</p>
-				<div className='category icon'></div>
+				<CategoryIcon />
 			</ItemToBuy>
 			<ItemToBuy>
 				<StatusButton />
 				<p>ketchup</p>
-				<div className='category icon'></div>
+				<CategoryIcon />
 			</ItemToBuy>
 		</StyledList>
 	);

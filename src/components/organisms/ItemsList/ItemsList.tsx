@@ -1,18 +1,12 @@
 import { ItemsToBuy } from 'src/components/molecules/ItemsToBuy/ItemsToBuy';
-import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
+import { BoughtItems } from 'src/components/molecules/BoughtItems/BoughtItems';
 import { Wrapper } from './ItemsList.styles';
 
 export const ItemsList = () => {
 	return (
 		<Wrapper>
 			<ItemsToBuy />
-			<ul>
-				<li>
-					<StatusButton />
-					<p>ketchup</p>
-					<div className='category icon'></div>
-				</li>
-			</ul>
+			<BoughtItems />
 			<button>Add</button>
 		</Wrapper>
 	);
