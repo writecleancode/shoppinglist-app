@@ -15,7 +15,7 @@ html {
 }
 
 body {
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     color: ${({ theme }) => theme.colors.black};
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;

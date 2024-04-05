@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+	padding: 0.8rem;
+	background-color: #fff;
+`;
+
 export const Bar = styled.span<{ $currentProgress: number }>`
 	display: block;
 	position: relative;
 	border-radius: 100rem;
-	width: 100%;
 	min-height: 8px;
 	background-color: #d9d9d9;
 	overflow: hidden;

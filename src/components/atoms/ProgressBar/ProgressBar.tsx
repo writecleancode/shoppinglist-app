@@ -1,9 +1,13 @@
-import { Bar } from './ProgressBar.styles';
+import { Bar, Wrapper } from './ProgressBar.styles';
 
 type ProgressBarProps = {
 	currentProgress: number;
 };
 
 export const ProgressBar = ({ currentProgress }: ProgressBarProps) => {
-	return <Bar $currentProgress={currentProgress} />;
+	return (
+		<Wrapper>
+			<Bar $currentProgress={currentProgress} />
+		</Wrapper>
+	);
 };

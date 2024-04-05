@@ -1,34 +1,23 @@
 import { Header } from './components/atoms/Header/Header';
 import { ProgressBar } from './components/atoms/ProgressBar/ProgressBar';
+import { ItemsList } from './components/organisms/ItemsList/ItemsList';
+import styled from 'styled-components';
+
+export const FixedTop = styled.div`
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+`;
 
 export const Root = () => {
 	return (
 		<>
-			<Header />
-			<ProgressBar currentProgress={20} />
-			<ul>
-				<li>
-					<button className='check'></button>
-					<p>ketchup</p>
-					<div className='category icon'></div>
-				</li>
-				<li>
-					<button className='check'></button>
-					<p>ketchup</p>
-					<div className='category icon'></div>
-				</li>
-				<li>
-					<button className='check'></button>
-					<p>ketchup</p>
-					<div className='category icon'></div>
-				</li>
-				<li>
-					<button className='check'></button>
-					<p>ketchup</p>
-					<div className='category icon'></div>
-				</li>
-			</ul>
-			<button>Add</button>
+			<FixedTop>
+				<Header />
+				<ProgressBar currentProgress={20} />
+			</FixedTop>
+			<ItemsList />
 		</>
 	);
 };
