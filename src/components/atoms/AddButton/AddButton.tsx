@@ -20,7 +20,7 @@ export const Wrapper = styled.button`
 
 export const AddButton = () => {
 	return (
-		<Wrapper>
+		<Wrapper type='button'>
 			<img src='src/assets/icons/plus.svg' alt='' />
 			Add
 		</Wrapper>
