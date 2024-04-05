@@ -20,6 +20,7 @@ html {
 }
 
 body {
+    padding-bottom: 6rem;
     background-color: ${({ theme }) => theme.colors.lightGrey};
     color: ${({ theme }) => theme.colors.black};
     font-family: 'Montserrat', sans-serif;

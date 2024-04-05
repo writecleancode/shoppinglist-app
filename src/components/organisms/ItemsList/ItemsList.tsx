@@ -7,7 +7,6 @@ export const ItemsList = () => {
 		<Wrapper>
 			<ItemsToBuy />
 			<BoughtItems />
-			<button>Add</button>
 		</Wrapper>
 	);
 };

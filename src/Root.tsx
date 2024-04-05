@@ -1,3 +1,4 @@
+import { AddButton } from './components/atoms/AddButton/AddButton';
 import { Header } from './components/atoms/Header/Header';
 import { ProgressBar } from './components/atoms/ProgressBar/ProgressBar';
 import { ItemsList } from './components/organisms/ItemsList/ItemsList';
@@ -11,6 +12,7 @@ export const Root = () => {
 				<ProgressBar currentProgress={20} />
 			</FixedTop>
 			<ItemsList />
+			<AddButton />
 		</>
 	);
 };
