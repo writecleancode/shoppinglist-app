@@ -4,7 +4,7 @@ import 'src/assets/styles/fonts.css';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './assets/styles/theme';
 import { GlobalStyle } from './assets/styles/GlobalStyle';
-import { Root } from './Root';
+import { Root } from './views/Root';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
