@@ -10,13 +10,19 @@ export const StyledList = styled.ul`
 	overflow-y: auto;
 `;
 
-export const ItemToAdd = styled.li`
+export const ItemToAdd = styled.li``;
+
+export const AddItemButton = styled.button`
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
+	border: none;
+	width: 100%;
+	background-color: transparent;
+	font-size: 1.6rem;
 `;
 
-export const PlusButton = styled.button<{ $isAdded: boolean }>`
+export const PlusIcon = styled.button<{ $isAdded: boolean }>`
 	border: none;
 	border-radius: 100rem;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};

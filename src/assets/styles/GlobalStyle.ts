@@ -49,6 +49,10 @@ a {
     color: inherit;
 }
 
+button {
+    color: inherit;
+}
+
 input {
     font-family: inherit;
 }
