@@ -17,6 +17,8 @@ export const GlobalStyle = createGlobalStyle`
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+
+	overflow: clip;    
 }
 
 body {
@@ -26,7 +28,13 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
-	overflow-x: hidden;
+
+
+    position: relative;
+    max-width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+	overflow: clip;    
 }
 
 img {

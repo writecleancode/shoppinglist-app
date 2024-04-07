@@ -4,14 +4,15 @@ import { BackButton, SearchInput, SearchWrapper, Wrapper } from './AddItem.style
 
 type AddItemProps = {
 	isActive: boolean;
+	hideAdditemView: () => void;
 };
 
-export const AddItem = ({ isActive }: AddItemProps) => {
+export const AddItem = ({ isActive, hideAdditemView }: AddItemProps) => {
 	return (
 		<Wrapper $isActive={isActive}>
 			<FixedTop>
 				<SearchWrapper>
-					<BackButton aria-label='go back to items list' type='button'>
+					<BackButton onClick={hideAdditemView} aria-label='go back to items list' type='button'>
 						<img src='src/assets/icons/arrow-left.svg' alt='' />
 					</BackButton>
 					<SearchInput placeholder='add new item' />

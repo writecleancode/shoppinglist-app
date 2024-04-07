@@ -3,16 +3,32 @@ import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { ItemsList } from 'src/components/organisms/ItemsList/ItemsList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
+import styled from 'styled-components';
 
-export const MainView = () => {
+export const Wrapper = styled.div`
+	position: relative;
+	max-height: 100vh;
+	overflow-y: hidden;
+	
+	display: flex;
+	flex-direction: column;
+`;
+
+type MainViewProps = {
+	showAdditemView: () => void;
+};
+
+export const MainView = ({ showAdditemView }: MainViewProps) => {
 	return (
-		<>
-			<FixedTop>
+		<Wrapper>
+			<div>
+				{/* <FixedTop> */}
 				<Header />
 				<ProgressBar currentProgress={20} />
-			</FixedTop>
+				{/* </FixedTop> */}
+			</div>
 			<ItemsList />
-			<AddButton />
-		</>
+			<AddButton onClick={showAdditemView} />
+		</Wrapper>
 	);
 };

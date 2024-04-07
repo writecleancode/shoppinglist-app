@@ -18,9 +18,9 @@ export const Wrapper = styled.button`
 	text-transform: uppercase;
 `;
 
-export const AddButton = () => {
+export const AddButton = (props: any) => {
 	return (
-		<Wrapper type='button'>
+		<Wrapper type='button' {...props}>
 			<img src='src/assets/icons/plus.svg' alt='' />
 			Add
 		</Wrapper>

@@ -5,6 +5,7 @@ export const StyledList = styled.ul`
 	flex-direction: column;
 	gap: 2.4rem;
 	padding: 2.4rem 1.6rem;
+	background-color: #f5f5f5;
 	list-style: none;
 `;
 
