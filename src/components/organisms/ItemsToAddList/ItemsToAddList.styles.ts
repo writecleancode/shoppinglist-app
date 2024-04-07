@@ -7,7 +7,6 @@ export const StyledList = styled.ul`
 	padding: 2.4rem 1.6rem;
 	background-color: #f5f5f5;
 	list-style: none;
-
 	overflow-y: auto;
 `;
 

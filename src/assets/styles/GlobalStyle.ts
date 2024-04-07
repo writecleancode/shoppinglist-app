@@ -17,23 +17,20 @@ export const GlobalStyle = createGlobalStyle`
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
-
-	overflow: clip;    
+	overflow: clip;
 }
 
 body {
+    position: relative;
     padding-bottom: 6rem;
+    max-width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     background-color: ${({ theme }) => theme.colors.lightGrey};
     color: ${({ theme }) => theme.colors.black};
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
-
-
-    position: relative;
-    max-width: 100vw;
-    height: 100vh;
-    height: 100dvh;
 	overflow: clip;    
 }
 

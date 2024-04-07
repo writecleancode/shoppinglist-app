@@ -1,4 +1,3 @@
-import { FixedTop } from 'src/components/atoms/StyledFixedTop/FixedTop';
 import { ItemsToAddList } from 'src/components/organisms/ItemsToAddList/ItemsToAddList';
 import { BackButton, SearchInput, SearchWrapper, Wrapper } from './AddItem.styles';
 

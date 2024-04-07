@@ -4,23 +4,15 @@ export const Wrapper = styled.div<{ $isActive: boolean }>`
 	position: absolute;
 	inset: 0;
 	z-index: 2;
-	/* display: grid;
-	grid-template-rows: auto 1fr; */
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	height: 100dvh;
 	background-color: #f5f5f5;
 	translate: ${({ $isActive }) => ($isActive ? '0%' : '70%')};
 	opacity: ${({ $isActive }) => ($isActive ? '1' : '0')};
 	transition: translate 0.3s, opacity 0.3s;
 	pointer-events: ${({ $isActive }) => ($isActive ? 'auto' : 'none')};
-
-	/* max-height: 100vh;
-	overflow-x: clip;
-	overflow-y: scroll; */
-
-	display: flex;
-	flex-direction: column;
-	height: 100dvh;
-
-	/* overflow-y: scroll; */
 `;
 
 export const SearchWrapper = styled.div`
