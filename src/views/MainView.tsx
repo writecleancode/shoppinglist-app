@@ -7,8 +7,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
 	position: relative;
-	max-height: 100vh;
-	overflow-y: hidden;
+	height: 100dvh;
 	
 	display: flex;
 	flex-direction: column;

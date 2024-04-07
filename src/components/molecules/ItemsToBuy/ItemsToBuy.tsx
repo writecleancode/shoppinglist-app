@@ -73,6 +73,21 @@ export const ItemsToBuy = () => {
 				<p>ketchup</p>
 				<CategoryIcon />
 			</ItemToBuy>
+			<ItemToBuy>
+				<StatusButton />
+				<p>ketchup</p>
+				<CategoryIcon />
+			</ItemToBuy>
+			<ItemToBuy>
+				<StatusButton />
+				<p>ketchup</p>
+				<CategoryIcon />
+			</ItemToBuy>
+			<ItemToBuy>
+				<StatusButton />
+				<p>ketchup</p>
+				<CategoryIcon />
+			</ItemToBuy>
 		</StyledList>
 	);
 };
