@@ -3,7 +3,7 @@ import { MainView } from './MainView';
 import { AddItem } from './AddItem';
 
 export const Root = () => {
-	const [isAdditemActive, setAdditemState] = useState(false);
+	const [isAdditemActive, setAdditemState] = useState(true);
 
 	const showAdditemView = () => setAdditemState(true)
 	const hideAdditemView = () => setAdditemState(false)
@@ -11,7 +11,7 @@ export const Root = () => {
 	return (
 		<>
 			<MainView showAdditemView={showAdditemView}  />
-			{/* <AddItem isActive={isAdditemActive} hideAdditemView={hideAdditemView} /> */}
+			<AddItem isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
 		</>
 	);
 };

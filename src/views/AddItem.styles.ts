@@ -12,12 +12,15 @@ export const Wrapper = styled.div<{ $isActive: boolean }>`
 	transition: translate 0.3s, opacity 0.3s;
 	pointer-events: ${({ $isActive }) => ($isActive ? 'auto' : 'none')};
 
-	max-height: 100vh;
+	/* max-height: 100vh;
 	overflow-x: clip;
-	overflow-y: scroll;
+	overflow-y: scroll; */
 
 	display: flex;
 	flex-direction: column;
+	height: 100dvh;
+
+	/* overflow-y: scroll; */
 `;
 
 export const SearchWrapper = styled.div`
