@@ -2,9 +2,8 @@ import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { ItemsList } from 'src/components/organisms/ItemsList/ItemsList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
+import { AddProducts } from './AddProducts';
 import { Wrapper } from './MainView.styles';
-
-import { AddItem } from './AddItem';
 
 type MainViewProps = {
 	isAdditemActive: boolean;
@@ -21,8 +20,7 @@ export const MainView = ({ showAdditemView, isAdditemActive, hideAdditemView }: 
 			</div>
 			<ItemsList />
 			<AddButton onClick={showAdditemView} />
-
-			<AddItem isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
+			<AddProducts isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
 		</Wrapper>
 	);
 };
