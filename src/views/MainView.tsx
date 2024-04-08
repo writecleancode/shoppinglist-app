@@ -7,7 +7,9 @@ import { Wrapper } from './MainView.styles';
 import { AddItem } from './AddItem';
 
 type MainViewProps = {
+	isAdditemActive: boolean;
 	showAdditemView: () => void;
+	hideAdditemView: () => void;
 };
 
 export const MainView = ({ showAdditemView, isAdditemActive, hideAdditemView }: MainViewProps) => {
