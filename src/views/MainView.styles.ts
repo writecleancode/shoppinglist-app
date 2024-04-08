@@ -15,12 +15,13 @@ export const Wrapper = styled.div`
 	}
 
 	@media (min-width: 720px) and (orientation: landscape) {
-		border-radius: 24px;
 		box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.12);
 		overflow: hidden;
+		/* overflow: clip; */
 	}
 
 	@media (min-height: 920px) {
+		border-radius: 24px;
 		height: auto;
 		max-height: 920px;
 	}

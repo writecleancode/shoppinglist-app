@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Root = () => {
-	const [isAdditemActive, setAdditemState] = useState(false);
+	const [isAdditemActive, setAdditemState] = useState(true);
 
 	const showAdditemView = () => setAdditemState(true);
 	const hideAdditemView = () => setAdditemState(false);
