@@ -6,6 +6,7 @@ export const BoughtItem = styled.li`
 	display: flex;
 	align-items: center;
 	padding: 0.8rem;
+	color: ${({ theme }) => theme.colors.lightBlack};
 	filter: grayscale(80%);
 `;
 

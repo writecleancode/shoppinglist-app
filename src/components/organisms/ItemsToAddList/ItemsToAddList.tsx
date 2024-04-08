@@ -1,5 +1,5 @@
 import { items } from 'src/data/items';
-import { AddItemButton, DecreaseButton, ItemToAdd, PlusIcon, StyledList } from './ItemsToAddList.styles';
+import { AddItemButton, AmountOfItems, DecreaseButton, ItemToAdd, PlusIcon, StyledList } from './ItemsToAddList.styles';
 
 export const ItemsToAddList = () => {
 	return (
@@ -12,6 +12,7 @@ export const ItemsToAddList = () => {
 						</PlusIcon>
 						{name}
 					</AddItemButton>
+					<AmountOfItems $amount={amount}>{amount}</AmountOfItems>
 					<DecreaseButton $amount={amount} />
 				</ItemToAdd>
 			))}

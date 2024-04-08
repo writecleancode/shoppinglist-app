@@ -28,7 +28,8 @@ body {
     height: 100dvh;
     background-color: ${({ theme }) => theme.colors.lightGrey};
     color: ${({ theme }) => theme.colors.black};
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
     font-size: 1.6rem;
     line-height: 1.5;
 	overflow: clip;    
