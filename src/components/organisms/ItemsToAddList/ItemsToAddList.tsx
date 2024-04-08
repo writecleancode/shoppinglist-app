@@ -1,10 +1,14 @@
-import { items } from 'src/data/items';
 import { AddItemButton, AmountOfItems, DecreaseButton, ItemToAdd, PlusIcon, StyledList } from './ItemsToAddList.styles';
+import { ProductType } from 'src/views/AddProducts';
 
-export const ItemsToAddList = () => {
+type ItemsToAddListProps = {
+	products: ProductType[];
+};
+
+export const ItemsToAddList = ({ products }: ItemsToAddListProps) => {
 	return (
 		<StyledList>
-			{items.map(({ id, name, amount }) => (
+			{products.map(({ id, name, amount }) => (
 				<ItemToAdd key={id}>
 					<AddItemButton aria-label={`add ${name} to the list`} type='button'>
 						<PlusIcon $isAdded={amount !== 0}>

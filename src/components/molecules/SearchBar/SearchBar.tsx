@@ -1,10 +1,27 @@
-import { FormEvent, useState } from 'react';
+import { Dispatch, FormEvent, useState } from 'react';
+import { items } from 'src/data/items';
+import { ProductType } from 'src/views/AddProducts';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
 
-export const SearchBar = () => {
-	const [inputValue, setInputValue] = useState('');
+type SearchBarProps = {
+	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+};
 
-	const handleInputChange = (e: FormEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value);
+export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
+	const [inputValue, setInputValue] = useState('');
+	const productsToAddList = items;
+
+	const updateProductsList = (searchPhrase: string) => {
+		const matchingProducts = productsToAddList.filter(product =>
+			product.name.toLowerCase().includes(searchPhrase.toLowerCase())
+		);
+		setProductsToAdd(matchingProducts);
+	};
+
+	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+		setInputValue(e.currentTarget.value);
+		updateProductsList(e.currentTarget.value);
+	};
 
 	return (
 		<Wrapper>

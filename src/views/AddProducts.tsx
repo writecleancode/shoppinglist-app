@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { items } from 'src/data/items';
 import { ItemsToAddList } from 'src/components/organisms/ItemsToAddList/ItemsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
@@ -7,7 +9,19 @@ type AddItemProps = {
 	hideAdditemView: () => void;
 };
 
+export type ProductType = {
+	id: number;
+	name: string;
+	amount: number;
+};
+
 export const AddProducts = ({ isActive, hideAdditemView }: AddItemProps) => {
+	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>([]);
+
+	useEffect(() => {
+		setProductsToAdd(items);
+	}, []);
+
 	return (
 		<Wrapper $isActive={isActive}>
 			<div>
@@ -15,10 +29,10 @@ export const AddProducts = ({ isActive, hideAdditemView }: AddItemProps) => {
 					<BackButton onClick={hideAdditemView} aria-label='go back to items list' type='button'>
 						<img src='src/assets/icons/arrow-left.svg' alt='' />
 					</BackButton>
-					<SearchBar />
+					<SearchBar setProductsToAdd={setProductsToAdd} />
 				</SearchWrapper>
 			</div>
-			<ItemsToAddList />
+			<ItemsToAddList products={productsToAdd} />
 		</Wrapper>
 	);
 };
