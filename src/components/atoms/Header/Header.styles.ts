@@ -7,6 +7,10 @@ export const Wrapper = styled.header`
 	background-color: ${({ theme }) => theme.colors.primary};
 `;
 
+export const Icon = styled.img`
+	width: 2.4rem;
+`;
+
 export const H1 = styled.h1`
 	padding: 0.8rem;
 	font-size: 2.4rem;

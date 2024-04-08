@@ -9,5 +9,6 @@ export const theme = {
 		lightBlack: '#6b6f7d',
 		lightGrey: '#fafafa',
 		grey: '#A1A1A1',
+		dirtyWhite: '#F9F9F9',
 	},
 };

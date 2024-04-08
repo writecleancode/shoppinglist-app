@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.button`
-	position: fixed;
+	position: absolute;
 	bottom: 1.6rem;
 	right: 1.6rem;
 	display: flex;
@@ -16,6 +16,10 @@ export const Wrapper = styled.button`
 	font-size: 1.6rem;
 	font-weight: bold;
 	text-transform: uppercase;
+
+	@media (min-width: 576px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const AddButton = (props: any) => {

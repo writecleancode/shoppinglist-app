@@ -5,6 +5,10 @@ export const Wrapper = styled.button`
 	padding: 0.8rem;
 	border: none;
 	background-color: transparent;
+
+	@media (min-width: 576px) {
+		margin-right: 1.6rem;
+	}
 `;
 
 export const Circle = styled.div`
