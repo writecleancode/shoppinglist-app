@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 	@media (min-width: 720px) and (orientation: landscape) {
 		box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.12);
 		overflow: hidden;
-		/* overflow: clip; */
+		overflow: clip;
 	}
 
 	@media (min-height: 920px) {

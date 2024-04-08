@@ -1,5 +1,5 @@
 import { ItemsToAddList } from 'src/components/organisms/ItemsToAddList/ItemsToAddList';
-import { BackButton, SearchInput, SearchWrapper, Wrapper } from './AddItem.styles';
+import { BackButton, ClearInputButton, SearchInput, SearchInputWrapper, SearchWrapper, Wrapper } from './AddItem.styles';
 
 type AddItemProps = {
 	isActive: boolean;
@@ -14,7 +14,12 @@ export const AddItem = ({ isActive, hideAdditemView }: AddItemProps) => {
 					<BackButton onClick={hideAdditemView} aria-label='go back to items list' type='button'>
 						<img src='src/assets/icons/arrow-left.svg' alt='' />
 					</BackButton>
-					<SearchInput placeholder='add new item' />
+					<SearchInputWrapper>
+						<SearchInput placeholder='add new item' />
+						<ClearInputButton aria-label='clear input' type='button'>
+							<img src="src/assets/icons/x-circle.svg" alt="" />
+						</ClearInputButton>
+					</SearchInputWrapper>
 				</SearchWrapper>
 			</div>
 			<ItemsToAddList />
