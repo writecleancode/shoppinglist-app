@@ -7,12 +7,12 @@ export const items = [
 	{
 		id: 2,
 		name: 'alcohol',
-		amount: 0,
+		amount: 1,
 	},
 	{
 		id: 3,
 		name: 'Alka-Seltzer',
-		amount: 0,
+		amount: 2,
 	},
 	{
 		id: 4,

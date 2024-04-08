@@ -10,7 +10,10 @@ export const StyledList = styled.ul`
 	overflow-y: auto;
 `;
 
-export const ItemToAdd = styled.li``;
+export const ItemToAdd = styled.li`
+	display: flex;
+	align-items: center;
+`;
 
 export const AddItemButton = styled.button`
 	display: flex;
@@ -26,4 +29,40 @@ export const PlusIcon = styled.button<{ $isAdded: boolean }>`
 	border: none;
 	border-radius: 100rem;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};
+`;
+
+export const DecreaseButton = styled.button<{ $amount: number }>`
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.2rem;
+	border: none;
+	background-color: transparent;
+	translate: 4px;
+	opacity: ${({ $amount }) => ($amount > 0 ? '1' : '0')};
+	pointer-events: ${({ $amount }) => ($amount > 0 ? 'auto' : 'none')};
+	transition: opacity .1s;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: 18px;
+		height: 3px;
+		background-color: #e40808;
+		border-radius: 100rem;
+		transition: transform 0.3s;
+	}
+
+	&::before {
+		transform: ${({ $amount }) => ($amount > 1 ? 'rotate(0)' : 'rotate(-45deg)')};
+	}
+
+	&::after {
+		transform: ${({ $amount }) => ($amount > 1 ? 'rotate(0)' : 'rotate(45deg)')};
+	}
 `;
