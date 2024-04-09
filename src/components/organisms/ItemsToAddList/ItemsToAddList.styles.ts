@@ -28,10 +28,13 @@ export const AddItemButton = styled.button`
 	font-size: 1.6rem;
 `;
 
-export const PlusIcon = styled.div<{ $isAdded: boolean }>`
+export const PlusIcon = styled.div<{ $isAdded: boolean; $amount: number; $isAnimating: boolean }>`
 	border: none;
 	border-radius: 100rem;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};
+	rotate: ${({ $amount }) => `${$amount * 180}deg`};
+	scale: ${({ $isAnimating }) => ($isAnimating ? '0.75' : '1')};
+	transition: rotate 0.5s, scale 0.35s;
 `;
 
 export const AmountOfItems = styled.div<{ $amount: number }>`
@@ -48,9 +51,10 @@ export const DecreaseButton = styled.button<{ $amount: number }>`
 	border: none;
 	background-color: transparent;
 	translate: 4px;
-	opacity: ${({ $amount }) => ($amount > 0 ? '1' : '0')};
+	visibility: ${({ $amount }) => ($amount > 0 ? 'visible' : 'hidden')};
 	pointer-events: ${({ $amount }) => ($amount > 0 ? 'auto' : 'none')};
-	transition: opacity 0.1s;
+	/* opacity: ${({ $amount }) => ($amount > 0 ? '1' : '0')}; */
+	/* transition: opacity 0.15s; */
 
 	&::before,
 	&::after {
