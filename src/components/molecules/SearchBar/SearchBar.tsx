@@ -11,7 +11,9 @@ export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
 	const [inputValue, setInputValue] = useState('');
 	const productsToAddList = items;
 
-	const updateProductsList = (searchPhrase: string) => {
+	const updateProductsList = (searchPhrase = '') => {
+		if (!searchPhrase) setProductsToAdd(productsToAddList);
+
 		const matchingProducts = productsToAddList.filter(product =>
 			product.name.toLowerCase().includes(searchPhrase.toLowerCase())
 		);
@@ -23,10 +25,15 @@ export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
 		updateProductsList(e.currentTarget.value);
 	};
 
+	const handleClearInput = () => {
+		setInputValue('');
+		updateProductsList();
+	};
+
 	return (
 		<Wrapper>
 			<SearchInput placeholder='add new item' value={inputValue} onChange={handleInputChange} />
-			<ClearInputButton aria-label='clear input' type='button'>
+			<ClearInputButton aria-label='clear input' type='button' onClick={handleClearInput}>
 				<img src='src/assets/icons/x-circle.svg' alt='' />
 			</ClearInputButton>
 		</Wrapper>
