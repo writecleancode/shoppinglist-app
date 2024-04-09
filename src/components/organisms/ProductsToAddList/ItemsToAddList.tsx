@@ -12,29 +12,17 @@ let timeout: NodeJS.Timeout;
 export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
-	const handleAddProduct = (productId: number) => {
+	const handleProductAmount = (productId: number, direction: string) => {
 		if (products.length === 0) return;
+
+		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
 		setProductsToAdd([
 			...products.slice(0, productId - 1),
 			{
 				...products[productId - 1],
-				amount: products[productId - 1].amount + 1,
-			},
-			...products.slice(productId),
-		]);
-	};
-
-	const handleRemoveProduct = (productId: number) => {
-		if (products.length === 0) return;
-
-		handlePlusIconScale(productId);
-		setProductsToAdd([
-			...products.slice(0, productId - 1),
-			{
-				...products[productId - 1],
-				amount: products[productId - 1].amount - 1,
+				amount: products[productId - 1].amount + quantityChanger,
 			},
 			...products.slice(productId),
 		]);
@@ -52,14 +40,17 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 		<StyledList>
 			{products.map(({ id, name, amount }) => (
 				<ItemToAdd key={id}>
-					<AddItemButton onClick={() => handleAddProduct(id)} aria-label={`add ${name} to the list`} type='button'>
+					<AddItemButton
+						onClick={() => handleProductAmount(id, 'increase')}
+						aria-label={`add ${name} to the list`}
+						type='button'>
 						<PlusIcon $isAdded={amount !== 0} $amount={amount} $isAnimating={id === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{name}
 					</AddItemButton>
 					<AmountOfItems $amount={amount}>{amount}</AmountOfItems>
-					<DecreaseButton $amount={amount} onClick={() => handleRemoveProduct(id)} />
+					<DecreaseButton $amount={amount} onClick={() => handleProductAmount(id, 'decrease')} />
 				</ItemToAdd>
 			))}
 		</StyledList>
