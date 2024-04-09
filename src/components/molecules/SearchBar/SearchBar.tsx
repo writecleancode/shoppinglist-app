@@ -1,42 +1,48 @@
 import { Dispatch, FormEvent, useCallback, useState } from 'react';
 import { debounce } from 'lodash';
-import { items } from 'src/data/items';
-import { ProductType } from 'src/views/AddProducts';
+import { ProductType } from 'src/views/Root';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
 
 type SearchBarProps = {
+	searchInputValue: string;
+	setSearchInputValue: Dispatch<React.SetStateAction<string>>;
+	productsList: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
-export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
-	const [inputValue, setInputValue] = useState('');
-	const productsToAddList = items;
+export const SearchBar = ({
+	searchInputValue,
+	setSearchInputValue,
+	productsList,
+	setProductsToAdd,
+}: SearchBarProps) => {
+	// const [searchInputValue, setSearchInputValue] = useState('');
 
 	const updateProductsList = useCallback(
 		debounce((searchPhrase = '') => {
-			if (!searchPhrase) setProductsToAdd(productsToAddList);
+			if (!searchPhrase) setProductsToAdd(productsList);
 
-			const matchingProducts = productsToAddList.filter(product =>
+			const matchingProducts = productsList.filter(product =>
 				product.name.toLowerCase().includes(searchPhrase.toLowerCase())
 			);
 			setProductsToAdd(matchingProducts);
 		}, 500),
-		[]
+		[productsList]
 	);
 
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-		setInputValue(e.currentTarget.value);
+		setSearchInputValue(e.currentTarget.value);
 		updateProductsList(e.currentTarget.value);
 	};
 
 	const handleClearInput = () => {
-		setInputValue('');
-		setProductsToAdd(productsToAddList);
+		setSearchInputValue('');
+		setProductsToAdd(productsList);
 	};
 
 	return (
 		<Wrapper>
-			<SearchInput placeholder='add new item' value={inputValue} onChange={handleInputChange} />
+			<SearchInput placeholder='add new item' value={searchInputValue} onChange={handleInputChange} />
 			<ClearInputButton aria-label='clear input' type='button' onClick={handleClearInput}>
 				<img src='src/assets/icons/x-circle.svg' alt='' />
 			</ClearInputButton>

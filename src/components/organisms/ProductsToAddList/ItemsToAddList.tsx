@@ -1,5 +1,5 @@
 import { Dispatch, useState } from 'react';
-import { ProductType } from 'src/views/AddProducts';
+import { ProductType } from 'src/views/Root';
 import {
 	AddItemButton,
 	QuantityOfItems,
@@ -10,13 +10,15 @@ import {
 } from './ItemsToAddList.styles';
 
 type ItemsToAddListProps = {
+	productsList: ProductType[];
+	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
 let timeout: NodeJS.Timeout;
 
-export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListProps) => {
+export const ItemsToAddList = ({ productsList, setProductsList, products, setProductsToAdd }: ItemsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
 	const handleProductquantity = (productId: number, direction: string) => {
@@ -25,13 +27,13 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
-		setProductsToAdd([
-			...products.slice(0, productId - 1),
+		setProductsList([
+			...productsList.slice(0, productId - 1),
 			{
-				...products[productId - 1],
-				quantity: products[productId - 1].quantity + quantityChanger,
+				...productsList[productId - 1],
+				quantity: productsList[productId - 1].quantity + quantityChanger,
 			},
-			...products.slice(productId),
+			...productsList.slice(productId),
 		]);
 	};
 

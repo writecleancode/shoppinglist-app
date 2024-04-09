@@ -4,14 +4,18 @@ import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
 import { Wrapper } from './MainView.styles';
+import { ProductType } from './Root';
+import { Dispatch } from 'react';
 
 type MainViewProps = {
+	productsList: ProductType[];
 	isAdditemActive: boolean;
+	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	showAdditemView: () => void;
 	hideAdditemView: () => void;
 };
 
-export const MainView = ({ showAdditemView, isAdditemActive, hideAdditemView }: MainViewProps) => {
+export const MainView = ({ productsList, setProductsList, isAdditemActive, showAdditemView, hideAdditemView }: MainViewProps) => {
 	return (
 		<Wrapper>
 			<div>
@@ -20,7 +24,7 @@ export const MainView = ({ showAdditemView, isAdditemActive, hideAdditemView }: 
 			</div>
 			<ProductsList />
 			<AddButton onClick={showAdditemView} />
-			<AddProducts isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
+			<AddProducts productsList={productsList} setProductsList={setProductsList} isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
 		</Wrapper>
 	);
 };
