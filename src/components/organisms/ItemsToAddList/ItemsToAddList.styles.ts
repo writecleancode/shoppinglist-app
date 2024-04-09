@@ -27,7 +27,7 @@ export const AddItemButton = styled.button`
 	font-size: 1.6rem;
 `;
 
-export const PlusIcon = styled.button<{ $isAdded: boolean }>`
+export const PlusIcon = styled.div<{ $isAdded: boolean }>`
 	border: none;
 	border-radius: 100rem;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};
