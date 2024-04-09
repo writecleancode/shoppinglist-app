@@ -1,6 +1,13 @@
 import { Dispatch, useState } from 'react';
-import { AddItemButton, AmountOfItems, DecreaseButton, ItemToAdd, PlusIcon, StyledList } from './ItemsToAddList.styles';
 import { ProductType } from 'src/views/AddProducts';
+import {
+	AddItemButton,
+	QuantityOfItems,
+	DecreaseButton,
+	ItemToAdd,
+	PlusIcon,
+	StyledList,
+} from './ItemsToAddList.styles';
 
 type ItemsToAddListProps = {
 	products: ProductType[];
@@ -12,7 +19,7 @@ let timeout: NodeJS.Timeout;
 export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
-	const handleProductAmount = (productId: number, direction: string) => {
+	const handleProductquantity = (productId: number, direction: string) => {
 		if (products.length === 0) return;
 
 		const quantityChanger = direction === 'increase' ? 1 : -1;
@@ -22,7 +29,7 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 			...products.slice(0, productId - 1),
 			{
 				...products[productId - 1],
-				amount: products[productId - 1].amount + quantityChanger,
+				quantity: products[productId - 1].quantity + quantityChanger,
 			},
 			...products.slice(productId),
 		]);
@@ -38,19 +45,19 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 
 	return (
 		<StyledList>
-			{products.map(({ id, name, amount }) => (
+			{products.map(({ id, name, quantity }) => (
 				<ItemToAdd key={id}>
 					<AddItemButton
-						onClick={() => handleProductAmount(id, 'increase')}
+						onClick={() => handleProductquantity(id, 'increase')}
 						aria-label={`add ${name} to the list`}
 						type='button'>
-						<PlusIcon $isAdded={amount !== 0} $amount={amount} $isAnimating={id === lastClickedProductId}>
+						<PlusIcon $isAdded={quantity !== 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{name}
 					</AddItemButton>
-					<AmountOfItems $amount={amount}>{amount}</AmountOfItems>
-					<DecreaseButton $amount={amount} onClick={() => handleProductAmount(id, 'decrease')} />
+					<QuantityOfItems $quantity={quantity}>{quantity}</QuantityOfItems>
+					<DecreaseButton $quantity={quantity} onClick={() => handleProductquantity(id, 'decrease')} />
 				</ItemToAdd>
 			))}
 		</StyledList>

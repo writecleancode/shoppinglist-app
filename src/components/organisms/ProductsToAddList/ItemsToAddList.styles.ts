@@ -28,21 +28,21 @@ export const AddItemButton = styled.button`
 	font-size: 1.6rem;
 `;
 
-export const PlusIcon = styled.div<{ $isAdded: boolean; $amount: number; $isAnimating: boolean }>`
+export const PlusIcon = styled.div<{ $isAdded: boolean; $quantity: number; $isAnimating: boolean }>`
 	border: none;
 	border-radius: 100rem;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};
-	rotate: ${({ $amount }) => `${$amount * 180}deg`};
+	rotate: ${({ $quantity }) => `${$quantity * 180}deg`};
 	scale: ${({ $isAnimating }) => ($isAnimating ? '0.75' : '1')};
 	transition: rotate 0.5s, scale 0.35s;
 `;
 
-export const AmountOfItems = styled.div<{ $amount: number }>`
+export const QuantityOfItems = styled.div<{ $quantity: number }>`
 	color: ${({ theme }) => theme.colors.lightBlack};
-	visibility: ${({ $amount }) => ($amount > 0 ? 'visible' : 'hidden')};
+	visibility: ${({ $quantity }) => ($quantity > 0 ? 'visible' : 'hidden')};
 `;
 
-export const DecreaseButton = styled.button<{ $amount: number }>`
+export const DecreaseButton = styled.button<{ $quantity: number }>`
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -51,9 +51,9 @@ export const DecreaseButton = styled.button<{ $amount: number }>`
 	border: none;
 	background-color: transparent;
 	translate: 4px;
-	visibility: ${({ $amount }) => ($amount > 0 ? 'visible' : 'hidden')};
-	pointer-events: ${({ $amount }) => ($amount > 0 ? 'auto' : 'none')};
-	/* opacity: ${({ $amount }) => ($amount > 0 ? '1' : '0')}; */
+	visibility: ${({ $quantity }) => ($quantity > 0 ? 'visible' : 'hidden')};
+	pointer-events: ${({ $quantity }) => ($quantity > 0 ? 'auto' : 'none')};
+	/* opacity: ${({ $quantity }) => ($quantity > 0 ? '1' : '0')}; */
 	/* transition: opacity 0.15s; */
 
 	&::before,
@@ -71,10 +71,10 @@ export const DecreaseButton = styled.button<{ $amount: number }>`
 	}
 
 	&::before {
-		transform: ${({ $amount }) => ($amount > 1 ? 'rotate(0)' : 'rotate(-45deg)')};
+		transform: ${({ $quantity }) => ($quantity > 1 ? 'rotate(0)' : 'rotate(-45deg)')};
 	}
 
 	&::after {
-		transform: ${({ $amount }) => ($amount > 1 ? 'rotate(0)' : 'rotate(45deg)')};
+		transform: ${({ $quantity }) => ($quantity > 1 ? 'rotate(0)' : 'rotate(45deg)')};
 	}
 `;

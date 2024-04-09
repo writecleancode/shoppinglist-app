@@ -12,7 +12,7 @@ type AddItemProps = {
 export type ProductType = {
 	id: number;
 	name: string;
-	amount: number;
+	quantity: number;
 };
 
 export const AddProducts = ({ isActive, hideAdditemView }: AddItemProps) => {
