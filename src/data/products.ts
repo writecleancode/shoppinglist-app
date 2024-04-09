@@ -1,4 +1,4 @@
-export const items = [
+export const products = [
 	{
 		id: 1,
 		name: 'activia',
@@ -7,12 +7,12 @@ export const items = [
 	{
 		id: 2,
 		name: 'alcohol',
-		quantity: 1,
+		quantity: 0,
 	},
 	{
 		id: 3,
 		name: 'Alka-Seltzer',
-		quantity: 2,
+		quantity: 0,
 	},
 	{
 		id: 4,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { items } from 'src/data/items';
+import { products } from 'src/data/products';
 import { MainView } from './MainView';
 import { Wrapper } from './Root.styles';
 
@@ -14,7 +14,7 @@ export const Root = () => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 
 	useEffect(() => {
-		setProductsList(items);
+		setProductsList(products);
 	}, []);
 
 	const showAdditemView = () => setAdditemState(true);
@@ -22,7 +22,13 @@ export const Root = () => {
 
 	return (
 		<Wrapper>
-			<MainView productsList={productsList} setProductsList={setProductsList} isAdditemActive={isAdditemActive} showAdditemView={showAdditemView} hideAdditemView={hideAdditemView} />
+			<MainView
+				productsList={productsList}
+				setProductsList={setProductsList}
+				isAdditemActive={isAdditemActive}
+				showAdditemView={showAdditemView}
+				hideAdditemView={hideAdditemView}
+			/>
 		</Wrapper>
 	);
 };
