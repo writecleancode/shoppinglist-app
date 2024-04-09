@@ -51,8 +51,8 @@ export const DecreaseButton = styled.button<{ $quantity: number }>`
 	border: none;
 	background-color: transparent;
 	translate: 4px;
-	visibility: ${({ $quantity }) => ($quantity > 0 ? 'visible' : 'hidden')};
-	pointer-events: ${({ $quantity }) => ($quantity > 0 ? 'auto' : 'none')};
+	visibility: ${({ $quantity }) => ($quantity >= 0 ? 'visible' : 'hidden')};
+	pointer-events: ${({ $quantity }) => ($quantity >= 0 ? 'auto' : 'none')};
 	/* opacity: ${({ $quantity }) => ($quantity > 0 ? '1' : '0')}; */
 	/* transition: opacity 0.15s; */
 
@@ -71,10 +71,10 @@ export const DecreaseButton = styled.button<{ $quantity: number }>`
 	}
 
 	&::before {
-		transform: ${({ $quantity }) => ($quantity > 1 ? 'rotate(0)' : 'rotate(-45deg)')};
+		transform: ${({ $quantity }) => ($quantity > 0 ? 'rotate(0)' : 'rotate(-45deg)')};
 	}
 
 	&::after {
-		transform: ${({ $quantity }) => ($quantity > 1 ? 'rotate(0)' : 'rotate(45deg)')};
+		transform: ${({ $quantity }) => ($quantity > 0 ? 'rotate(0)' : 'rotate(45deg)')};
 	}
 `;

@@ -53,7 +53,7 @@ export const ItemsToAddList = ({ productsList, setProductsList, products, setPro
 						onClick={() => handleProductquantity(id, 'increase')}
 						aria-label={`add ${name} to the list`}
 						type='button'>
-						<PlusIcon $isAdded={quantity !== 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
+						<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{name}

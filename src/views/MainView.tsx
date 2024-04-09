@@ -22,7 +22,7 @@ export const MainView = ({ productsList, setProductsList, isAdditemActive, showA
 				<Header />
 				<ProgressBar currentProgress={20} />
 			</div>
-			<ProductsList />
+			<ProductsList productsList={productsList} />
 			<AddButton onClick={showAdditemView} />
 			<AddProducts productsList={productsList} setProductsList={setProductsList} isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
 		</Wrapper>
