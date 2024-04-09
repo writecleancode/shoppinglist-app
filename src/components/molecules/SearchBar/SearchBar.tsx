@@ -1,4 +1,5 @@
-import { Dispatch, FormEvent, useState } from 'react';
+import { Dispatch, FormEvent, useCallback, useState } from 'react';
+import { debounce } from 'lodash';
 import { items } from 'src/data/items';
 import { ProductType } from 'src/views/AddProducts';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
@@ -11,14 +12,17 @@ export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
 	const [inputValue, setInputValue] = useState('');
 	const productsToAddList = items;
 
-	const updateProductsList = (searchPhrase = '') => {
-		if (!searchPhrase) setProductsToAdd(productsToAddList);
+	const updateProductsList = useCallback(
+		debounce((searchPhrase = '') => {
+			if (!searchPhrase) setProductsToAdd(productsToAddList);
 
-		const matchingProducts = productsToAddList.filter(product =>
-			product.name.toLowerCase().includes(searchPhrase.toLowerCase())
-		);
-		setProductsToAdd(matchingProducts);
-	};
+			const matchingProducts = productsToAddList.filter(product =>
+				product.name.toLowerCase().includes(searchPhrase.toLowerCase())
+			);
+			setProductsToAdd(matchingProducts);
+		}, 500),
+		[]
+	);
 
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
 		setInputValue(e.currentTarget.value);
@@ -27,7 +31,7 @@ export const SearchBar = ({ setProductsToAdd }: SearchBarProps) => {
 
 	const handleClearInput = () => {
 		setInputValue('');
-		updateProductsList();
+		setProductsToAdd(productsToAddList);
 	};
 
 	return (
