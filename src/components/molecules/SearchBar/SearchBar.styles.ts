@@ -31,4 +31,9 @@ export const ClearInputButton = styled.button`
 	width: 24px;
 	height: 24px;
 	background-color: transparent;
+	transition: opacity 0.15s;
+
+	&:hover {
+		opacity: 0.7;
+	}
 `;

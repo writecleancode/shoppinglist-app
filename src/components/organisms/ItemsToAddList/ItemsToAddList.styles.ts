@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledList = styled.ul`
 	display: flex;
 	flex-direction: column;
-	gap: 2.4rem;
+	gap: 0.8rem;
 	padding: 2.4rem 1.6rem;
 	background-color: #f5f5f5;
 	list-style: none;
@@ -20,6 +20,7 @@ export const AddItemButton = styled.button`
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
+	padding: 0.8rem 0;
 	border: none;
 	width: 100%;
 	background-color: transparent;

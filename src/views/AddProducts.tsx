@@ -32,7 +32,7 @@ export const AddProducts = ({ isActive, hideAdditemView }: AddItemProps) => {
 					<SearchBar setProductsToAdd={setProductsToAdd} />
 				</SearchWrapper>
 			</div>
-			<ItemsToAddList products={productsToAdd} />
+			<ItemsToAddList products={productsToAdd} setProductsToAdd={setProductsToAdd} />
 		</Wrapper>
 	);
 };
