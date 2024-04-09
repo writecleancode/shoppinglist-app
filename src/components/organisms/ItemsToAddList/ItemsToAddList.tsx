@@ -26,6 +26,20 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 		]);
 	};
 
+	const handleRemoveProduct = (productId: number) => {
+		if (products.length === 0) return;
+
+		handlePlusIconScale(productId);
+		setProductsToAdd([
+			...products.slice(0, productId - 1),
+			{
+				...products[productId - 1],
+				amount: products[productId - 1].amount - 1,
+			},
+			...products.slice(productId),
+		]);
+	};
+
 	const handlePlusIconScale = (productId: number) => {
 		setLastClickedProductId(productId);
 		clearTimeout(timeout);
@@ -45,7 +59,7 @@ export const ItemsToAddList = ({ products, setProductsToAdd }: ItemsToAddListPro
 						{name}
 					</AddItemButton>
 					<AmountOfItems $amount={amount}>{amount}</AmountOfItems>
-					<DecreaseButton $amount={amount} />
+					<DecreaseButton $amount={amount} onClick={() => handleRemoveProduct(id)} />
 				</ItemToAdd>
 			))}
 		</StyledList>
