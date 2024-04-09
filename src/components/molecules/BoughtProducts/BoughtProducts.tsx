@@ -2,7 +2,7 @@ import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import styled from 'styled-components';
 
-export const BoughtItem = styled.li`
+export const BoughtProduct = styled.li`
 	display: flex;
 	align-items: center;
 	padding: 0.8rem;
@@ -16,19 +16,19 @@ export const BoughtItem = styled.li`
 	}
 `;
 
-export const BoughtItems = () => {
+export const BoughtProducts = () => {
 	return (
 		<ul>
-			<BoughtItem>
+			<BoughtProduct>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon $isChecked />
-			</BoughtItem>
-			<BoughtItem>
+			</BoughtProduct>
+			<BoughtProduct>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</BoughtItem>
+			</BoughtProduct>
 		</ul>
 	);
 };

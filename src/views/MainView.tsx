@@ -1,6 +1,6 @@
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
-import { ItemsList } from 'src/components/organisms/ItemsList/ItemsList';
+import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
 import { Wrapper } from './MainView.styles';
@@ -18,7 +18,7 @@ export const MainView = ({ showAdditemView, isAdditemActive, hideAdditemView }: 
 				<Header />
 				<ProgressBar currentProgress={20} />
 			</div>
-			<ItemsList />
+			<ProductsList />
 			<AddButton onClick={showAdditemView} />
 			<AddProducts isActive={isAdditemActive} hideAdditemView={hideAdditemView} />
 		</Wrapper>

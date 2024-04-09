@@ -1,9 +1,9 @@
-import { StyledList } from './ItemsToBuy.styles';
+import { StyledList } from './ProductsToBuy.styles';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import styled from 'styled-components';
 
-export const ItemToBuy = styled.li`
+export const ProductToBuy = styled.li`
 	display: flex;
 	align-items: center;
 	padding: 0.8rem;
@@ -16,84 +16,84 @@ export const ItemToBuy = styled.li`
 	}
 `;
 
-export const ItemsToBuy = () => {
+export const ProductsToBuy = () => {
 	return (
 		<StyledList>
-			<ItemToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
-			<ItemToBuy>
+			</ProductToBuy>
+			<ProductToBuy>
 				<StatusButton />
 				<p>ketchup</p>
 				<CategoryIcon />
-			</ItemToBuy>
+			</ProductToBuy>
 		</StyledList>
 	);
 };

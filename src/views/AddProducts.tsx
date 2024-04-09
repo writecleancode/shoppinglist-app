@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { items } from 'src/data/items';
-import { ItemsToAddList } from 'src/components/organisms/ItemsToAddList/ItemsToAddList';
+import { ItemsToAddList } from 'src/components/organisms/ProductsToAddList/ItemsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
 
