@@ -1,8 +1,8 @@
-import { ProductType } from 'src/views/MainView';
+import { ProductListItemType } from 'src/views/MainView';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 
 type BoughtProductsProps = {
-	boughtProducts: ProductType[];
+	boughtProducts: ProductListItemType[];
 };
 
 export const BoughtProducts = ({ boughtProducts }: BoughtProductsProps) => {

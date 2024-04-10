@@ -1,9 +1,9 @@
 import { StyledList } from './ProductsToBuy.styles';
-import { ProductType } from 'src/views/MainView';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
+import { ProductListItemType } from 'src/views/MainView';
 
 type ProductsToBuyProps = {
-	productsToBuy: ProductType[];
+	productsToBuy: ProductListItemType[];
 };
 
 export const ProductsToBuy = ({ productsToBuy }: ProductsToBuyProps) => {

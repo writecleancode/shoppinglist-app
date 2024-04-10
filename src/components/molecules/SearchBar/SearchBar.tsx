@@ -1,6 +1,6 @@
-import { Dispatch, FormEvent, useCallback, useState } from 'react';
+import { Dispatch, FormEvent, useCallback } from 'react';
 import { debounce } from 'lodash';
-import { ProductType } from 'src/views/Root';
+import { ProductType } from 'src/views/MainView';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
 
 type SearchBarProps = {
@@ -16,8 +16,6 @@ export const SearchBar = ({
 	productsList,
 	setProductsToAdd,
 }: SearchBarProps) => {
-	// const [searchInputValue, setSearchInputValue] = useState('');
-
 	const updateProductsList = useCallback(
 		debounce((searchPhrase = '') => {
 			if (!searchPhrase) setProductsToAdd(productsList);

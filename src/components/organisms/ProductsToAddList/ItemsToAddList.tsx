@@ -1,5 +1,5 @@
 import { Dispatch, useState } from 'react';
-import { ProductType } from 'src/views/Root';
+import { ProductType } from 'src/views/MainView';
 import {
 	AddItemButton,
 	QuantityOfItems,
@@ -13,12 +13,11 @@ type ItemsToAddListProps = {
 	productsList: ProductType[];
 	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
-	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
 let timeout: NodeJS.Timeout;
 
-export const ItemsToAddList = ({ productsList, setProductsList, products, setProductsToAdd }: ItemsToAddListProps) => {
+export const ItemsToAddList = ({ productsList, setProductsList, products }: ItemsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
 	const handleProductquantity = (productId: number, direction: string) => {

@@ -1,11 +1,11 @@
 import { ProductsToBuy } from 'src/components/molecules/ProductsToBuy/ProductsToBuy';
 import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtProducts';
 import { Wrapper } from './ProductsList.styles';
-import { ProductType } from 'src/views/MainView';
+import { ProductListItemType } from 'src/views/MainView';
 
 type ProductsListProps = {
-	productsToBuy: ProductType[];
-	boughtProducts: ProductType[];
+	productsToBuy: ProductListItemType[];
+	boughtProducts: ProductListItemType[];
 };
 
 export const ProductsList = ({ productsToBuy, boughtProducts }: ProductsListProps) => {

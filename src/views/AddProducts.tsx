@@ -41,12 +41,7 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 					/>
 				</SearchWrapper>
 			</div>
-			<ItemsToAddList
-				productsList={productsList}
-				setProductsList={setProductsList}
-				products={productsToAdd}
-				setProductsToAdd={setProductsToAdd}
-			/>
+			<ItemsToAddList productsList={productsList} setProductsList={setProductsList} products={productsToAdd} />
 		</Wrapper>
 	);
 };

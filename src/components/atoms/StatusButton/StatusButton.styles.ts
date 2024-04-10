@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Wrapper = styled.button`
 	margin-right: 0.8rem;
@@ -72,7 +72,7 @@ const hideAnimTwo = keyframes`
     }
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<{ $animationType: string }>`
 	content: '';
 	position: absolute;
 	background-color: #fff;
@@ -81,27 +81,43 @@ export const Box = styled.div`
 		bottom: 0;
 		left: 0;
 		transform-origin: 100% 0%;
-		/* animation: ${hideAnimOne} 0.05s linear forwards; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation') return css`animation: ${hideAnimOne} 0.05s linear forwards;`;
+			if ($animationType === 'uncheckAnimation') return css`animation: ${hideAnimOne} 0.05s linear forwards;`;
+			if ($animationType === 'noAnimation') return '';
+		}}
 	}
-
+	
 	&.bottom-right {
 		bottom: 0;
 		right: 0;
 		transform-origin: 0% 0%;
-		/* animation: ${hideAnimTwo} 0.05s 0.05s linear forwards; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation') return css`animation: ${hideAnimTwo} 0.05s 0.05s linear forwards;`;
+			if ($animationType === 'uncheckAnimation') return css`animation: ${hideAnimTwo} 0.05s 0.05s linear forwards;`;
+			if ($animationType === 'noAnimation') return '';
+		}}
 	}
 
 	&.top-right {
 		top: 0;
 		right: 0;
 		transform-origin: 0% 100%;
-		/* animation: ${hideAnimOne} 0.05s 0.1s linear forwards; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation') return css`animation: ${hideAnimOne} 0.05s 0.1s linear forwards;`;
+			if ($animationType === 'uncheckAnimation') return css`animation: ${hideAnimOne} 0.05s 0.1s linear forwards;`;
+			if ($animationType === 'noAnimation') return '';
+		}}
 	}
 
 	&.top-left {
 		top: 0;
 		left: 0;
 		transform-origin: 100% 100%;
-		/* animation: ${hideAnimTwo} 0.05s 0.15s linear forwards; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation') return css`animation: ${hideAnimTwo} 0.05s 0.15s linear forwards;`;
+			if ($animationType === 'uncheckAnimation') return css`animation: ${hideAnimTwo} 0.05s 0.15s linear forwards;`;
+			if ($animationType === 'noAnimation') return '';
+		}}
 	}
 `;
