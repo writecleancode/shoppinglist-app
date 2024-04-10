@@ -14,9 +14,9 @@ export const Wrapper = styled.div<{ $isActive: boolean }>`
 	transition: translate 0.3s, opacity 0.3s;
 	pointer-events: ${({ $isActive }) => ($isActive ? 'auto' : 'none')};
 
-	@media (min-height: 920px) {
+	@media (min-height: 880px) {
 		height: auto;
-		max-height: 920px;
+		max-height: 880px;
 	}
 `;
 
