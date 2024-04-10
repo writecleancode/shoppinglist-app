@@ -2,6 +2,7 @@ import { StyledList } from './ProductsToBuy.styles';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import styled from 'styled-components';
+import { ProductType } from 'src/views/MainView';
 
 export const ProductToBuy = styled.li`
 	display: flex;
@@ -16,84 +17,20 @@ export const ProductToBuy = styled.li`
 	}
 `;
 
-export const ProductsToBuy = () => {
+type ProductsToBuyProps = {
+	productsToBuy: ProductType[];
+};
+
+export const ProductsToBuy = ({ productsToBuy }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
-			<ProductToBuy>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</ProductToBuy>
+			{productsToBuy.map(({ id, name }) => (
+				<ProductToBuy key={id}>
+					<StatusButton />
+					<p>{name}</p>
+					<CategoryIcon />
+				</ProductToBuy>
+			))}
 		</StyledList>
 	);
 };

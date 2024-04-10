@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	height: 100dvh;
 
 	@media (min-width: 720px) {
-		flex-grow: 1;
+		flex-grow: 100;
 		box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.12);
 	}
 
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 
 	@media (min-height: 880px) {
 		border-radius: 24px;
-		height: auto;
+		height: 100%;
 		max-height: 880px;
 	}
 

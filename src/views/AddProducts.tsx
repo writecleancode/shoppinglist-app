@@ -2,7 +2,7 @@ import { Dispatch, useEffect, useState } from 'react';
 import { ItemsToAddList } from 'src/components/organisms/ProductsToAddList/ItemsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
-import { ProductType } from './Root';
+import { ProductType } from './MainView';
 
 type AddItemProps = {
 	productsList: ProductType[];

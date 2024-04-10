@@ -1,16 +1,16 @@
 import { ProductsToBuy } from 'src/components/molecules/ProductsToBuy/ProductsToBuy';
 import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtProducts';
 import { Wrapper } from './ProductsList.styles';
-import { ProductType } from 'src/views/Root';
+import { ProductType } from 'src/views/MainView';
 
 type ProductsListProps = {
-	productsList: ProductType[];
+	productsToBuy: ProductType[];
 };
 
-export const ProductsList = ({ productsList }: ProductsListProps) => {
+export const ProductsList = ({ productsToBuy }: ProductsListProps) => {
 	return (
 		<Wrapper>
-			<ProductsToBuy />
+			<ProductsToBuy productsToBuy={productsToBuy} />
 			<BoughtProducts />
 		</Wrapper>
 	);
