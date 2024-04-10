@@ -1,5 +1,6 @@
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
+import { ProductType } from 'src/views/MainView';
 import styled from 'styled-components';
 
 export const BoughtProduct = styled.li`
@@ -16,19 +17,20 @@ export const BoughtProduct = styled.li`
 	}
 `;
 
-export const BoughtProducts = () => {
+type BoughtProductsProps = {
+	boughtProducts: ProductType[];
+};
+
+export const BoughtProducts = ({ boughtProducts }: BoughtProductsProps) => {
 	return (
 		<ul>
-			<BoughtProduct>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon $isChecked />
-			</BoughtProduct>
-			<BoughtProduct>
-				<StatusButton />
-				<p>ketchup</p>
-				<CategoryIcon />
-			</BoughtProduct>
+			{boughtProducts.map(({ id, name }) => (
+				<BoughtProduct key={id}>
+					<StatusButton />
+					<p>{name}</p>
+					<CategoryIcon $isChecked />
+				</BoughtProduct>
+			))}
 		</ul>
 	);
 };

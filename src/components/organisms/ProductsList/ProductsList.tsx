@@ -5,13 +5,14 @@ import { ProductType } from 'src/views/MainView';
 
 type ProductsListProps = {
 	productsToBuy: ProductType[];
+	boughtProducts: ProductType[];
 };
 
-export const ProductsList = ({ productsToBuy }: ProductsListProps) => {
+export const ProductsList = ({ productsToBuy, boughtProducts }: ProductsListProps) => {
 	return (
 		<Wrapper>
 			<ProductsToBuy productsToBuy={productsToBuy} />
-			<BoughtProducts />
+			<BoughtProducts boughtProducts={boughtProducts} />
 		</Wrapper>
 	);
 };

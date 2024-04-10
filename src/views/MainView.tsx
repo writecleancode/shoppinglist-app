@@ -70,6 +70,29 @@ const mockProductsToBuy = [
 	},
 ];
 
+const mockBoughtProducts = [
+	{
+		id: 13,
+		name: 'bananas',
+		quantity: -1,
+	},
+	{
+		id: 14,
+		name: 'bandage',
+		quantity: -1,
+	},
+	{
+		id: 15,
+		name: 'batter for pancakes',
+		quantity: -1,
+	},
+	{
+		id: 16,
+		name: 'bebiko',
+		quantity: -1,
+	},
+];
+
 type MainViewProps = {
 	isAdditemActive: boolean;
 	showAdditemView: () => void;
@@ -85,13 +108,18 @@ export type ProductType = {
 export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: MainViewProps) => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [productsToBuy, setProductsToBuy] = useState<never[] | ProductType[]>([]);
+	const [boughtProducts, setBoughtProducts] = useState<never[] | ProductType[]>([])
 
 	useEffect(() => {
 		setProductsList(products);
 	}, []);
 
 	useEffect(() => {
-		setProductsToBuy(mockProductsToBuy)
+		setProductsToBuy(mockProductsToBuy);
+	}, []);
+
+	useEffect(() => {
+		setBoughtProducts(mockBoughtProducts)
 	}, []);
 
 	return (
@@ -100,7 +128,7 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 				<Header />
 				<ProgressBar currentProgress={20} />
 			</div>
-			<ProductsList productsToBuy={productsToBuy} />
+			<ProductsList productsToBuy={productsToBuy} boughtProducts={boughtProducts} />
 			<AddButton onClick={showAdditemView} />
 			<AddProducts
 				productsList={productsList}
