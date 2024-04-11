@@ -6,12 +6,13 @@ import { ProductListItemType } from 'src/views/MainView';
 type ProductsListProps = {
 	productsToBuy: ProductListItemType[];
 	boughtProducts: ProductListItemType[];
+	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
 };
 
-export const ProductsList = ({ productsToBuy, boughtProducts }: ProductsListProps) => {
+export const ProductsList = ({ productsToBuy, boughtProducts, setProductsToBuy }: ProductsListProps) => {
 	return (
 		<Wrapper>
-			<ProductsToBuy productsToBuy={productsToBuy} />
+			<ProductsToBuy productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} />
 			<BoughtProducts boughtProducts={boughtProducts} />
 		</Wrapper>
 	);
