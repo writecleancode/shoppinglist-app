@@ -33,7 +33,7 @@ export const ProductListItem = ({
 
 		setTimeout(() => {
 			setLastClickedProductId(-1);
-		}, 500);
+		}, 600);
 	};
 
 	return (

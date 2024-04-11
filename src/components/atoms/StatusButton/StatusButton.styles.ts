@@ -34,7 +34,7 @@ const revealCheckOneAnimation = keyframes`
 	100% {
 		translate: 8px 8px;
 	}
-`
+`;
 
 const revealCheckTwoAnimation = keyframes`
 	0% {
@@ -44,7 +44,7 @@ const revealCheckTwoAnimation = keyframes`
 	100% {
 		translate: 9px -11px;
 	}
-`
+`;
 
 export const Wrapper = styled.button`
 	position: relative;
@@ -70,17 +70,17 @@ export const Circle = styled.div<{ $animationType: string }>`
 	${({ $animationType }) => {
 		if ($animationType === 'checkAnimation')
 			return css`
-				animation: ${hideCircleAnimation} 0.3s linear forwards;
+				animation: ${hideCircleAnimation} 0.2s linear forwards;
 			`;
 		if ($animationType === 'uncheckAnimation')
 			return css`
-				animation: ${hideCircleAnimation} 0.3s linear reverse forwards;
+				animation: ${hideCircleAnimation} 0.2s linear reverse forwards;
 			`;
 		if ($animationType === 'noAnimation') return 'animation: none;';
 	}}
 `;
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.div<{ $animationType: string }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -104,9 +104,19 @@ export const IconWrapper = styled.div`
 		width: 13px;
 		height: 5px;
 		rotate: 43deg;
-		animation: ${revealCheckOneAnimation} .1s 1s linear forwards ;
+		animation: ${revealCheckOneAnimation} 0.1s 1s linear forwards;
 
-		/* translate: 8px 8px; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation')
+				return css`
+					animation: ${revealCheckOneAnimation} 0.05s 0.2s linear forwards;
+				`;
+			if ($animationType === 'uncheckAnimation')
+				return css`
+					animation: ${revealCheckOneAnimation} 0.05s 0.2s linear reverse forwards;
+				`;
+			if ($animationType === 'noAnimation') return 'animation: none;';
+		}}/* translate: 8px 8px; */
 	}
 
 	&::after {
@@ -115,9 +125,19 @@ export const IconWrapper = styled.div`
 		width: 5px;
 		height: 14px;
 		rotate: 38deg;
-		animation: ${revealCheckTwoAnimation} .1s 1.1s linear forwards;
+		animation: ${revealCheckTwoAnimation} 0.1s linear 1.1s forwards;
 
-		/* translate: 9px -11px; */
+		${({ $animationType }) => {
+			if ($animationType === 'checkAnimation')
+				return css`
+					animation: ${revealCheckTwoAnimation} 0.05s linear 0.25s forwards;
+				`;
+			if ($animationType === 'uncheckAnimation')
+				return css`
+					animation: ${revealCheckTwoAnimation} 0.05s linear 0.25s reverse forwards;
+				`;
+			if ($animationType === 'noAnimation') return 'animation: none;';
+		}}/* translate: 9px -11px; */
 	}
 `;
 

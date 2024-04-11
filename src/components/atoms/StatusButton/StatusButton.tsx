@@ -10,7 +10,7 @@ export const StatusButton = ({ animationType, ...props }: StatusButtonProps) => 
 	return (
 		<Wrapper {...props}>
 			<Circle $animationType={animationType} />
-			<IconWrapper>
+			<IconWrapper $animationType={animationType}>
 				<CheckIcon />
 			</IconWrapper>
 		</Wrapper>
