@@ -13,7 +13,7 @@ export const StatusButton = ({ animationType, ...props }: StatusButtonProps) => 
 			<IconWrapper $animationType={animationType}>
 				<CheckIcon />
 			</IconWrapper>
-			<BarsWrapper>
+			<BarsWrapper $animationType={animationType}>
 				<div className='bar bar-top'></div>
 				<div className='bar bar-top-left'></div>
 				<div className='bar bar-left'></div>

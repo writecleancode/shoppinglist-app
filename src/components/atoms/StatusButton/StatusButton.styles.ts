@@ -150,7 +150,7 @@ export const IconWrapper = styled.div<{ $animationType: string }>`
 	}
 `;
 
-export const BarsWrapper = styled.div`
+export const BarsWrapper = styled.div<{ $animationType: string }>`
 	position: absolute;
 	inset: 0;
 	z-index: 0;
@@ -174,11 +174,27 @@ export const BarsWrapper = styled.div`
 		}
 
 		&:nth-child(odd)::after {
-			animation: ${barsSlide} 0.8s 1s;
+			/* animation: ${barsSlide} 0.8s 1s; */
+
+			${({ $animationType }) => {
+				if ($animationType === 'checkAnimation')
+					return css`
+						animation: ${barsSlide} 0.25s ease-out 0.25s;
+					`;
+				if ($animationType === 'noAnimation') return 'animation: none;';
+			}}
 		}
 
 		&:nth-child(even)::after {
-			animation: ${barsSlide} 1s 1s;
+			/* animation: ${barsSlide} 1s 1s; */
+
+			${({ $animationType }) => {
+				if ($animationType === 'checkAnimation')
+					return css`
+						animation: ${barsSlide} 0.45s ease-out 0.25s;
+					`;
+				if ($animationType === 'noAnimation') return 'animation: none;';
+			}}
 		}
 	}
 
