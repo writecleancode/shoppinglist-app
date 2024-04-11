@@ -1,5 +1,5 @@
 import { CheckIcon } from 'src/assets/icons/CheckIcon';
-import { Circle, IconWrapper, Wrapper } from './StatusButton.styles';
+import { BarsWrapper, Circle, IconWrapper, Wrapper } from './StatusButton.styles';
 
 type StatusButtonProps = {
 	animationType: string;
@@ -13,6 +13,16 @@ export const StatusButton = ({ animationType, ...props }: StatusButtonProps) => 
 			<IconWrapper $animationType={animationType}>
 				<CheckIcon />
 			</IconWrapper>
+			<BarsWrapper>
+				<div className='bar bar-top'></div>
+				<div className='bar bar-top-left'></div>
+				<div className='bar bar-left'></div>
+				<div className='bar bar-bottom-left'></div>
+				<div className='bar bar-bottom'></div>
+				<div className='bar bar-bottom-right'></div>
+				<div className='bar bar-right'></div>
+				<div className='bar bar-top-right'></div>
+			</BarsWrapper>
 		</Wrapper>
 	);
 };

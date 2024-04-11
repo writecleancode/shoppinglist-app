@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
-const hideCircleAnimation = keyframes`
+const hideCircle = keyframes`
 	0% {
 		clip-path: polygon(0 50%, 0 0, 101% 0, 101% 101%, 0 101%, 0 50%, 50% 50%);
 	}
@@ -26,7 +26,7 @@ const hideCircleAnimation = keyframes`
 	}	
 `;
 
-const revealCheckOneAnimation = keyframes`
+const revealCheckOne = keyframes`
 	0% {
 		translate: 0 0;
 	}
@@ -36,13 +36,23 @@ const revealCheckOneAnimation = keyframes`
 	}
 `;
 
-const revealCheckTwoAnimation = keyframes`
+const revealCheckTwo = keyframes`
 	0% {
 		translate: 0 0;
 	}
 
 	100% {
 		translate: 9px -11px;
+	}
+`;
+
+const barsSlide = keyframes`
+	0% {
+		translate: 100% 0;
+	}
+
+	100% {
+		translate: -100% 0;
 	}
 `;
 
@@ -65,16 +75,16 @@ export const Circle = styled.div<{ $animationType: string }>`
 	border-radius: 50%;
 	width: 24px;
 	height: 24px;
-	/* animation: ${hideCircleAnimation} .3s linear forwards; */
+	/* animation: ${hideCircle} .3s linear forwards; */
 
 	${({ $animationType }) => {
 		if ($animationType === 'checkAnimation')
 			return css`
-				animation: ${hideCircleAnimation} 0.2s linear forwards;
+				animation: ${hideCircle} 0.2s linear forwards;
 			`;
 		if ($animationType === 'uncheckAnimation')
 			return css`
-				animation: ${hideCircleAnimation} 0.2s linear reverse forwards;
+				animation: ${hideCircle} 0.2s linear reverse forwards;
 			`;
 		if ($animationType === 'noAnimation') return 'animation: none;';
 	}}
@@ -94,7 +104,6 @@ export const IconWrapper = styled.div<{ $animationType: string }>`
 	&::after {
 		content: '';
 		position: absolute;
-		transition: translate 2s;
 		background-color: #fff;
 	}
 
@@ -104,16 +113,16 @@ export const IconWrapper = styled.div<{ $animationType: string }>`
 		width: 13px;
 		height: 5px;
 		rotate: 43deg;
-		animation: ${revealCheckOneAnimation} 0.1s 1s linear forwards;
+		animation: ${revealCheckOne} 0.1s 1s linear forwards;
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
 				return css`
-					animation: ${revealCheckOneAnimation} 0.05s 0.2s linear forwards;
+					animation: ${revealCheckOne} 0.05s 0.2s linear forwards;
 				`;
 			if ($animationType === 'uncheckAnimation')
 				return css`
-					animation: ${revealCheckOneAnimation} 0.05s 0.2s linear reverse forwards;
+					animation: ${revealCheckOne} 0.05s 0.2s linear reverse forwards;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
 		}}/* translate: 8px 8px; */
@@ -125,18 +134,107 @@ export const IconWrapper = styled.div<{ $animationType: string }>`
 		width: 5px;
 		height: 14px;
 		rotate: 38deg;
-		animation: ${revealCheckTwoAnimation} 0.1s linear 1.1s forwards;
+		animation: ${revealCheckTwo} 0.1s linear 1.1s forwards;
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
 				return css`
-					animation: ${revealCheckTwoAnimation} 0.05s linear 0.25s forwards;
+					animation: ${revealCheckTwo} 0.05s linear 0.25s forwards;
 				`;
 			if ($animationType === 'uncheckAnimation')
 				return css`
-					animation: ${revealCheckTwoAnimation} 0.05s linear 0.25s reverse forwards;
+					animation: ${revealCheckTwo} 0.05s linear 0.25s reverse forwards;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
 		}}/* translate: 9px -11px; */
+	}
+`;
+
+export const BarsWrapper = styled.div`
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+
+	.bar {
+		position: absolute;
+		width: 8px;
+		height: 3px;
+		border-radius: 100rem;
+		background-color: #fff;
+		overflow: clip;
+		overflow: hidden;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: 100rem;
+			background-color: #0f9e0d;
+			translate: 100% 0;
+		}
+
+		&:nth-child(odd)::after {
+			animation: ${barsSlide} 0.8s 1s;
+		}
+
+		&:nth-child(even)::after {
+			animation: ${barsSlide} 1s 1s;
+		}
+	}
+
+	.bar-top {
+		top: 0;
+		left: 50%;
+		transform-origin: 0 50%;
+		rotate: 90deg;
+		translate: 0 -50%;
+	}
+
+	.bar-top-left {
+		rotate: 45deg;
+		top: 20%;
+		left: 20%;
+		translate: -50% -50%;
+	}
+
+	.bar-left {
+		top: 50%;
+		left: 0;
+		translate: 0 -50%;
+	}
+
+	.bar-bottom-left {
+		rotate: -45deg;
+		bottom: 20%;
+		left: 20%;
+		translate: -50% 50%;
+	}
+
+	.bar-bottom {
+		bottom: 0;
+		left: 50%;
+		translate: 0 50%;
+		rotate: -90deg;
+		transform-origin: 0 50%;
+	}
+
+	.bar-bottom-right {
+		bottom: 20%;
+		right: 20%;
+		rotate: -135deg;
+		translate: 50% 50%;
+	}
+
+	.bar-right {
+		top: 50%;
+		right: 0;
+		rotate: 180deg;
+	}
+
+	.bar-top-right {
+		top: 20%;
+		right: 20%;
+		rotate: 135deg;
+		translate: 50% -50%;
 	}
 `;
