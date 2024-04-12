@@ -151,7 +151,7 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 				<Header />
 				<ProgressBar currentProgress={ boughtProducts.length / (productsToBuy.length + boughtProducts.length) * 100} />
 			</div>
-			<ProductsList productsToBuy={productsToBuy} boughtProducts={boughtProducts} setProductsToBuy={setProductsToBuy} />
+			<ProductsList productsToBuy={productsToBuy} boughtProducts={boughtProducts} setProductsToBuy={setProductsToBuy} setBoughtProducts={setBoughtProducts} />
 			<AddButton onClick={showAdditemView} />
 			<AddProducts
 				productsList={productsList}

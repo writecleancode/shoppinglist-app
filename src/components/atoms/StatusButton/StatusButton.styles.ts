@@ -75,7 +75,8 @@ export const Circle = styled.div<{ $animationType: string; $isBought: boolean }>
 	border-radius: 50%;
 	width: 24px;
 	height: 24px;
-	visibility: ${({ $isBought }) => ($isBought ? 'hidden' : 'visible')};
+	visibility: ${({ $isBought, $animationType }) =>
+		$isBought && $animationType !== 'uncheckAnimation' ? 'hidden' : 'visible'};
 	/* animation: ${hideCircle} .3s linear forwards; */
 
 	${({ $animationType }) => {
@@ -85,7 +86,7 @@ export const Circle = styled.div<{ $animationType: string; $isBought: boolean }>
 			`;
 		if ($animationType === 'uncheckAnimation')
 			return css`
-				animation: ${hideCircle} 0.2s linear reverse forwards;
+				animation: ${hideCircle} 0.2s linear 0.1s reverse both;
 			`;
 		if ($animationType === 'noAnimation') return 'animation: none;';
 	}}
@@ -105,7 +106,8 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 	&::after {
 		content: '';
 		position: absolute;
-		background-color: ${({ $isBought }) => ($isBought ? 'transparent' : '#fff')};
+		background-color: ${({ $isBought, $animationType }) =>
+			$isBought && $animationType !== 'uncheckAnimation' ? 'transparent' : '#fff'};
 	}
 
 	&::before {
@@ -114,7 +116,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 		width: 13px;
 		height: 5px;
 		rotate: 43deg;
-		animation: ${revealCheckOne} 0.1s 1s linear forwards;
+		/* animation: ${revealCheckOne} 0.1s linear 1s forwards; */
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
@@ -123,7 +125,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 				`;
 			if ($animationType === 'uncheckAnimation')
 				return css`
-					animation: ${revealCheckOne} 0.05s 0.2s linear reverse forwards;
+					animation: ${revealCheckOne} 0.05s linear 0.05s reverse both;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
 		}}/* translate: 8px 8px; */
@@ -135,7 +137,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 		width: 5px;
 		height: 14px;
 		rotate: 38deg;
-		animation: ${revealCheckTwo} 0.1s linear 1.1s forwards;
+		/* animation: ${revealCheckTwo} 0.1s linear 1.1s forwards; */
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
@@ -144,7 +146,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 				`;
 			if ($animationType === 'uncheckAnimation')
 				return css`
-					animation: ${revealCheckTwo} 0.05s linear 0.25s reverse forwards;
+					animation: ${revealCheckTwo} 0.05s linear reverse both;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
 		}}/* translate: 9px -11px; */
