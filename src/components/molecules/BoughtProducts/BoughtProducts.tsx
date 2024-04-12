@@ -11,12 +11,7 @@ export const BoughtProducts = ({ productsToBuy, setProductsToBuy }: BoughtProduc
 		<ul>
 			{productsToBuy.map(product =>
 				product.isBought ? (
-					<ProductListItem
-						key={product.id}
-						product={product}
-						productsList={productsToBuy}
-						setProductsList={setProductsToBuy}
-					/>
+					<ProductListItem key={product.id} product={product} setProductsList={setProductsToBuy} />
 				) : null
 			)}
 		</ul>

@@ -12,12 +12,7 @@ export const ProductsToBuy = ({ productsToBuy, setProductsToBuy }: ProductsToBuy
 		<StyledList>
 			{productsToBuy.map(product =>
 				!product.isBought ? (
-					<ProductListItem
-						key={product.id}
-						product={product}
-						productsList={productsToBuy}
-						setProductsList={setProductsToBuy}
-					/>
+					<ProductListItem key={product.id} product={product} setProductsList={setProductsToBuy} />
 				) : null
 			)}
 		</StyledList>
