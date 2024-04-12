@@ -42,7 +42,7 @@ export const ProductListItem = ({
 				onClick={() => handleBoughtStatus(id)}
 			/>
 			<p>{name}</p>
-			<CategoryIcon $isBought={isBought} />
+			<CategoryIcon $isBought={isBought} type='button' aria-label='change product category' />
 		</Wrapper>
 	);
 };

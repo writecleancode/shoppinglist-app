@@ -29,8 +29,8 @@ const mockProductsToBuy = [
 	{
 		id: 4,
 		name: 'amol',
-		quantity: -1,
-		isBought: false,
+		quantity: 0,
+		isBought: true,
 	},
 	{
 		id: 5,
@@ -41,14 +41,14 @@ const mockProductsToBuy = [
 	{
 		id: 6,
 		name: 'apap',
-		quantity: -1,
-		isBought: false,
+		quantity: 0,
+		isBought: true,
 	},
 	{
 		id: 7,
 		name: 'apples',
-		quantity: -1,
-		isBought: false,
+		quantity: 0,
+		isBought: true,
 	},
 	{
 		id: 8,
@@ -65,8 +65,8 @@ const mockProductsToBuy = [
 	{
 		id: 10,
 		name: 'baby wet wipes',
-		quantity: -1,
-		isBought: false,
+		quantity: 0,
+		isBought: true,
 	},
 	{
 		id: 11,
@@ -79,33 +79,6 @@ const mockProductsToBuy = [
 		name: 'baguette',
 		quantity: -1,
 		isBought: false,
-	},
-];
-
-const mockBoughtProducts = [
-	{
-		id: 13,
-		name: 'bananas',
-		quantity: -1,
-		isBought: true,
-	},
-	{
-		id: 14,
-		name: 'bandage',
-		quantity: -1,
-		isBought: true,
-	},
-	{
-		id: 15,
-		name: 'batter for pancakes',
-		quantity: -1,
-		isBought: true,
-	},
-	{
-		id: 16,
-		name: 'bebiko',
-		quantity: -1,
-		isBought: true,
 	},
 ];
 
@@ -131,7 +104,23 @@ export type ProductListItemType = {
 export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: MainViewProps) => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [productsToBuy, setProductsToBuy] = useState<never[] | ProductListItemType[]>([]);
-	const [boughtProducts, setBoughtProducts] = useState<never[] | ProductListItemType[]>([]);
+	const [shoppingProgress, setShoppingProgress] = useState(0);
+
+	const countShoppingProgress = () => {
+		if (!productsToBuy.length) return;
+
+		let boughtProducts = 0;
+
+		for (let i = 0; i < productsToBuy.length; i++) {
+			if (productsToBuy[i].isBought === true) {
+				boughtProducts++;
+			}
+		}
+
+		const boughtProductsPercentage = Math.round((boughtProducts / productsToBuy.length) * 100);
+
+		setShoppingProgress(boughtProductsPercentage);
+	};
 
 	useEffect(() => {
 		setProductsList(products);
@@ -142,16 +131,16 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 	}, []);
 
 	useEffect(() => {
-		setBoughtProducts(mockBoughtProducts);
-	}, []);
+		countShoppingProgress();
+	}, [productsToBuy]);
 
 	return (
 		<Wrapper>
 			<div>
 				<Header />
-				<ProgressBar currentProgress={ boughtProducts.length / (productsToBuy.length + boughtProducts.length) * 100} />
+				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
-			<ProductsList productsToBuy={productsToBuy} boughtProducts={boughtProducts} setProductsToBuy={setProductsToBuy} setBoughtProducts={setBoughtProducts} />
+			<ProductsList productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} />
 			<AddButton onClick={showAdditemView} />
 			<AddProducts
 				productsList={productsList}

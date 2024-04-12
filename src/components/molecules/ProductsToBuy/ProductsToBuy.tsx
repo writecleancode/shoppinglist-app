@@ -10,9 +10,16 @@ type ProductsToBuyProps = {
 export const ProductsToBuy = ({ productsToBuy, setProductsToBuy }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
-			{productsToBuy.map(product => (
-				<ProductListItem key={product.id} product={product} productsList={productsToBuy} setProductsList={setProductsToBuy} />
-			))}
+			{productsToBuy.map(product =>
+				!product.isBought ? (
+					<ProductListItem
+						key={product.id}
+						product={product}
+						productsList={productsToBuy}
+						setProductsList={setProductsToBuy}
+					/>
+				) : null
+			)}
 		</StyledList>
 	);
 };

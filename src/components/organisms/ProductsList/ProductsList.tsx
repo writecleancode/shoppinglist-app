@@ -5,16 +5,14 @@ import { ProductListItemType } from 'src/views/MainView';
 
 type ProductsListProps = {
 	productsToBuy: ProductListItemType[];
-	boughtProducts: ProductListItemType[];
 	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
-	setBoughtProducts: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
 };
 
-export const ProductsList = ({ productsToBuy, boughtProducts, setProductsToBuy, setBoughtProducts }: ProductsListProps) => {
+export const ProductsList = ({ productsToBuy, setProductsToBuy }: ProductsListProps) => {
 	return (
 		<Wrapper>
 			<ProductsToBuy productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} />
-			<BoughtProducts boughtProducts={boughtProducts} setBoughtProducts={setBoughtProducts} />
+			<BoughtProducts productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} />
 		</Wrapper>
 	);
 };

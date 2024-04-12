@@ -2,16 +2,23 @@ import { ProductListItemType } from 'src/views/MainView';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
 
 type BoughtProductsProps = {
-	boughtProducts: ProductListItemType[];
-	setBoughtProducts: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
+	productsToBuy: ProductListItemType[];
+	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
 };
 
-export const BoughtProducts = ({ boughtProducts, setBoughtProducts }: BoughtProductsProps) => {
+export const BoughtProducts = ({ productsToBuy, setProductsToBuy }: BoughtProductsProps) => {
 	return (
 		<ul>
-			{boughtProducts.map(product => (
-				<ProductListItem key={product.id} product={product} productsList={boughtProducts} setProductsList={setBoughtProducts} />
-			))}
+			{productsToBuy.map(product =>
+				product.isBought ? (
+					<ProductListItem
+						key={product.id}
+						product={product}
+						productsList={productsToBuy}
+						setProductsList={setProductsToBuy}
+					/>
+				) : null
+			)}
 		</ul>
 	);
 };
