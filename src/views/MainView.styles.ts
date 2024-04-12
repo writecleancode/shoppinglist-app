@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	height: 100dvh;
 
 	@media (min-width: 720px) {
-		flex-grow: 100;
+		flex-grow: 1;
 		box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.12);
 	}
 
@@ -18,13 +18,19 @@ export const Wrapper = styled.div`
 		overflow: clip;
 	}
 
-	@media (min-height: 880px) {
+	/* @media (min-height: 880px) {
 		border-radius: 24px;
 		height: 100%;
 		max-height: 880px;
-	}
+	} */
 
 	@media (min-width: 992px) {
 		max-width: 720px;
+	}
+
+	@media (min-width: 992px) and (min-height: 880px) {
+		border-radius: 24px;
+		height: 100%;
+		max-height: 880px;
 	}
 `;
