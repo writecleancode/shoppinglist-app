@@ -15,6 +15,11 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(productsList);
 	const [searchInputValue, setSearchInputValue] = useState('');
 
+	const handleClearInput = () => {
+		setSearchInputValue('');
+		setProductsToAdd(productsList);
+	};
+
 	useEffect(() => {
 		if (searchInputValue) {
 			const matchingProducts = productsList.filter(product =>
@@ -26,6 +31,12 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 		}
 	}, [productsList]);
 
+	useEffect(() => {
+		if (isActive) return;
+
+		handleClearInput();
+	}, [isActive]);
+
 	return (
 		<Wrapper $isActive={isActive}>
 			<div>
@@ -36,6 +47,7 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 					<SearchBar
 						searchInputValue={searchInputValue}
 						setSearchInputValue={setSearchInputValue}
+						handleClearInput={handleClearInput}
 						productsList={productsList}
 						setProductsToAdd={setProductsToAdd}
 					/>

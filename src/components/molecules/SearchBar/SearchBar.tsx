@@ -6,6 +6,7 @@ import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
 type SearchBarProps = {
 	searchInputValue: string;
 	setSearchInputValue: Dispatch<React.SetStateAction<string>>;
+	handleClearInput: () => void;
 	productsList: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
@@ -13,6 +14,7 @@ type SearchBarProps = {
 export const SearchBar = ({
 	searchInputValue,
 	setSearchInputValue,
+	handleClearInput,
 	productsList,
 	setProductsToAdd,
 }: SearchBarProps) => {
@@ -31,11 +33,6 @@ export const SearchBar = ({
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
 		setSearchInputValue(e.currentTarget.value);
 		updateProductsList(e.currentTarget.value);
-	};
-
-	const handleClearInput = () => {
-		setSearchInputValue('');
-		setProductsToAdd(productsList);
 	};
 
 	return (
