@@ -9,7 +9,7 @@ export const BoughtProducts = ({ boughtProducts }: BoughtProductsProps) => {
 	return (
 		<ul>
 			{boughtProducts.map(product => (
-				<ProductListItem key={product.id} product={product} isBought={true} />
+				<ProductListItem key={product.id} product={product} />
 			))}
 		</ul>
 	);

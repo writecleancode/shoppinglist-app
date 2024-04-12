@@ -2,15 +2,16 @@ import { CheckIcon } from 'src/assets/icons/CheckIcon';
 import { BarsWrapper, Circle, IconWrapper, Wrapper } from './StatusButton.styles';
 
 type StatusButtonProps = {
+	isBought: boolean;
 	animationType: string;
 	onClick: any;
 };
 
-export const StatusButton = ({ animationType, ...props }: StatusButtonProps) => {
+export const StatusButton = ({ isBought, animationType, ...props }: StatusButtonProps) => {
 	return (
 		<Wrapper {...props}>
-			<Circle $animationType={animationType} />
-			<IconWrapper $animationType={animationType}>
+			<Circle $isBought={isBought} $animationType={animationType} />
+			<IconWrapper $isBought={isBought} $animationType={animationType}>
 				<CheckIcon />
 			</IconWrapper>
 			<BarsWrapper $animationType={animationType}>

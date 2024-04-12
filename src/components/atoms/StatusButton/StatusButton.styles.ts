@@ -68,13 +68,14 @@ export const Wrapper = styled.button`
 	}
 `;
 
-export const Circle = styled.div<{ $animationType: string }>`
+export const Circle = styled.div<{ $animationType: string; $isBought: boolean }>`
 	position: relative;
 	z-index: 1;
 	border: 2px solid ${({ theme }) => theme.colors.secondary};
 	border-radius: 50%;
 	width: 24px;
 	height: 24px;
+	visibility: ${({ $isBought }) => ($isBought ? 'hidden' : 'visible')};
 	/* animation: ${hideCircle} .3s linear forwards; */
 
 	${({ $animationType }) => {
@@ -90,7 +91,7 @@ export const Circle = styled.div<{ $animationType: string }>`
 	}}
 `;
 
-export const IconWrapper = styled.div<{ $animationType: string }>`
+export const IconWrapper = styled.div<{ $animationType: string; $isBought: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -104,7 +105,7 @@ export const IconWrapper = styled.div<{ $animationType: string }>`
 	&::after {
 		content: '';
 		position: absolute;
-		background-color: #fff;
+		background-color: ${({ $isBought }) => ($isBought ? 'transparent' : '#fff')};
 	}
 
 	&::before {
