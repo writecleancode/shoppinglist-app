@@ -31,7 +31,7 @@ export const ProductListItem = ({
 				},
 				...productsList.slice(productId),
 			]);
-		}, 3800);
+		}, 800);
 	};
 
 	return (
