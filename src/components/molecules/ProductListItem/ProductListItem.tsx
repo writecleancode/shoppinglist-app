@@ -17,8 +17,6 @@ export const ProductListItem = ({ setProductsList, product: { id, name, isBought
 
 		const timeoutValue = isBought ? 400 : 650;
 
-		console.log(timeoutValue);
-
 		setTimeout(() => {
 			setClickedProductId(-1);
 
