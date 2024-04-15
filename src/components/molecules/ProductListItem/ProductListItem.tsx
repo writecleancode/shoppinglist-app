@@ -9,7 +9,7 @@ type ProductListItemProps = {
 	product: ProductListItemType;
 };
 
-export const ProductListItem = ({ setProductsList, product: { id, name, isBought } }: ProductListItemProps) => {
+export const ProductListItem = ({ setProductsList, product: { id, name, category, isBought } }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
 	const handleBoughtStatus = (productId: number, isBought: boolean) => {
@@ -39,7 +39,9 @@ export const ProductListItem = ({ setProductsList, product: { id, name, isBought
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
 			<p>{name}</p>
-			<CategoryIcon $isBought={isBought} type='button' aria-label='change product category' />
+			<CategoryIcon $category={category} $isBought={isBought} type='button' aria-label='change product category'>
+
+			</CategoryIcon>
 		</Wrapper>
 	);
 };
