@@ -95,4 +95,9 @@ export const CategoryIcon = styled.button<{ $category: string; $isBought: boolea
 		}
 	}};
 	filter: ${({ $isBought }) => ($isBought ? 'grayscale(80%)' : 'none')};
+
+	img {
+		width: 24px;
+		min-height: 24px;
+	}
 `;
