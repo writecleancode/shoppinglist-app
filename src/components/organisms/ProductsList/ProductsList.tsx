@@ -1,11 +1,11 @@
 import { ProductsToBuy } from 'src/components/molecules/ProductsToBuy/ProductsToBuy';
 import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtProducts';
 import { Wrapper } from './ProductsList.styles';
-import { ProductListItemType } from 'src/views/MainView';
+import { ProductType } from 'src/views/MainView';
 
 type ProductsListProps = {
-	productsToBuy: ProductListItemType[];
-	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
+	productsToBuy: ProductType[];
+	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
 };
 
 export const ProductsList = ({ productsToBuy, setProductsToBuy }: ProductsListProps) => {
