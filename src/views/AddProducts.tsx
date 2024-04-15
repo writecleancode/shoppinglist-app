@@ -4,15 +4,45 @@ import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
 import { ProductType } from './MainView';
 
+export const initialProductState = {
+	name: '',
+	category: {
+		name: 'other',
+		imgSrc: 'src/assets/img/category-icons/other.png',
+	},
+	quantity: -1,
+	isBought: false,
+};
+
 type AddItemProps = {
 	productsList: ProductType[];
 	isActive: boolean;
 	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	hideAdditemView: () => void;
+	customProducts: ProductType[];
+	setCustomProducts: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
-export const AddProducts = ({ productsList, setProductsList, isActive, hideAdditemView }: AddItemProps) => {
+export type CustomProductType = {
+	name: string;
+	category: {
+		name: string;
+		imgSrc: string;
+	};
+	quantity: number;
+	isBought: boolean;
+};
+
+export const AddProducts = ({
+	productsList,
+	setProductsList,
+	isActive,
+	hideAdditemView,
+	customProducts,
+	setCustomProducts,
+}: AddItemProps) => {
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(productsList);
+	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
 
 	const handleClearInput = () => {
@@ -50,10 +80,18 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 						handleClearInput={handleClearInput}
 						productsList={productsList}
 						setProductsToAdd={setProductsToAdd}
+						customProduct={customProduct}
+						setCustomProduct={setCustomProduct}
 					/>
 				</SearchWrapper>
 			</div>
-			<ProductsToAddList productsList={productsList} setProductsList={setProductsList} products={productsToAdd} />
+			<ProductsToAddList
+				productsList={productsList}
+				setProductsList={setProductsList}
+				products={productsToAdd}
+				searchInputValue={searchInputValue}
+				customProduct={customProduct}
+			/>
 		</Wrapper>
 	);
 };

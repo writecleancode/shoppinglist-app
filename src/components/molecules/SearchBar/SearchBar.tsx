@@ -2,6 +2,7 @@ import { Dispatch, FormEvent, useCallback } from 'react';
 import { debounce } from 'lodash';
 import { ProductType } from 'src/views/MainView';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
+import { CustomProductType, initialProductState } from 'src/views/AddProducts';
 
 type SearchBarProps = {
 	searchInputValue: string;
@@ -9,6 +10,8 @@ type SearchBarProps = {
 	handleClearInput: () => void;
 	productsList: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+	customProduct: CustomProductType;
+	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
 };
 
 export const SearchBar = ({
@@ -17,6 +20,8 @@ export const SearchBar = ({
 	handleClearInput,
 	productsList,
 	setProductsToAdd,
+	customProduct,
+	setCustomProduct,
 }: SearchBarProps) => {
 	const updateProductsList = useCallback(
 		debounce((searchPhrase = '') => {
@@ -30,9 +35,24 @@ export const SearchBar = ({
 		[productsList]
 	);
 
+	const handleCustomProduct = useCallback(
+		debounce((searchPhrase = '') => {
+			if (!searchPhrase) setCustomProduct(initialProductState);
+
+			if (productsList.map(product => product.name).includes(searchPhrase)) return;
+
+			setCustomProduct(prevState => ({
+				...prevState,
+				name: searchPhrase,
+			}));
+		}, 500),
+		[customProduct]
+	);
+
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
 		setSearchInputValue(e.currentTarget.value);
 		updateProductsList(e.currentTarget.value);
+		handleCustomProduct(e.currentTarget.value);
 	};
 
 	return (

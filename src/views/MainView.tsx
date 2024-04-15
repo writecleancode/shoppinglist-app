@@ -26,6 +26,7 @@ export type ProductType = {
 
 export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: MainViewProps) => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
+	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([])
 	const [shoppingProgress, setShoppingProgress] = useState(0);
 
 	const countShoppingProgress = () => {
@@ -68,6 +69,8 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 				setProductsList={setProductsList}
 				isActive={isAdditemActive}
 				hideAdditemView={hideAdditemView}
+				customProducts={customProducts}
+				setCustomProducts={setCustomProducts}
 			/>
 		</Wrapper>
 	);

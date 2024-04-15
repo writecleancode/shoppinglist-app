@@ -58,12 +58,14 @@ const barsSlide = keyframes`
 
 export const Wrapper = styled.button`
 	position: relative;
+	/* margin-right: 0.8rem; */
 	padding: 0.8rem;
 	border: none;
 	background-color: transparent;
-
+	
 	@media (min-width: 576px) {
-		margin-right: 1.6rem;
+		/* margin-right: 1.6rem; */
+		/* margin-right: 0.8rem; */
 	}
 `;
 
