@@ -1,41 +1,49 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
 import { CustomProductType } from 'src/views/AddProducts';
 
 type ProductsToAddListProps = {
-	productsList: ProductType[];
 	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
-	searchInputValue: string;
 	customProduct: CustomProductType;
+	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
 };
 
 let timeout: NodeJS.Timeout;
 
 export const ProductsToAddList = ({
-	productsList,
 	setProductsList,
 	products,
-	searchInputValue,
 	customProduct,
+	setCustomProduct,
 }: ProductsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
-	const handleProductquantity = (productId: number, direction: string) => {
+	const handleCustomProductQuantity = (productId: number, direction: string) => {
+		const quantityChanger = direction === 'increase' ? 1 : -1;
+
+		handlePlusIconScale(productId);
+		setCustomProduct(prevState => ({
+			...prevState,
+			quantity: prevState.quantity + quantityChanger,
+		}));
+	};
+
+	const handleProductQuantity = (productId: number, direction: string) => {
 		if (products.length === 0) return;
 
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
-		setProductsList([
-			...productsList.slice(0, productId - 1),
+		setProductsList(prevProducts => [
+			...prevProducts.slice(0, productId - 1),
 			{
-				...productsList[productId - 1],
-				quantity: productsList[productId - 1].quantity + quantityChanger,
+				...prevProducts[productId - 1],
+				quantity: prevProducts[productId - 1].quantity + quantityChanger,
 			},
-			...productsList.slice(productId),
+			...prevProducts.slice(productId),
 		]);
 	};
 
@@ -49,42 +57,32 @@ export const ProductsToAddList = ({
 
 	return (
 		<StyledList>
-			{/* {searchInputValue === '' ? null : products.map(product => product.name).includes(searchInputValue) ? null : (
-				<ProductToAdd key={999}>
-					<AddProductButton
-						onClick={() => handleProductquantity(999, 'increase')}
-						aria-label={`add ${searchInputValue} to the list`}
-						type='button'>
-						<PlusIcon $isAdded={false} $quantity={-1} $isAnimating={false}>
-							<img src='src/assets/icons/plus-big.svg' alt='' />
-						</PlusIcon>
-						{searchInputValue}
-					</AddProductButton>
-					<QuantityOfProduct $quantity={-1}>{-1}</QuantityOfProduct>
-					<DecreaseButton $quantity={-1} onClick={() => handleProductquantity(999, 'decrease')} />
-				</ProductToAdd>
-			)} */}
-
 			{customProduct.name === '' ? null : (
 				<ProductToAdd key={999}>
 					<AddProductButton
-						onClick={() => handleProductquantity(999, 'increase')}
+						onClick={() => handleCustomProductQuantity(999, 'increase')}
 						aria-label={`add ${customProduct.name} to the list`}
 						type='button'>
-						<PlusIcon $isAdded={customProduct.quantity >= 0} $quantity={customProduct.quantity} $isAnimating={false}>
+						<PlusIcon
+							$isAdded={customProduct.quantity >= 0}
+							$quantity={customProduct.quantity}
+							$isAnimating={999 === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{customProduct.name}
 					</AddProductButton>
 					<QuantityOfProduct $quantity={customProduct.quantity}>{customProduct.quantity}</QuantityOfProduct>
-					<DecreaseButton $quantity={customProduct.quantity} onClick={() => handleProductquantity(999, 'decrease')} />
+					<DecreaseButton
+						$quantity={customProduct.quantity}
+						onClick={() => handleCustomProductQuantity(999, 'decrease')}
+					/>
 				</ProductToAdd>
 			)}
 
 			{products.map(({ id, name, quantity }) => (
 				<ProductToAdd key={id}>
 					<AddProductButton
-						onClick={() => handleProductquantity(id, 'increase')}
+						onClick={() => handleProductQuantity(id, 'increase')}
 						aria-label={`add ${name} to the list`}
 						type='button'>
 						<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
@@ -93,7 +91,7 @@ export const ProductsToAddList = ({
 						{name}
 					</AddProductButton>
 					<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
-					<DecreaseButton $quantity={quantity} onClick={() => handleProductquantity(id, 'decrease')} />
+					<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, 'decrease')} />
 				</ProductToAdd>
 			))}
 		</StyledList>

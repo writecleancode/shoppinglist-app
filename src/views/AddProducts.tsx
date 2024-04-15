@@ -65,6 +65,8 @@ export const AddProducts = ({
 		if (isActive) return;
 
 		handleClearInput();
+		setCustomProducts(prevState => [{ ...customProduct, id: 999, name: searchInputValue }, ...prevState]);
+		setCustomProduct(initialProductState)
 	}, [isActive]);
 
 	return (
@@ -86,11 +88,10 @@ export const AddProducts = ({
 				</SearchWrapper>
 			</div>
 			<ProductsToAddList
-				productsList={productsList}
 				setProductsList={setProductsList}
 				products={productsToAdd}
-				searchInputValue={searchInputValue}
 				customProduct={customProduct}
+				setCustomProduct={setCustomProduct}
 			/>
 		</Wrapper>
 	);
