@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { MainView } from './MainView';
 import { Wrapper } from './Root.styles';
-import { products } from 'src/data/products';
 
 export const Root = () => {
 	const [isAdditemActive, setAdditemState] = useState(false);
