@@ -6,7 +6,7 @@ export const products = [
 			name: 'dairy products',
 			imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -16,7 +16,7 @@ export const products = [
 			name: 'household appliances and electronics',
 			imgSrc: 'src/assets/img/category-icons/household_appliances_and_electronics.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -26,7 +26,7 @@ export const products = [
 			name: 'hygiene',
 			imgSrc: 'src/assets/img/category-icons/hygiene.png',
 		},
-		quantity: -1,
+		quantity: 1,
 		isBought: false,
 	},
 	{
@@ -36,7 +36,7 @@ export const products = [
 			name: 'alcohols and tobacco',
 			imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -46,7 +46,7 @@ export const products = [
 			name: 'household chemicals',
 			imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 		},
-		quantity: -1,
+		quantity: 2,
 		isBought: false,
 	},
 	{

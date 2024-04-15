@@ -10,13 +10,13 @@ export const StyledList = styled.ul`
 	overflow-y: auto;
 `;
 
-export const ItemToAdd = styled.li`
+export const ProductToAdd = styled.li`
 	display: flex;
 	align-items: center;
 	gap: 0.8rem;
 `;
 
-export const AddItemButton = styled.button`
+export const AddProductButton = styled.button`
 	display: flex;
 	align-items: center;
 	gap: 1.6rem;
@@ -26,6 +26,7 @@ export const AddItemButton = styled.button`
 	background-color: transparent;
 	color: ${({ theme }) => theme.colors.lightBlack};
 	font-size: 1.6rem;
+	text-align: left;
 `;
 
 export const PlusIcon = styled.div<{ $isAdded: boolean; $quantity: number; $isAnimating: boolean }>`
@@ -35,11 +36,6 @@ export const PlusIcon = styled.div<{ $isAdded: boolean; $quantity: number; $isAn
 	rotate: ${({ $quantity }) => `${$quantity * 180}deg`};
 	scale: ${({ $isAnimating }) => ($isAnimating ? '0.75' : '1')};
 	transition: rotate 0.5s, scale 0.35s;
-`;
-
-export const QuantityOfItems = styled.div<{ $quantity: number }>`
-	color: ${({ theme }) => theme.colors.lightBlack};
-	visibility: ${({ $quantity }) => ($quantity > 0 ? 'visible' : 'hidden')};
 `;
 
 export const DecreaseButton = styled.button<{ $quantity: number }>`

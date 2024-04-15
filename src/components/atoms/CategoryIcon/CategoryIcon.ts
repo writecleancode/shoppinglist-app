@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CategoryIcon = styled.button<{ $category: string; $isBought: boolean }>`
-	margin-left: auto;
+	margin-left: 0.8rem;
 	border: none;
 	border-radius: 100rem;
 	width: 3.2rem;

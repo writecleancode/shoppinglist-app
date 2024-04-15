@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
-import { ProductListItemType } from 'src/views/MainView';
+import { ProductType } from 'src/views/MainView';
+import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { Wrapper } from './ProductListItem.styles';
 
 type ProductListItemProps = {
-	setProductsList: React.Dispatch<React.SetStateAction<ProductListItemType[] | never[]>>;
-	product: ProductListItemType;
+	setProductsList: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
+	product: ProductType;
 };
 
 export const ProductListItem = ({
 	setProductsList,
-	product: { id, name, category, isBought },
+	product: { id, name, category, quantity, isBought },
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
@@ -42,6 +43,7 @@ export const ProductListItem = ({
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
 			<p>{name}</p>
+			<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
 			<CategoryIcon $category={category.name} $isBought={isBought} type='button' aria-label='change product category'>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />
 			</CategoryIcon>

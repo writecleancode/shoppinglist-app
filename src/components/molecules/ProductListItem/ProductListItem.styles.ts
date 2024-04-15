@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.li<{ $isBought: boolean }>`
 	display: flex;
 	align-items: center;
+	gap: 0.8rem;
 	padding: 0.8rem;
 	padding-left: 0;
 	border-bottom: ${({ $isBought }) => ($isBought ? 'none' : '1px solid #ececec')};

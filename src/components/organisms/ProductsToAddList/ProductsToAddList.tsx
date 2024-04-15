@@ -1,15 +1,9 @@
 import { Dispatch, useState } from 'react';
 import { ProductType } from 'src/views/MainView';
-import {
-	AddItemButton,
-	QuantityOfItems,
-	DecreaseButton,
-	ItemToAdd,
-	PlusIcon,
-	StyledList,
-} from './ItemsToAddList.styles';
+import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
+import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
 
-type ItemsToAddListProps = {
+type ProductsToAddListProps = {
 	productsList: ProductType[];
 	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
@@ -17,7 +11,7 @@ type ItemsToAddListProps = {
 
 let timeout: NodeJS.Timeout;
 
-export const ItemsToAddList = ({ productsList, setProductsList, products }: ItemsToAddListProps) => {
+export const ProductsToAddList = ({ productsList, setProductsList, products }: ProductsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
 	const handleProductquantity = (productId: number, direction: string) => {
@@ -47,8 +41,8 @@ export const ItemsToAddList = ({ productsList, setProductsList, products }: Item
 	return (
 		<StyledList>
 			{products.map(({ id, name, quantity }) => (
-				<ItemToAdd key={id}>
-					<AddItemButton
+				<ProductToAdd key={id}>
+					<AddProductButton
 						onClick={() => handleProductquantity(id, 'increase')}
 						aria-label={`add ${name} to the list`}
 						type='button'>
@@ -56,10 +50,10 @@ export const ItemsToAddList = ({ productsList, setProductsList, products }: Item
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{name}
-					</AddItemButton>
-					<QuantityOfItems $quantity={quantity}>{quantity}</QuantityOfItems>
+					</AddProductButton>
+					<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
 					<DecreaseButton $quantity={quantity} onClick={() => handleProductquantity(id, 'decrease')} />
-				</ItemToAdd>
+				</ProductToAdd>
 			))}
 		</StyledList>
 	);

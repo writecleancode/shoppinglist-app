@@ -1,5 +1,5 @@
 import { Dispatch, useEffect, useState } from 'react';
-import { ItemsToAddList } from 'src/components/organisms/ProductsToAddList/ItemsToAddList';
+import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
 import { ProductType } from './MainView';
@@ -53,7 +53,7 @@ export const AddProducts = ({ productsList, setProductsList, isActive, hideAddit
 					/>
 				</SearchWrapper>
 			</div>
-			<ItemsToAddList productsList={productsList} setProductsList={setProductsList} products={productsToAdd} />
+			<ProductsToAddList productsList={productsList} setProductsList={setProductsList} products={productsToAdd} />
 		</Wrapper>
 	);
 };
