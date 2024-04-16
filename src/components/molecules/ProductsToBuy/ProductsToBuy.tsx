@@ -5,12 +5,13 @@ import { ProductType } from 'src/views/MainView';
 type ProductsToBuyProps = {
 	productsToBuy: ProductType[];
 	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
+	productsList: ProductType[];
 };
 
-export const ProductsToBuy = ({ productsToBuy, setProductsToBuy }: ProductsToBuyProps) => {
+export const ProductsToBuy = ({ productsToBuy, setProductsToBuy, productsList }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
-			{productsToBuy.map(product =>
+			{productsList.map(product =>
 				product.quantity >= 0 && !product.isBought ? (
 					<ProductListItem key={product.id} product={product} setProductsList={setProductsToBuy} />
 				) : null

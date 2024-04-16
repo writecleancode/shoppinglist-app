@@ -8,7 +8,7 @@ type SearchBarProps = {
 	searchInputValue: string;
 	setSearchInputValue: Dispatch<React.SetStateAction<string>>;
 	handleClearInput: () => void;
-	productsList: ProductType[];
+	defaultProducts: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	customProduct: CustomProductType;
 	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
@@ -18,28 +18,28 @@ export const SearchBar = ({
 	searchInputValue,
 	setSearchInputValue,
 	handleClearInput,
-	productsList,
+	defaultProducts,
 	setProductsToAdd,
 	customProduct,
 	setCustomProduct,
 }: SearchBarProps) => {
-	const updateProductsList = useCallback(
+	const updateDefaultProductsList = useCallback(
 		debounce((searchPhrase = '') => {
-			if (!searchPhrase) setProductsToAdd(productsList);
+			if (!searchPhrase) setProductsToAdd(defaultProducts);
 
-			const matchingProducts = productsList.filter(product =>
+			const matchingProducts = defaultProducts.filter(product =>
 				product.name.toLowerCase().includes(searchPhrase.toLowerCase())
 			);
 			setProductsToAdd(matchingProducts);
 		}, 500),
-		[productsList]
+		[defaultProducts]
 	);
 
 	const handleCustomProduct = useCallback(
 		debounce((searchPhrase = '') => {
 			if (!searchPhrase) setCustomProduct(initialProductState);
 
-			if (productsList.map(product => product.name).includes(searchPhrase)) return;
+			if (defaultProducts.map(product => product.name).includes(searchPhrase)) return;
 
 			setCustomProduct(prevState => ({
 				...prevState,
@@ -51,7 +51,7 @@ export const SearchBar = ({
 
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
 		setSearchInputValue(e.currentTarget.value);
-		updateProductsList(e.currentTarget.value);
+		updateDefaultProductsList(e.currentTarget.value);
 		handleCustomProduct(e.currentTarget.value);
 	};
 

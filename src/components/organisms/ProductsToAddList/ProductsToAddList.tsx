@@ -1,11 +1,11 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { Dispatch, useState } from 'react';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
 import { CustomProductType } from 'src/views/AddProducts';
 
 type ProductsToAddListProps = {
-	setProductsList: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+	setDefaultProducts: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
 	customProduct: CustomProductType;
 	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
@@ -14,7 +14,7 @@ type ProductsToAddListProps = {
 let timeout: NodeJS.Timeout;
 
 export const ProductsToAddList = ({
-	setProductsList,
+	setDefaultProducts,
 	products,
 	customProduct,
 	setCustomProduct,
@@ -29,7 +29,7 @@ export const ProductsToAddList = ({
 			...prevState,
 			quantity: prevState.quantity + quantityChanger,
 		}));
-	};
+	};	
 
 	const handleProductQuantity = (productId: number, direction: string) => {
 		if (products.length === 0) return;
@@ -37,7 +37,7 @@ export const ProductsToAddList = ({
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
-		setProductsList(prevProducts => [
+		setDefaultProducts(prevProducts => [
 			...prevProducts.slice(0, productId - 1),
 			{
 				...prevProducts[productId - 1],
@@ -58,15 +58,15 @@ export const ProductsToAddList = ({
 	return (
 		<StyledList>
 			{customProduct.name === '' ? null : (
-				<ProductToAdd key={999}>
+				<ProductToAdd key={-999}>
 					<AddProductButton
-						onClick={() => handleCustomProductQuantity(999, 'increase')}
+						onClick={() => handleCustomProductQuantity(-999, 'increase')}
 						aria-label={`add ${customProduct.name} to the list`}
 						type='button'>
 						<PlusIcon
 							$isAdded={customProduct.quantity >= 0}
 							$quantity={customProduct.quantity}
-							$isAnimating={999 === lastClickedProductId}>
+							$isAnimating={-999 === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{customProduct.name}
@@ -74,7 +74,7 @@ export const ProductsToAddList = ({
 					<QuantityOfProduct $quantity={customProduct.quantity}>{customProduct.quantity}</QuantityOfProduct>
 					<DecreaseButton
 						$quantity={customProduct.quantity}
-						onClick={() => handleCustomProductQuantity(999, 'decrease')}
+						onClick={() => handleCustomProductQuantity(-999, 'decrease')}
 					/>
 				</ProductToAdd>
 			)}

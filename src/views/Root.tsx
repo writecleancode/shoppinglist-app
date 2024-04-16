@@ -3,14 +3,14 @@ import { MainView } from './MainView';
 import { Wrapper } from './Root.styles';
 
 export const Root = () => {
-	const [isAdditemActive, setAdditemState] = useState(false);
+	const [isAddProductActive, setAddProductState] = useState(false);
 
-	const showAdditemView = () => setAdditemState(true);
-	const hideAdditemView = () => setAdditemState(false);
+	const showAddProductView = () => setAddProductState(true);
+	const hideAddProductView = () => setAddProductState(false);
 
 	return (
 		<Wrapper>
-			<MainView isAdditemActive={isAdditemActive} showAdditemView={showAdditemView} hideAdditemView={hideAdditemView} />
+			<MainView isAddProductActive={isAddProductActive} showAddProductView={showAddProductView} hideAddProductView={hideAddProductView} />
 		</Wrapper>
 	);
 };

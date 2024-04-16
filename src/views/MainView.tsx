@@ -8,13 +8,13 @@ import { Wrapper } from './MainView.styles';
 import { products } from 'src/data/products';
 
 type MainViewProps = {
-	isAdditemActive: boolean;
-	showAdditemView: () => void;
-	hideAdditemView: () => void;
+	isAddProductActive: boolean;
+	showAddProductView: () => void;
+	hideAddProductView: () => void;
 };
 
 export type ProductType = {
-	id: number;
+	id: number | string;
 	name: string;
 	category: {
 		name: string;
@@ -24,21 +24,22 @@ export type ProductType = {
 	isBought: boolean;
 };
 
-export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: MainViewProps) => {
+export const MainView = ({ isAddProductActive, showAddProductView, hideAddProductView }: MainViewProps) => {
+	const [defaultProducts, setDefaultProducts] = useState<never[] | ProductType[]>([]);
+	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
-	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([])
 	const [shoppingProgress, setShoppingProgress] = useState(0);
 
 	const countShoppingProgress = () => {
 		let productToBuy = 0;
 		let boughtProducts = 0;
 
-		for (let i = 0; i < productsList.length; i++) {
-			if (productsList[i].quantity >= 0) productToBuy++;
+		for (let i = 0; i < defaultProducts.length; i++) {
+			if (defaultProducts[i].quantity >= 0) productToBuy++;
 		}
 
-		for (let i = 0; i < productsList.length; i++) {
-			if (productsList[i].quantity >= 0 && productsList[i].isBought === true) {
+		for (let i = 0; i < defaultProducts.length; i++) {
+			if (defaultProducts[i].quantity >= 0 && defaultProducts[i].isBought === true) {
 				boughtProducts++;
 			}
 		}
@@ -49,11 +50,19 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 	};
 
 	useEffect(() => {
-		setProductsList(products);
+		setDefaultProducts(products);
 	}, []);
 
 	useEffect(() => {
 		countShoppingProgress();
+	}, [productsList]);
+
+	useEffect(() => {
+		setProductsList([...defaultProducts, ...customProducts]);
+	}, [defaultProducts, customProducts]);
+
+	useEffect(() => {
+		console.log(productsList);
 	}, [productsList]);
 
 	return (
@@ -62,13 +71,14 @@ export const MainView = ({ isAdditemActive, showAdditemView, hideAdditemView }: 
 				<Header />
 				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
-			<ProductsList productsToBuy={productsList} setProductsToBuy={setProductsList} />
-			<AddButton onClick={showAdditemView} />
+			<ProductsList productsToBuy={defaultProducts} setProductsToBuy={setDefaultProducts} productsList={productsList} />
+			<AddButton onClick={showAddProductView} />
 			<AddProducts
+				defaultProducts={defaultProducts}
+				setDefaultProducts={setDefaultProducts}
 				productsList={productsList}
-				setProductsList={setProductsList}
-				isActive={isAdditemActive}
-				hideAdditemView={hideAdditemView}
+				isActive={isAddProductActive}
+				hideAddProductView={hideAddProductView}
 				customProducts={customProducts}
 				setCustomProducts={setCustomProducts}
 			/>
