@@ -88,8 +88,6 @@ export const AddProducts = ({
 
 		const checkedProductIndex = customProducts.map(product => product.name).indexOf(customProduct.name);
 
-		console.log(checkedProductIndex);
-
 		if (customProducts.length !== 0 && checkedProductIndex >= 0) {
 			setCustomProducts(prevProducts => [
 				...prevProducts.slice(0, checkedProductIndex),
@@ -100,6 +98,10 @@ export const AddProducts = ({
 			setCustomProducts(prevProducts => [{ id: uuid(), ...customProduct }, ...prevProducts]);
 		}
 	}, [customProduct.quantity]);
+
+	// useEffect(() => {
+	// 	console.log(customProducts);
+	// }, [customProducts]);
 
 	return (
 		<Wrapper $isActive={isActive}>
@@ -128,6 +130,8 @@ export const AddProducts = ({
 				setCustomProduct={setCustomProduct}
 				clearInput={clearInput}
 				setProductsToAdd={setProductsToAdd}
+				customProducts={customProducts}
+				setCustomProducts={setCustomProducts}
 			/>
 		</Wrapper>
 	);

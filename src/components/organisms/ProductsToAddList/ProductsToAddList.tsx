@@ -18,6 +18,8 @@ export const ProductsToAddList = ({
 	products,
 	customProduct,
 	setCustomProduct,
+	customProducts,
+	setCustomProducts,
 	clearInput,
 	setProductsToAdd,
 }: ProductsToAddListProps) => {
@@ -36,7 +38,7 @@ export const ProductsToAddList = ({
 		clearInput();
 	};
 
-	const handleProductQuantity = (productId: number, index: number, direction: string) => {
+	const handleProductQuantity = (productId: number | string, index: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
@@ -50,14 +52,27 @@ export const ProductsToAddList = ({
 		]);
 		clearInput();
 
-		setDefaultProducts(prevProducts => [
-			...prevProducts.slice(0, productId - 1),
-			{
-				...prevProducts[productId - 1],
-				quantity: prevProducts[productId - 1].quantity + quantityChanger,
-			},
-			...prevProducts.slice(productId),
-		]);
+		if (typeof productId === 'number') {
+			setDefaultProducts(prevProducts => [
+				...prevProducts.slice(0, productId - 1),
+				{
+					...prevProducts[productId - 1],
+					quantity: prevProducts[productId - 1].quantity + quantityChanger,
+				},
+				...prevProducts.slice(productId),
+			]);
+		} else {
+			const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
+
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, checkedProductIndex),
+				{
+					...prevProducts[checkedProductIndex],
+					quantity: prevProducts[checkedProductIndex].quantity + quantityChanger,
+				},
+				...prevProducts.slice(checkedProductIndex + 1),
+			]);
+		}
 	};
 
 	const handlePlusIconScale = (productId: number) => {
