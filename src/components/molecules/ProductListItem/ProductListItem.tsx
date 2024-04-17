@@ -39,13 +39,13 @@ export const ProductListItem = ({
 			} else {
 				const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
 
-				setCustomProducts(productsList => [
-					...productsList.slice(0, checkedProductIndex),
+				setCustomProducts(prevProducts => [
+					...prevProducts.slice(0, checkedProductIndex),
 					{
-						...productsList[checkedProductIndex],
-						isBought: !productsList[checkedProductIndex].isBought,
+						...prevProducts[checkedProductIndex],
+						isBought: !prevProducts[checkedProductIndex].isBought,
 					},
-					...productsList.slice(checkedProductIndex + 1),
+					...prevProducts.slice(checkedProductIndex + 1),
 				]);
 			}
 
@@ -57,6 +57,7 @@ export const ProductListItem = ({
 			// 	},
 			// 	...productsList.slice(productId),
 			// ]);
+			setClickedProductId(-1);
 		}, timeoutValue);
 	};
 

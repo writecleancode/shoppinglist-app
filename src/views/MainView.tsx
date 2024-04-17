@@ -34,12 +34,12 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 		let productToBuy = 0;
 		let boughtProducts = 0;
 
-		for (let i = 0; i < defaultProducts.length; i++) {
-			if (defaultProducts[i].quantity >= 0) productToBuy++;
+		for (let i = 0; i < productsList.length; i++) {
+			if (productsList[i].quantity >= 0) productToBuy++;
 		}
 
-		for (let i = 0; i < defaultProducts.length; i++) {
-			if (defaultProducts[i].quantity >= 0 && defaultProducts[i].isBought === true) {
+		for (let i = 0; i < productsList.length; i++) {
+			if (productsList[i].quantity >= 0 && productsList[i].isBought === true) {
 				boughtProducts++;
 			}
 		}
