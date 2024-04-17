@@ -9,11 +9,32 @@ type ProductsListProps = {
 	productsList: ProductType[];
 };
 
-export const ProductsList = ({ productsToBuy, setProductsToBuy, productsList }: ProductsListProps) => {
+export const ProductsList = ({
+	productsToBuy,
+	setProductsToBuy,
+	productsList,
+	setDefaultProducts,
+	setCustomProducts,
+	customProducts,
+}: ProductsListProps) => {
 	return (
 		<Wrapper>
-			<ProductsToBuy productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} productsList={productsList} />
-			<BoughtProducts productsToBuy={productsToBuy} setProductsToBuy={setProductsToBuy} productsList={productsList} />
+			<ProductsToBuy
+				productsToBuy={productsToBuy}
+				setProductsToBuy={setProductsToBuy}
+				productsList={productsList}
+				setDefaultProducts={setDefaultProducts}
+				setCustomProducts={setCustomProducts}
+				customProducts={customProducts}
+			/>
+			<BoughtProducts
+				productsToBuy={productsToBuy}
+				setProductsToBuy={setProductsToBuy}
+				productsList={productsList}
+				setDefaultProducts={setDefaultProducts}
+				setCustomProducts={setCustomProducts}
+				customProducts={customProducts}
+			/>
 		</Wrapper>
 	);
 };

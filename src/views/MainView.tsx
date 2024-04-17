@@ -67,7 +67,14 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 				<Header />
 				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
-			<ProductsList productsToBuy={defaultProducts} setProductsToBuy={setDefaultProducts} productsList={productsList} />
+			<ProductsList
+				productsToBuy={defaultProducts}
+				setProductsToBuy={setDefaultProducts}
+				productsList={productsList}
+				setDefaultProducts={setDefaultProducts}
+				setCustomProducts={setCustomProducts}
+				customProducts={customProducts}
+			/>
 			<AddButton onClick={showAddProductView} />
 			<AddProducts
 				defaultProducts={defaultProducts}

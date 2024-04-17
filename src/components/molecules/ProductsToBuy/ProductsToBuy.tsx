@@ -8,12 +8,26 @@ type ProductsToBuyProps = {
 	productsList: ProductType[];
 };
 
-export const ProductsToBuy = ({ productsToBuy, setProductsToBuy, productsList }: ProductsToBuyProps) => {
+export const ProductsToBuy = ({
+	productsToBuy,
+	setProductsToBuy,
+	productsList,
+	setDefaultProducts,
+	setCustomProducts,
+	customProducts,
+}: ProductsToBuyProps) => {
 	return (
 		<StyledList>
 			{productsList.map(product =>
 				product.quantity >= 0 && !product.isBought ? (
-					<ProductListItem key={product.id} product={product} setProductsList={setProductsToBuy} />
+					<ProductListItem
+						key={product.id}
+						product={product}
+						setProductsList={setProductsToBuy}
+						setDefaultProducts={setDefaultProducts}
+						setCustomProducts={setCustomProducts}
+						customProducts={customProducts}
+					/>
 				) : null
 			)}
 		</StyledList>

@@ -13,10 +13,13 @@ type ProductListItemProps = {
 export const ProductListItem = ({
 	setProductsList,
 	product: { id, name, category, quantity, isBought },
+	setDefaultProducts,
+	setCustomProducts,
+	customProducts,
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
-	const handleBoughtStatus = (productId: number, isBought: boolean) => {
+	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {
 		setClickedProductId(productId);
 
 		const timeoutValue = isBought ? 400 : 650;
@@ -24,14 +27,36 @@ export const ProductListItem = ({
 		setTimeout(() => {
 			setClickedProductId(-1);
 
-			setProductsList(productsList => [
-				...productsList.slice(0, productId - 1),
-				{
-					...productsList[productId - 1],
-					isBought: !productsList[productId - 1].isBought,
-				},
-				...productsList.slice(productId),
-			]);
+			if (typeof productId === 'number') {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productId - 1),
+					{
+						...prevProducts[productId - 1],
+						isBought: !prevProducts[productId - 1].isBought,
+					},
+					...prevProducts.slice(productId),
+				]);
+			} else {
+				const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
+
+				setCustomProducts(productsList => [
+					...productsList.slice(0, checkedProductIndex),
+					{
+						...productsList[checkedProductIndex],
+						isBought: !productsList[checkedProductIndex].isBought,
+					},
+					...productsList.slice(checkedProductIndex + 1),
+				]);
+			}
+
+			// setProductsList(productsList => [
+			// 	...productsList.slice(0, productId - 1),
+			// 	{
+			// 		...productsList[productId - 1],
+			// 		isBought: !productsList[productId - 1].isBought,
+			// 	},
+			// 	...productsList.slice(productId),
+			// ]);
 		}, timeoutValue);
 	};
 
