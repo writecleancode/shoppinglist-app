@@ -65,6 +65,16 @@ export const AddProducts = ({
 		handleCustomProducts();
 	};
 
+	const sortedProductsToAdd = productsToAdd.toSorted((a, b) => {
+		if (a.name < b.name) {
+			return -1;
+		} else if (a.name > b.name) {
+			return 1;
+		} else {
+			return 0;
+		}
+	});
+
 	// useEffect(() => {
 	// 	if (!isActive) return;
 
@@ -98,10 +108,6 @@ export const AddProducts = ({
 			setCustomProducts(prevProducts => [{ id: uuid(), ...customProduct }, ...prevProducts]);
 		}
 	}, [customProduct.quantity]);
-
-	// useEffect(() => {
-	// 	console.log(customProducts);
-	// }, [customProducts]);
 
 	return (
 		<Wrapper $isActive={isActive}>

@@ -107,21 +107,31 @@ export const ProductsToAddList = ({
 				</ProductToAdd>
 			)}
 
-			{products.map(({ id, name, quantity }, index) => (
-				<ProductToAdd key={id}>
-					<AddProductButton
-						onClick={() => handleProductQuantity(id, index, 'increase')}
-						aria-label={`add ${name} to the list`}
-						type='button'>
-						<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
-							<img src='src/assets/icons/plus-big.svg' alt='' />
-						</PlusIcon>
-						{name}
-					</AddProductButton>
-					<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
-					<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, index, 'decrease')} />
-				</ProductToAdd>
-			))}
+			{products
+				.sort((a, b) => {
+					if (a.name < b.name) {
+						return -1;
+					} else if (a.name > b.name) {
+						return 1;
+					} else {
+						return 0;
+					}
+				})
+				.map(({ id, name, quantity }, index) => (
+					<ProductToAdd key={id}>
+						<AddProductButton
+							onClick={() => handleProductQuantity(id, index, 'increase')}
+							aria-label={`add ${name} to the list`}
+							type='button'>
+							<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
+								<img src='src/assets/icons/plus-big.svg' alt='' />
+							</PlusIcon>
+							{name}
+						</AddProductButton>
+						<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
+						<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, index, 'decrease')} />
+					</ProductToAdd>
+				))}
 		</StyledList>
 	);
 };
