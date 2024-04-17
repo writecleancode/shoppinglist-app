@@ -22,6 +22,7 @@ export const ProductsToAddList = ({
 	setProductsToAdd,
 }: ProductsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
+	const [quantityNumber, setQuantityNumber] = useState(-1);	// used for plus icon rotate animation - to prevent animation after custom product is replaced by another
 
 	const handleCustomProductQuantity = (productId: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
@@ -31,21 +32,14 @@ export const ProductsToAddList = ({
 			...prevState,
 			quantity: prevState.quantity + quantityChanger,
 		}));
-		// clearInput();
+		setQuantityNumber(prevQuantity => prevQuantity + quantityChanger);
+		clearInput();
 	};
 
 	const handleProductQuantity = (productId: number, index: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
-		setDefaultProducts(prevProducts => [
-			...prevProducts.slice(0, productId - 1),
-			{
-				...prevProducts[productId - 1],
-				quantity: prevProducts[productId - 1].quantity + quantityChanger,
-			},
-			...prevProducts.slice(productId),
-		]);
 		setProductsToAdd(prevProducts => [
 			...prevProducts.slice(0, index),
 			{
@@ -55,6 +49,15 @@ export const ProductsToAddList = ({
 			...prevProducts.slice(index + 1),
 		]);
 		clearInput();
+
+		setDefaultProducts(prevProducts => [
+			...prevProducts.slice(0, productId - 1),
+			{
+				...prevProducts[productId - 1],
+				quantity: prevProducts[productId - 1].quantity + quantityChanger,
+			},
+			...prevProducts.slice(productId),
+		]);
 	};
 
 	const handlePlusIconScale = (productId: number) => {
@@ -75,7 +78,7 @@ export const ProductsToAddList = ({
 						type='button'>
 						<PlusIcon
 							$isAdded={customProduct.quantity >= 0}
-							$quantity={customProduct.quantity}
+							$quantity={quantityNumber}
 							$isAnimating={-999 === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
