@@ -41,14 +41,15 @@ export const AddProducts = ({
 	hideAddProductView,
 	customProducts,
 	setCustomProducts,
+	productsList,
+	setProductsList,
 }: AddItemProps) => {
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(defaultProducts);
 	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
 
-	const handleClearInput = () => {
+	const clearInput = () => {
 		setSearchInputValue('');
-		setProductsToAdd(defaultProducts);
 	};
 
 	const handleCustomProducts = () => {
@@ -64,21 +65,22 @@ export const AddProducts = ({
 		handleCustomProducts();
 	};
 
-	useEffect(() => {
-		if (searchInputValue) {
-			const matchingProducts = defaultProducts.filter(product =>
-				product.name.toLowerCase().includes(searchInputValue.toLowerCase())
-			);
-			setProductsToAdd(matchingProducts);
-		} else {
-			setProductsToAdd(defaultProducts);
-		}
-	}, [defaultProducts]);
+	// useEffect(() => {
+	// 	if (!isActive) return;
+
+	// 	if (searchInputValue) {
+	// 		console.log('searchPhrase');
+	// 		const matchingProducts = productsList.filter(product =>
+	// 			product.name.toLowerCase().includes(searchInputValue.toLowerCase())
+	// 		);
+	// 		setProductsToAdd(matchingProducts);
+	// 	} else {
+	// 		setProductsToAdd(productsList);
+	// 	}
+	// }, [productsList]);
 
 	useEffect(() => {
-		if (isActive) return;
-
-		handleClearInput();
+		isActive ? setProductsToAdd(productsList) : clearInput();
 	}, [isActive]);
 
 	useEffect(() => {
@@ -106,11 +108,13 @@ export const AddProducts = ({
 					<SearchBar
 						searchInputValue={searchInputValue}
 						setSearchInputValue={setSearchInputValue}
-						handleClearInput={handleClearInput}
+						clearInput={clearInput}
 						defaultProducts={defaultProducts}
 						setProductsToAdd={setProductsToAdd}
 						customProduct={customProduct}
 						setCustomProduct={setCustomProduct}
+						productsList={productsList}
+						setProductsList={setProductsList}
 					/>
 				</SearchWrapper>
 			</div>
@@ -119,6 +123,8 @@ export const AddProducts = ({
 				products={productsToAdd}
 				customProduct={customProduct}
 				setCustomProduct={setCustomProduct}
+				clearInput={clearInput}
+				setProductsToAdd={setProductsToAdd}
 			/>
 		</Wrapper>
 	);

@@ -61,10 +61,6 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 		setProductsList([...defaultProducts, ...customProducts]);
 	}, [defaultProducts, customProducts]);
 
-	useEffect(() => {
-		console.log(productsList);
-	}, [productsList]);
-
 	return (
 		<Wrapper>
 			<div>
@@ -76,11 +72,12 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 			<AddProducts
 				defaultProducts={defaultProducts}
 				setDefaultProducts={setDefaultProducts}
-				productsList={productsList}
 				isActive={isAddProductActive}
 				hideAddProductView={hideAddProductView}
 				customProducts={customProducts}
 				setCustomProducts={setCustomProducts}
+				productsList={productsList}
+				setProductsList={setProductsList}
 			/>
 		</Wrapper>
 	);

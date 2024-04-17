@@ -1,4 +1,4 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
@@ -18,6 +18,8 @@ export const ProductsToAddList = ({
 	products,
 	customProduct,
 	setCustomProduct,
+	clearInput,
+	setProductsToAdd,
 }: ProductsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 
@@ -29,11 +31,10 @@ export const ProductsToAddList = ({
 			...prevState,
 			quantity: prevState.quantity + quantityChanger,
 		}));
-	};	
+		// clearInput();
+	};
 
-	const handleProductQuantity = (productId: number, direction: string) => {
-		if (products.length === 0) return;
-
+	const handleProductQuantity = (productId: number, index: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
@@ -45,6 +46,15 @@ export const ProductsToAddList = ({
 			},
 			...prevProducts.slice(productId),
 		]);
+		setProductsToAdd(prevProducts => [
+			...prevProducts.slice(0, index),
+			{
+				...prevProducts[index],
+				quantity: prevProducts[index].quantity + quantityChanger,
+			},
+			...prevProducts.slice(index + 1),
+		]);
+		clearInput();
 	};
 
 	const handlePlusIconScale = (productId: number) => {
@@ -79,10 +89,10 @@ export const ProductsToAddList = ({
 				</ProductToAdd>
 			)}
 
-			{products.map(({ id, name, quantity }) => (
+			{products.map(({ id, name, quantity }, index) => (
 				<ProductToAdd key={id}>
 					<AddProductButton
-						onClick={() => handleProductQuantity(id, 'increase')}
+						onClick={() => handleProductQuantity(id, index, 'increase')}
 						aria-label={`add ${name} to the list`}
 						type='button'>
 						<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
@@ -91,7 +101,7 @@ export const ProductsToAddList = ({
 						{name}
 					</AddProductButton>
 					<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
-					<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, 'decrease')} />
+					<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, index, 'decrease')} />
 				</ProductToAdd>
 			))}
 		</StyledList>

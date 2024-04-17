@@ -7,7 +7,7 @@ import { CustomProductType, initialProductState } from 'src/views/AddProducts';
 type SearchBarProps = {
 	searchInputValue: string;
 	setSearchInputValue: Dispatch<React.SetStateAction<string>>;
-	handleClearInput: () => void;
+	clearInput: () => void;
 	defaultProducts: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	customProduct: CustomProductType;
@@ -17,48 +17,50 @@ type SearchBarProps = {
 export const SearchBar = ({
 	searchInputValue,
 	setSearchInputValue,
-	handleClearInput,
+	clearInput,
 	defaultProducts,
 	setProductsToAdd,
 	customProduct,
 	setCustomProduct,
+	productsList,
+	setProductsList,
 }: SearchBarProps) => {
-	const updateDefaultProductsList = useCallback(
+	const updateProductsList = useCallback(
 		debounce((searchPhrase = '') => {
-			if (!searchPhrase) setProductsToAdd(defaultProducts);
+			if (!searchPhrase) return setProductsToAdd(productsList);
 
-			const matchingProducts = defaultProducts.filter(product =>
+			const matchingProducts = productsList.filter(product =>
 				product.name.toLowerCase().includes(searchPhrase.toLowerCase())
 			);
 			setProductsToAdd(matchingProducts);
 		}, 500),
-		[defaultProducts]
+		[productsList]
 	);
 
 	const handleCustomProduct = useCallback(
 		debounce((searchPhrase = '') => {
-			if (!searchPhrase) setCustomProduct(initialProductState);
+			if (!searchPhrase) return setCustomProduct(initialProductState);
 
-			if (defaultProducts.map(product => product.name).includes(searchPhrase)) return;
+			if (productsList.map(product => product.name).includes(searchPhrase)) return;
 
-			setCustomProduct(prevState => ({
-				...prevState,
+			setCustomProduct({
+				...initialProductState,
 				name: searchPhrase,
-			}));
+			});
 		}, 500),
 		[customProduct]
 	);
 
 	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
 		setSearchInputValue(e.currentTarget.value);
-		updateDefaultProductsList(e.currentTarget.value);
+		updateProductsList(e.currentTarget.value);
 		handleCustomProduct(e.currentTarget.value);
 	};
 
 	return (
 		<Wrapper>
 			<SearchInput placeholder='add new item' value={searchInputValue} onChange={handleInputChange} />
-			<ClearInputButton aria-label='clear input' type='button' onClick={handleClearInput}>
+			<ClearInputButton aria-label='clear input' type='button' onClick={clearInput}>
 				<img src='src/assets/icons/x-circle.svg' alt='' />
 			</ClearInputButton>
 		</Wrapper>
