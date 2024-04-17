@@ -22,17 +22,17 @@ export const ProductsToAddList = ({
 	setProductsToAdd,
 }: ProductsToAddListProps) => {
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
-	const [quantityNumber, setQuantityNumber] = useState(-1);	// used for plus icon rotate animation - to prevent animation after custom product is replaced by another
+	const [quantityNumber, setQuantityNumber] = useState(-1); // used for plus icon rotate animation - to prevent animation after custom product is replaced by another
 
 	const handleCustomProductQuantity = (productId: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
+		setQuantityNumber(prevQuantity => prevQuantity + quantityChanger);
 		setCustomProduct(prevState => ({
 			...prevState,
 			quantity: prevState.quantity + quantityChanger,
 		}));
-		setQuantityNumber(prevQuantity => prevQuantity + quantityChanger);
 		clearInput();
 	};
 

@@ -84,14 +84,17 @@ export const AddProducts = ({
 	}, [isActive]);
 
 	useEffect(() => {
-		if (!searchInputValue || customProduct.name === '') return;
+		if (customProduct.name === '') return;
 
-		const checkedProductIndex = customProducts.map(product => product.name).indexOf(searchInputValue);
+		const checkedProductIndex = customProducts.map(product => product.name).indexOf(customProduct.name);
+
+		console.log(checkedProductIndex);
 
 		if (customProducts.length !== 0 && checkedProductIndex >= 0) {
 			setCustomProducts(prevProducts => [
 				...prevProducts.slice(0, checkedProductIndex),
 				{ ...prevProducts[checkedProductIndex], quantity: customProduct.quantity },
+				...prevProducts.slice(checkedProductIndex + 1),
 			]);
 		} else {
 			setCustomProducts(prevProducts => [{ id: uuid(), ...customProduct }, ...prevProducts]);
