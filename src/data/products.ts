@@ -56,7 +56,7 @@ export const products = [
 			name: 'hygiene',
 			imgSrc: 'src/assets/img/category-icons/hygiene.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -66,7 +66,7 @@ export const products = [
 			name: 'first aid kit',
 			imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -76,7 +76,7 @@ export const products = [
 			name: 'vegetables and fruits',
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -86,7 +86,7 @@ export const products = [
 			name: 'vegetables and fruits',
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -96,7 +96,7 @@ export const products = [
 			name: 'vegetables and fruits',
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -106,7 +106,7 @@ export const products = [
 			name: 'first aid kit',
 			imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -116,7 +116,7 @@ export const products = [
 			name: 'baby articles',
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -126,7 +126,7 @@ export const products = [
 			name: 'baby articles',
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -136,7 +136,7 @@ export const products = [
 			name: 'baby articles',
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -146,7 +146,7 @@ export const products = [
 			name: 'meat and cold cuts',
 			imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -156,7 +156,7 @@ export const products = [
 			name: 'baked goods',
 			imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -166,7 +166,7 @@ export const products = [
 			name: 'household chemicals',
 			imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -176,7 +176,7 @@ export const products = [
 			name: 'cakes, desserts, additives',
 			imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{
@@ -186,7 +186,7 @@ export const products = [
 			name: 'cakes, desserts, additives',
 			imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		isBought: false,
 	},
 	{

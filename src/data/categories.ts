@@ -26,5 +26,3 @@ export const categories = [
 	'vegetables and fruits',
 	'water and drinks',
 ];
-
-export const alcoholsAndTobacco = ['alcohol', 'blotters', 'brandy', 'cider', 'desperados'];

@@ -15,6 +15,7 @@ export const ProductsToBuy = ({
 	setDefaultProducts,
 	setCustomProducts,
 	customProducts,
+	sortProductsByCategory,
 }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
