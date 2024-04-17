@@ -24,10 +24,8 @@ export const ProductListItem = ({
 
 		const timeoutValue = isBought ? 400 : 650;
 
-		setTimeout(() => {
-			setClickedProductId(-1);
-
-			if (typeof productId === 'number') {
+		if (typeof productId === 'number') {
+			setTimeout(() => {
 				setDefaultProducts(prevProducts => [
 					...prevProducts.slice(0, productId - 1),
 					{
@@ -36,7 +34,9 @@ export const ProductListItem = ({
 					},
 					...prevProducts.slice(productId),
 				]);
-			} else {
+			}, timeoutValue);
+		} else {
+			setTimeout(() => {
 				const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
 
 				setCustomProducts(prevProducts => [
@@ -47,18 +47,44 @@ export const ProductListItem = ({
 					},
 					...prevProducts.slice(checkedProductIndex + 1),
 				]);
-			}
+			}, timeoutValue);
+		}
 
-			// setProductsList(productsList => [
-			// 	...productsList.slice(0, productId - 1),
-			// 	{
-			// 		...productsList[productId - 1],
-			// 		isBought: !productsList[productId - 1].isBought,
-			// 	},
-			// 	...productsList.slice(productId),
-			// ]);
-			setClickedProductId(-1);
-		}, timeoutValue);
+		// setTimeout(() => {
+		// 	setClickedProductId(-1);
+
+		// 	if (typeof productId === 'number') {
+		// 		setDefaultProducts(prevProducts => [
+		// 			...prevProducts.slice(0, productId - 1),
+		// 			{
+		// 				...prevProducts[productId - 1],
+		// 				isBought: !prevProducts[productId - 1].isBought,
+		// 			},
+		// 			...prevProducts.slice(productId),
+		// 		]);
+		// 	} else {
+		// 		const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
+
+		// 		setCustomProducts(prevProducts => [
+		// 			...prevProducts.slice(0, checkedProductIndex),
+		// 			{
+		// 				...prevProducts[checkedProductIndex],
+		// 				isBought: !prevProducts[checkedProductIndex].isBought,
+		// 			},
+		// 			...prevProducts.slice(checkedProductIndex + 1),
+		// 		]);
+		// 	}
+
+		// 	// setProductsList(productsList => [
+		// 	// 	...productsList.slice(0, productId - 1),
+		// 	// 	{
+		// 	// 		...productsList[productId - 1],
+		// 	// 		isBought: !productsList[productId - 1].isBought,
+		// 	// 	},
+		// 	// 	...productsList.slice(productId),
+		// 	// ]);
+
+		// }, timeoutValue);
 	};
 
 	return (
