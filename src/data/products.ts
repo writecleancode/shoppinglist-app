@@ -86,7 +86,7 @@ export const products = [
 			name: 'vegetables and fruits',
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
-		quantity: 0,
+		quantity: -1,
 		isBought: false,
 	},
 	{
@@ -96,7 +96,7 @@ export const products = [
 			name: 'vegetables and fruits',
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
-		quantity: 0,
+		quantity: -1,
 		isBought: false,
 	},
 	{

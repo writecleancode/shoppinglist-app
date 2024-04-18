@@ -6,6 +6,7 @@ import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
 import { Wrapper } from './MainView.styles';
 import { products } from 'src/data/products';
+import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 
 type MainViewProps = {
 	isAddProductActive: boolean;
@@ -29,6 +30,7 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [shoppingProgress, setShoppingProgress] = useState(0);
+	const [isEditPanelOpen, setEditPanelState] = useState(true);
 
 	const countShoppingProgress = () => {
 		let productToBuy = 0;
@@ -86,6 +88,7 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 				productsList={productsList}
 				setProductsList={setProductsList}
 			/>
+			<EditPanel isOpen={isEditPanelOpen} />
 		</Wrapper>
 	);
 };
