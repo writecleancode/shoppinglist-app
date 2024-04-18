@@ -19,7 +19,7 @@ export const categories = [
 	'spices, sauces, additives',
 	'cereals and muesli',
 	'fish',
-	'household appliances and electronics',
+	'appliances and electronics',
 	'sweets and snacks',
 	'fats',
 	'clothes',

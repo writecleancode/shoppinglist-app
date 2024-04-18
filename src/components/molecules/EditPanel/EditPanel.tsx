@@ -39,7 +39,7 @@ export const EditPanel = ({ isOpen }: EditPanelProps) => {
 					<CategoryIconCircle as='div' $category={'other'} $isBought={false}>
 						<img src={'src/assets/img/category-icons/other.png'} alt={`icon of category: ${'other'}`} />
 					</CategoryIconCircle>
-					<span>other</span>
+					<span>appliances and electronics</span>
 					<ChevronRight src='src/assets/icons/chevron-right.svg' alt='' />
 				</CategoryButton>
 			</MainInfoWrapper>

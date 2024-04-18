@@ -21,6 +21,10 @@ export const Wrapper = styled(ReactModal)`
 	&:focus {
 		outline: none;
 	}
+
+	@media (min-width: 380px) {
+		padding: 1.6rem;
+	}
 `;
 
 export const ControlChangesButtonsWrapper = styled.div`
@@ -39,7 +43,7 @@ export const ControlChangesButton = styled.button<{ $isAbort: boolean }>`
 	border-radius: 100rem;
 	background-color: #fff;
 	font-size: 1.4rem;
-	font-weight: bold;
+	/* font-weight: 900; */
 	text-transform: uppercase;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 
@@ -53,6 +57,11 @@ export const MainInfoWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 1.6rem;
+
+	@media (min-width: 540px) {
+		flex-direction: row;
+		align-items: center;
+	}
 `;
 
 export const StyledInput = styled.input`
@@ -92,9 +101,13 @@ export const CategoryButton = styled.button`
 	font-size: 1.6rem;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
+	@media (min-width: 540px) {
+		min-width: 280px;
+		max-width: 280px;
+	}
+
 	span {
-		padding-right: 0.8rem;
-		translate: 0 -0.2rem;
+		translate: 0 -0.1rem;
 	}
 `;
 
@@ -115,16 +128,33 @@ export const QuantityWrapper = styled.div`
 	grid-template-rows: auto auto;
 	grid-template-columns: auto auto auto;
 	gap: 0.8rem;
+
+	@media (min-width: 500px) {
+		display: flex;
+		align-items: center;
+	}
 `;
 
 export const QuantityInput = styled(StyledInput)`
 	grid-row: 1 / 2;
 	grid-column: 1 / 2;
+
+	@media (min-width: 500px) {
+		width: max-content;
+	}
+
+	@media (min-width: 540px) {
+		margin-right: 0.8rem;
+	}
 `;
 
 export const UnitInput = styled(StyledInput)`
 	grid-row: 1 / 2;
 	grid-column: 2 / 3;
+
+	@media (min-width: 500px) {
+		max-width: max-content;
+	}
 `;
 
 export const UnitButtonsWrapper = styled.div`
@@ -149,7 +179,12 @@ export const QuantityButtonWrapper = styled.div`
 	grid-row: 1 / 2;
 	grid-column: 3 / 4;
 	display: flex;
+	justify-content: flex-end;
 	margin: 0 -0.4rem;
+
+	@media (min-width: 520px) {
+		margin-left: auto;
+	}
 `;
 
 export const ChangeQuantityButton = styled.button`

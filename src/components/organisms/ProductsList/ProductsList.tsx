@@ -19,7 +19,7 @@ export const ProductsList = ({
 }: ProductsListProps) => {
 	const sortProductsByCategory = (productCategory: string) => {
 		switch (productCategory) {
-			case 'household appliances and electronics':
+			case 'appliances and electronics':
 				return 1;
 
 			case 'baby articles':
