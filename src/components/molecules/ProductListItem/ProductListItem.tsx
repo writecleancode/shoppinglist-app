@@ -3,7 +3,7 @@ import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
-import { Wrapper } from './ProductListItem.styles';
+import { ProductName, Wrapper } from './ProductListItem.styles';
 
 type ProductListItemProps = {
 	setProductsList: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
@@ -16,6 +16,7 @@ export const ProductListItem = ({
 	setDefaultProducts,
 	setCustomProducts,
 	customProducts,
+	openEditPanel,
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
@@ -94,7 +95,7 @@ export const ProductListItem = ({
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
-			<p>{name}</p>
+			<ProductName onClick={openEditPanel}>{name}</ProductName>
 			<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
 			<CategoryIcon $category={category.name} $isBought={isBought} type='button' aria-label='change product category'>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />

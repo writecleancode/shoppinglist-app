@@ -14,3 +14,13 @@ export const Wrapper = styled.li<{ $isBought: boolean }>`
 		padding-right: 1.6rem;
 	}
 `;
+
+export const ProductName = styled.button`
+	display: inline-block;
+	flex-grow: 10;
+	padding: 0.8rem 0;
+	border: none;
+	background-color: transparent;
+	font-size: inherit;
+	text-align: left;
+`;

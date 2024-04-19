@@ -30,7 +30,7 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [shoppingProgress, setShoppingProgress] = useState(0);
-	const [isEditPanelOpen, setEditPanelState] = useState(true);
+	const [isEditPanelOpen, setEditPanelState] = useState(false);
 
 	const countShoppingProgress = () => {
 		let productToBuy = 0;
@@ -50,6 +50,10 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 
 		setShoppingProgress(boughtProductsPercentage);
 	};
+
+	const openEditPanel = () => setEditPanelState(true);
+
+	const closeEditPanel = () => setEditPanelState(false);
 
 	useEffect(() => {
 		setDefaultProducts(products);
@@ -76,6 +80,7 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 				setDefaultProducts={setDefaultProducts}
 				setCustomProducts={setCustomProducts}
 				customProducts={customProducts}
+				openEditPanel={openEditPanel}
 			/>
 			<AddButton onClick={showAddProductView} />
 			<AddProducts
@@ -88,7 +93,7 @@ export const MainView = ({ isAddProductActive, showAddProductView, hideAddProduc
 				productsList={productsList}
 				setProductsList={setProductsList}
 			/>
-			<EditPanel isOpen={isEditPanelOpen} />
+			<EditPanel isOpen={isEditPanelOpen} closeEditPanel={closeEditPanel} />
 		</Wrapper>
 	);
 };

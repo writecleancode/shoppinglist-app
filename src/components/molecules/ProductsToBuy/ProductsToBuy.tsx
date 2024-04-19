@@ -16,6 +16,7 @@ export const ProductsToBuy = ({
 	setCustomProducts,
 	customProducts,
 	sortProductsByCategory,
+	openEditPanel,
 }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
@@ -28,6 +29,7 @@ export const ProductsToBuy = ({
 						setDefaultProducts={setDefaultProducts}
 						setCustomProducts={setCustomProducts}
 						customProducts={customProducts}
+						openEditPanel={openEditPanel}
 					/>
 				) : null
 			)}

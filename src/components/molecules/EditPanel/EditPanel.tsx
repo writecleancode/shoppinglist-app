@@ -21,14 +21,13 @@ type EditPanelProps = {
 	isOpen: boolean;
 };
 
-export const EditPanel = ({ isOpen }: EditPanelProps) => {
+export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
 	return (
 		<>
-		<AppShadowLayer $isOpen={isOpen}>
-			</AppShadowLayer>
+			<AppShadowLayer $isOpen={isOpen}></AppShadowLayer>
 			<Wrapper $isOpen={isOpen}>
 				<ControlChangesButtonsWrapper>
-					<ControlChangesButton $isAbort={true}>
+					<ControlChangesButton $isAbort={true} onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
 						abort
 					</ControlChangesButton>
@@ -67,6 +66,5 @@ export const EditPanel = ({ isOpen }: EditPanelProps) => {
 				</QuantityWrapper>
 			</Wrapper>
 		</>
-		
 	);
 };

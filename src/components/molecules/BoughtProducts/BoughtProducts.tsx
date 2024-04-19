@@ -14,6 +14,7 @@ export const BoughtProducts = ({
 	setDefaultProducts,
 	setCustomProducts,
 	customProducts,
+	openEditPanel,
 }: BoughtProductsProps) => {
 	return (
 		<ul>
@@ -26,6 +27,7 @@ export const BoughtProducts = ({
 						setDefaultProducts={setDefaultProducts}
 						setCustomProducts={setCustomProducts}
 						customProducts={customProducts}
+						openEditPanel={openEditPanel}
 					/>
 				) : null
 			)}
