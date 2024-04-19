@@ -1,13 +1,24 @@
 import styled from 'styled-components';
-import ReactModal from 'react-modal';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 
-export const Wrapper = styled(ReactModal)`
+export const AppShadowLayer = styled.div<{ $isOpen: boolean }>`
 	position: absolute;
-	top: auto;
+	inset: 0;
+	z-index: 1;
+	width: 100%;
+	min-height: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+	opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+	pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+	transition: opacity 0.3s;
+`;
+
+export const Wrapper = styled.div<{ $isOpen: boolean }>`
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	z-index: 2;
 	display: flex;
 	flex-direction: column;
 	gap: 1.6rem;
@@ -17,6 +28,9 @@ export const Wrapper = styled(ReactModal)`
 	width: 100%;
 	background-color: #fff;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.18);
+	translate: ${({ $isOpen }) => ($isOpen ? '0 0' : '0 104%')};
+	pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+	transition: translate 0.3s;
 
 	&:focus {
 		outline: none;
