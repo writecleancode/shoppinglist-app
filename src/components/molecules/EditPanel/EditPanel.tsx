@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
 	AppShadowLayer,
 	CategoryButton,
@@ -22,9 +23,17 @@ type EditPanelProps = {
 };
 
 export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
+	useEffect(() => {
+		window.addEventListener('keydown', e => {
+			if (e.key !== 'Escape') return;
+
+			closeEditPanel();
+		});
+	}, []);
+
 	return (
 		<>
-			<AppShadowLayer $isOpen={isOpen}></AppShadowLayer>
+			<AppShadowLayer $isOpen={isOpen} onClick={closeEditPanel}></AppShadowLayer>
 			<Wrapper $isOpen={isOpen}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort={true} onClick={closeEditPanel}>
