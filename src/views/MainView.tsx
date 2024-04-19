@@ -8,12 +8,6 @@ import { Wrapper } from './MainView.styles';
 import { products } from 'src/data/products';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 
-type MainViewProps = {
-	isAddProductActive: boolean;
-	showAddProductView: () => void;
-	hideAddProductView: () => void;
-};
-
 export type ProductType = {
 	id: number | string;
 	name: string;
@@ -25,12 +19,16 @@ export type ProductType = {
 	isBought: boolean;
 };
 
-export const MainView = ({ isAddProductActive, showAddProductView, hideAddProductView }: MainViewProps) => {
+export const MainView = () => {
+	const [isAddProductActive, setAddProductState] = useState(false);
 	const [defaultProducts, setDefaultProducts] = useState<never[] | ProductType[]>([]);
 	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [shoppingProgress, setShoppingProgress] = useState(0);
 	const [isEditPanelOpen, setEditPanelState] = useState(false);
+
+	const showAddProductView = () => setAddProductState(true);
+	const hideAddProductView = () => setAddProductState(false);
 
 	const countShoppingProgress = () => {
 		let productToBuy = 0;

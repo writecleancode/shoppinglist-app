@@ -23,13 +23,20 @@ type EditPanelProps = {
 };
 
 export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
-	useEffect(() => {
-		window.addEventListener('keydown', e => {
-			if (e.key !== 'Escape') return;
+	const testFunction = e => {
+		if (e.key !== 'Escape') return;
+		console.log('działa');
 
-			closeEditPanel();
-		});
-	}, []);
+		closeEditPanel();
+	};
+
+	useEffect(() => {
+		if (isOpen) {
+			window.addEventListener('keydown', testFunction);
+		} else {
+			window.removeEventListener('keydown', testFunction);
+		}
+	}, [isOpen]);
 
 	return (
 		<>
