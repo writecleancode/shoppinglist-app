@@ -23,19 +23,38 @@ type EditPanelProps = {
 };
 
 export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProduct }: EditPanelProps) => {
-	const testFunction = e => {
+	const checkKey = e => {
 		if (e.key !== 'Escape') return;
 
 		closeEditPanel();
 	};
 
+	const handleNameChange = e => {
+		setEditedProduct(prevProduct => ({
+			...prevProduct,
+			name: e.target.value,
+		}));
+	};
+
+	const handleQuantityChange = e => {
+		setEditedProduct(prevProduct => ({
+			...prevProduct,
+			quantity: Number(e.target.value),
+		}));
+	};
+
+	const handleQuantityButtons = direction => {
+		const quantityChanger = direction === 'increase' ? 1 : -1;
+
+		setEditedProduct(prevProduct => ({
+			...prevProduct,
+			quantity: prevProduct.quantity + quantityChanger,
+		}));
+	};
+
 	useEffect(() => {
-		if (isOpen) {
-			window.addEventListener('keydown', testFunction);
-		} else {
-			window.removeEventListener('keydown', testFunction);
-		}
-	}, [isOpen]);
+		window.addEventListener('keydown', checkKey);
+	}, []);
 
 	return (
 		<>
@@ -52,7 +71,7 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 					</ControlChangesButton>
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
-					<NameInput type='text' value={editedProduct.name} />
+					<NameInput type='text' value={editedProduct.name} onChange={handleNameChange} />
 					<CategoryButton type='button' aria-label='change product category'>
 						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
 							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
@@ -68,6 +87,7 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 						min='0'
 						max='9999999'
 						value={editedProduct.quantity > 0 ? editedProduct.quantity : ''}
+						onChange={handleQuantityChange}
 					/>
 					<UnitInput type='text' placeholder='unit' maxLength={10} />
 					<UnitButtonsWrapper>
@@ -77,10 +97,10 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 						<UnitButton>g</UnitButton>
 					</UnitButtonsWrapper>
 					<QuantityButtonWrapper>
-						<ChangeQuantityButton>
+						<ChangeQuantityButton onClick={() => handleQuantityButtons('decrease')}>
 							<img src='src/assets/icons/minus.svg' alt='' />
 						</ChangeQuantityButton>
-						<ChangeQuantityButton>
+						<ChangeQuantityButton onClick={() => handleQuantityButtons('increase')}>
 							<img src='src/assets/icons/plus.svg' alt='' />
 						</ChangeQuantityButton>
 					</QuantityButtonWrapper>
