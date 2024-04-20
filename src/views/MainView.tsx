@@ -49,7 +49,10 @@ export const MainView = () => {
 		setShoppingProgress(boughtProductsPercentage);
 	};
 
-	const openEditPanel = () => setEditPanelState(true);
+	const openEditPanel = () => {
+		setEditPanelState(true);
+		document.getElementById('editPanel')!.focus()
+	};
 
 	const closeEditPanel = () => setEditPanelState(false);
 

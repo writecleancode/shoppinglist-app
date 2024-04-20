@@ -25,7 +25,6 @@ type EditPanelProps = {
 export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
 	const testFunction = e => {
 		if (e.key !== 'Escape') return;
-		console.log('działa');
 
 		closeEditPanel();
 	};
@@ -41,7 +40,7 @@ export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
 	return (
 		<>
 			<AppShadowLayer $isOpen={isOpen} onClick={closeEditPanel}></AppShadowLayer>
-			<Wrapper $isOpen={isOpen}>
+			<Wrapper id='editPanel' tabIndex={0} $isOpen={isOpen}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort={true} onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
