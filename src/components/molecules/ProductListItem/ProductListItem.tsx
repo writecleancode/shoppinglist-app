@@ -12,7 +12,7 @@ type ProductListItemProps = {
 
 export const ProductListItem = ({
 	setProductsList,
-	product: { id, name, category, quantity, isBought },
+	product: { id, name, category, quantity, unit, isBought },
 	setDefaultProducts,
 	setCustomProducts,
 	customProducts,
@@ -95,6 +95,7 @@ export const ProductListItem = ({
 			name,
 			category,
 			quantity,
+			unit,
 			isBought,
 		});
 		openEditPanel();
@@ -108,7 +109,10 @@ export const ProductListItem = ({
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
 			<ProductName onClick={handleOpenEditPanel}>{name}</ProductName>
-			<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
+			<QuantityOfProduct $quantity={quantity}>
+				{quantity}
+				{quantity > 0 ? unit : ''}
+			</QuantityOfProduct>
 			<CategoryIcon $category={category.name} $isBought={isBought} type='button' aria-label='change product category'>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />
 			</CategoryIcon>

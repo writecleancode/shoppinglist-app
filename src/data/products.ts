@@ -29,7 +29,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/hygiene.png',
 		},
 		quantity: 1,
-		unit: '',
+		unit: 'l',
 		isBought: false,
 	},
 	{

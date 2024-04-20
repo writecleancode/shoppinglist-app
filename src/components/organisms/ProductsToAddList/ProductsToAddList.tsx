@@ -117,7 +117,7 @@ export const ProductsToAddList = ({
 						return 0;
 					}
 				})
-				.map(({ id, name, quantity }, index) => (
+				.map(({ id, name, quantity, unit }, index) => (
 					<ProductToAdd key={id}>
 						<AddProductButton
 							onClick={() => handleProductQuantity(id, index, 'increase')}
@@ -128,7 +128,10 @@ export const ProductsToAddList = ({
 							</PlusIcon>
 							{name}
 						</AddProductButton>
-						<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
+						<QuantityOfProduct $quantity={quantity}>
+							{quantity}
+							{quantity > 0 ? unit : ''}
+						</QuantityOfProduct>
 						<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, index, 'decrease')} />
 					</ProductToAdd>
 				))}

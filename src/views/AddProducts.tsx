@@ -12,6 +12,7 @@ export const initialProductState = {
 		imgSrc: 'src/assets/img/category-icons/other.png',
 	},
 	quantity: -1,
+	unit: '',
 	isBought: false,
 };
 
@@ -31,6 +32,7 @@ export type CustomProductType = {
 		imgSrc: string;
 	};
 	quantity: number;
+	unit: string;
 	isBought: boolean;
 };
 
