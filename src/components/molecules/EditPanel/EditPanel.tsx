@@ -22,7 +22,7 @@ type EditPanelProps = {
 	isOpen: boolean;
 };
 
-export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
+export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProduct }: EditPanelProps) => {
 	const testFunction = e => {
 		if (e.key !== 'Escape') return;
 
@@ -42,27 +42,33 @@ export const EditPanel = ({ isOpen, closeEditPanel }: EditPanelProps) => {
 			<AppShadowLayer $isOpen={isOpen} onClick={closeEditPanel}></AppShadowLayer>
 			<Wrapper id='editPanel' tabIndex={0} $isOpen={isOpen}>
 				<ControlChangesButtonsWrapper>
-					<ControlChangesButton $isAbort={true} onClick={closeEditPanel}>
+					<ControlChangesButton $isAbort onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
 						abort
 					</ControlChangesButton>
-					<ControlChangesButton $isAbort={false}>
+					<ControlChangesButton>
 						<img src='src/assets/icons/check-small.svg' alt='' />
 						save
 					</ControlChangesButton>
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
-					<NameInput type='text' value='product name' />
+					<NameInput type='text' value={editedProduct.name} />
 					<CategoryButton type='button' aria-label='change product category'>
-						<CategoryIconCircle as='div' $category={'other'} $isBought={false}>
-							<img src={'src/assets/img/category-icons/other.png'} alt={`icon of category: ${'other'}`} />
+						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
+							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
 						</CategoryIconCircle>
-						<span>appliances and electronics</span>
+						<span>{editedProduct.category.name}</span>
 						<ChevronRight src='src/assets/icons/chevron-right.svg' alt='' />
 					</CategoryButton>
 				</MainInfoWrapper>
 				<QuantityWrapper>
-					<QuantityInput type='number' placeholder='quantity' min='0' max='9999999' />
+					<QuantityInput
+						type='number'
+						placeholder='quantity'
+						min='0'
+						max='9999999'
+						value={editedProduct.quantity > 0 ? editedProduct.quantity : ''}
+					/>
 					<UnitInput type='text' placeholder='unit' maxLength={10} />
 					<UnitButtonsWrapper>
 						<UnitButton>l</UnitButton>

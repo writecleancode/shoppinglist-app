@@ -17,6 +17,7 @@ export const ProductListItem = ({
 	setCustomProducts,
 	customProducts,
 	openEditPanel,
+	setEditedProduct,
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
@@ -88,6 +89,17 @@ export const ProductListItem = ({
 		// }, timeoutValue);
 	};
 
+	const handleOpenEditPanel = () => {
+		setEditedProduct({
+			id,
+			name,
+			category,
+			quantity,
+			isBought,
+		});
+		openEditPanel();
+	};
+
 	return (
 		<Wrapper $isBought={isBought}>
 			<StatusButton
@@ -95,7 +107,7 @@ export const ProductListItem = ({
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
-			<ProductName onClick={openEditPanel}>{name}</ProductName>
+			<ProductName onClick={handleOpenEditPanel}>{name}</ProductName>
 			<QuantityOfProduct $quantity={quantity}>{quantity}</QuantityOfProduct>
 			<CategoryIcon $category={category.name} $isBought={isBought} type='button' aria-label='change product category'>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />

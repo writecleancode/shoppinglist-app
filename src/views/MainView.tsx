@@ -19,6 +19,17 @@ export type ProductType = {
 	isBought: boolean;
 };
 
+const initialEditState = {
+	id: 'abc123',
+	name: 'product name',
+	category: {
+		name: 'other',
+		imgSrc: 'src/assets/img/category-icons/other.png',
+	},
+	quantity: -1,
+	isBought: false,
+};
+
 export const MainView = () => {
 	const [isAddProductActive, setAddProductState] = useState(false);
 	const [defaultProducts, setDefaultProducts] = useState<never[] | ProductType[]>([]);
@@ -26,6 +37,7 @@ export const MainView = () => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [shoppingProgress, setShoppingProgress] = useState(0);
 	const [isEditPanelOpen, setEditPanelState] = useState(false);
+	const [editedProduct, setEditedProduct] = useState(initialEditState);
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
@@ -51,7 +63,7 @@ export const MainView = () => {
 
 	const openEditPanel = () => {
 		setEditPanelState(true);
-		document.getElementById('editPanel')!.focus()
+		document.getElementById('editPanel')!.focus();
 	};
 
 	const closeEditPanel = () => setEditPanelState(false);
@@ -82,6 +94,7 @@ export const MainView = () => {
 				setCustomProducts={setCustomProducts}
 				customProducts={customProducts}
 				openEditPanel={openEditPanel}
+				setEditedProduct={setEditedProduct}
 			/>
 			<AddButton onClick={showAddProductView} />
 			<AddProducts
@@ -94,7 +107,12 @@ export const MainView = () => {
 				productsList={productsList}
 				setProductsList={setProductsList}
 			/>
-			<EditPanel isOpen={isEditPanelOpen} closeEditPanel={closeEditPanel} />
+			<EditPanel
+				isOpen={isEditPanelOpen}
+				closeEditPanel={closeEditPanel}
+				editedProduct={editedProduct}
+				setEditedProduct={setEditedProduct}
+			/>
 		</Wrapper>
 	);
 };

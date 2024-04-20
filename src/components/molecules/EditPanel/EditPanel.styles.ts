@@ -47,7 +47,7 @@ export const ControlChangesButtonsWrapper = styled.div`
 	gap: 1.6rem;
 `;
 
-export const ControlChangesButton = styled.button<{ $isAbort: boolean }>`
+export const ControlChangesButton = styled.button<{ $isAbort?: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
