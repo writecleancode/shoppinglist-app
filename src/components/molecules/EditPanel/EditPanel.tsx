@@ -43,6 +43,20 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 		}));
 	};
 
+	const handleUnitChange = e => {
+		setEditedProduct(prevProduct => ({
+			...prevProduct,
+			unit: e.target.value,
+		}));
+	};
+
+	const handleUnitButtons = unit => {
+		setEditedProduct(prevProduct => ({
+			...prevProduct,
+			unit: unit,
+		}));
+	};
+
 	const handleQuantityButtons = direction => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
@@ -89,12 +103,18 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 						value={editedProduct.quantity > 0 ? editedProduct.quantity : ''}
 						onChange={handleQuantityChange}
 					/>
-					<UnitInput type='text' placeholder='unit' maxLength={10} />
+					<UnitInput
+						type='text'
+						placeholder='unit'
+						maxLength={10}
+						value={editedProduct.unit}
+						onChange={handleUnitChange}
+					/>
 					<UnitButtonsWrapper>
-						<UnitButton>l</UnitButton>
-						<UnitButton>ml</UnitButton>
-						<UnitButton>kg</UnitButton>
-						<UnitButton>g</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'}>l</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('ml')} $isCurrentUnit={editedProduct.unit === 'ml'}>ml</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('kg')} $isCurrentUnit={editedProduct.unit === 'kg'}>kg</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('g')} $isCurrentUnit={editedProduct.unit === 'g'}>g</UnitButton>
 					</UnitButtonsWrapper>
 					<QuantityButtonWrapper>
 						<ChangeQuantityButton onClick={() => handleQuantityButtons('decrease')}>

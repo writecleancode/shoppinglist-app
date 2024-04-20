@@ -16,6 +16,7 @@ export type ProductType = {
 		imgSrc: string;
 	};
 	quantity: number;
+	unit: string;
 	isBought: boolean;
 };
 
@@ -27,6 +28,7 @@ const initialEditState = {
 		imgSrc: 'src/assets/img/category-icons/other.png',
 	},
 	quantity: -1,
+	unit: '',
 	isBought: false,
 };
 

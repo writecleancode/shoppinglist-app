@@ -7,6 +7,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -17,6 +18,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -27,6 +29,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/hygiene.png',
 		},
 		quantity: 1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -37,6 +40,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -47,6 +51,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 		},
 		quantity: 2,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -57,6 +62,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/hygiene.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -67,6 +73,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -77,6 +84,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
 		quantity: 0,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -87,6 +95,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -97,6 +106,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -107,6 +117,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -117,6 +128,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -127,6 +139,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -137,6 +150,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -147,6 +161,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -157,6 +172,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -167,6 +183,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -177,6 +194,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -187,6 +205,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -197,6 +216,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -207,6 +227,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -217,6 +238,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -227,6 +249,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -237,6 +260,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -247,6 +271,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -257,6 +282,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -267,6 +293,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/other.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -277,6 +304,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -287,6 +315,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/clothes.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	{
@@ -297,6 +326,7 @@ export const products = [
 			imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 		},
 		quantity: -1,
+		unit: '',
 		isBought: false,
 	},
 	// {
@@ -307,6 +337,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -317,6 +348,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -327,6 +359,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -337,6 +370,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -347,6 +381,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -357,6 +392,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -367,6 +403,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -377,6 +414,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -387,6 +425,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -397,6 +436,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -407,6 +447,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -417,6 +458,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -427,6 +469,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -437,6 +480,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -447,6 +491,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -457,6 +502,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -467,6 +513,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -477,6 +524,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -487,6 +535,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -497,6 +546,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -507,6 +557,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -517,6 +568,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -527,6 +579,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -537,6 +590,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -547,6 +601,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -557,6 +612,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -567,6 +623,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -577,6 +634,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -587,6 +645,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -597,6 +656,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -607,6 +667,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -617,6 +678,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -627,6 +689,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -637,6 +700,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -647,6 +711,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -657,6 +722,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -667,6 +733,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -677,6 +744,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -687,6 +755,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -697,6 +766,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -707,6 +777,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -717,6 +788,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -727,6 +799,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -737,6 +810,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -747,6 +821,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -757,6 +832,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -767,6 +843,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -777,6 +854,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -787,6 +865,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -797,6 +876,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -807,6 +887,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -817,6 +898,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -827,6 +909,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -837,6 +920,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -847,6 +931,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -857,6 +942,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -867,6 +953,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -877,6 +964,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -887,6 +975,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -897,6 +986,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -907,6 +997,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -917,6 +1008,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -927,6 +1019,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -937,6 +1030,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -947,6 +1041,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -957,6 +1052,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -967,6 +1063,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -977,6 +1074,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -987,6 +1085,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -997,6 +1096,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1007,6 +1107,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1017,6 +1118,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1027,6 +1129,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1037,6 +1140,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1047,6 +1151,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1057,6 +1162,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1067,6 +1173,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1077,6 +1184,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1087,6 +1195,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1097,6 +1206,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1107,6 +1217,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1117,6 +1228,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1127,6 +1239,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1137,6 +1250,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1147,6 +1261,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1157,6 +1272,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1167,6 +1283,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1177,6 +1294,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1187,6 +1305,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1197,6 +1316,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1207,6 +1327,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1217,6 +1338,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1227,6 +1349,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1237,6 +1360,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1247,6 +1371,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1257,6 +1382,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1267,6 +1393,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1277,6 +1404,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1287,6 +1415,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1297,6 +1426,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1307,6 +1437,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1317,6 +1448,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1327,6 +1459,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1337,6 +1470,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1347,6 +1481,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1357,6 +1492,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1367,6 +1503,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1377,6 +1514,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1387,6 +1525,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1397,6 +1536,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1407,6 +1547,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1417,6 +1558,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1427,6 +1569,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1437,6 +1580,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1447,6 +1591,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1457,6 +1602,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1467,6 +1613,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1477,6 +1624,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1487,6 +1635,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1497,6 +1646,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1507,6 +1657,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1517,6 +1668,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1527,6 +1679,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1537,6 +1690,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1547,6 +1701,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1557,6 +1712,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1567,6 +1723,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1577,6 +1734,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1587,6 +1745,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1597,6 +1756,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1607,6 +1767,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1617,6 +1778,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1627,6 +1789,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1637,6 +1800,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1647,6 +1811,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1657,6 +1822,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1667,6 +1833,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1677,6 +1844,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1687,6 +1855,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1697,6 +1866,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1707,6 +1877,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1717,6 +1888,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1727,6 +1899,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1737,6 +1910,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1747,6 +1921,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1757,6 +1932,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1767,6 +1943,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fats.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1777,6 +1954,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1787,6 +1965,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1797,6 +1976,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1807,6 +1987,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1817,6 +1998,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1827,6 +2009,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1837,6 +2020,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1847,6 +2031,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baby_articles.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1857,6 +2042,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1867,6 +2053,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1877,6 +2064,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1887,6 +2075,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1897,6 +2086,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1907,6 +2097,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1917,6 +2108,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1927,6 +2119,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1937,6 +2130,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1947,6 +2141,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1957,6 +2152,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1967,6 +2163,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1977,6 +2174,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1987,6 +2185,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -1997,6 +2196,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2007,6 +2207,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2017,6 +2218,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2027,6 +2229,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2037,6 +2240,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2047,6 +2251,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2057,6 +2262,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2067,6 +2273,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2077,6 +2284,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2087,6 +2295,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/sweets_and_snacks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2097,6 +2306,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2107,6 +2317,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/appliances_and_electronics.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2117,6 +2328,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2127,6 +2339,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2137,6 +2350,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2147,6 +2361,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2157,6 +2372,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2167,6 +2383,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2177,6 +2394,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/baked_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2187,6 +2405,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2197,6 +2416,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2207,6 +2427,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/fish.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2217,6 +2438,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2227,6 +2449,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/articles_for_animals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2237,6 +2460,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2247,6 +2471,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2257,6 +2482,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2267,6 +2493,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2277,6 +2504,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2287,6 +2515,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2297,6 +2526,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2307,6 +2537,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2317,6 +2548,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2327,6 +2559,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2337,6 +2570,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2347,6 +2581,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2357,6 +2592,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2367,6 +2603,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2377,6 +2614,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2387,6 +2625,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/convenience_foods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2397,6 +2636,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2407,6 +2647,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/bulk_goods.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2417,6 +2658,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2427,6 +2669,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2437,6 +2680,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2447,6 +2691,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/coffee_tea_cocoa.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2457,6 +2702,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2467,6 +2713,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2477,6 +2724,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2487,6 +2735,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2497,6 +2746,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2507,6 +2757,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2517,6 +2768,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/hygiene.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2527,6 +2779,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/preserves.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2537,6 +2790,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/meat_and_cold_cuts.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2547,6 +2801,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/clothes.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2557,6 +2812,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2567,6 +2823,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2577,6 +2834,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2587,6 +2845,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2597,6 +2856,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/first_aid_kit.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2607,6 +2867,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2617,6 +2878,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/other.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2627,6 +2889,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2637,6 +2900,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/water_and_drinks.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2647,6 +2911,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/vegetables_and_fruits.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2657,6 +2922,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2667,6 +2933,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2677,6 +2944,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2687,6 +2955,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/household_chemicals.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2697,6 +2966,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/alcohols_and_tobacco.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2707,6 +2977,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 	// {
@@ -2717,6 +2988,7 @@ export const products = [
 	// 		imgSrc: 'src/assets/img/category-icons/dairy_products.png',
 	// 	},
 	// 	quantity: -1,
+	// unit: '',
 	// 	isBought: false,
 	// },
 ];

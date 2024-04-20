@@ -179,12 +179,12 @@ export const UnitButtonsWrapper = styled.div`
 	gap: 0.8rem;
 `;
 
-export const UnitButton = styled.button`
+export const UnitButton = styled.button<{ $isCurrentUnit: boolean }>`
 	padding: 0.4rem 0.8rem;
 	border: none;
 	border-radius: 0.8rem;
 	background-color: #fafafa;
-	background-color: #fff;
+	background-color: ${({ $isCurrentUnit }) => ($isCurrentUnit ? '#d4e8ff' : '#fff')};
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 	font-size: 1.2rem;
 `;
