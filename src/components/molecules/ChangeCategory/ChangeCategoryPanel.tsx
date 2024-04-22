@@ -10,7 +10,7 @@ import {
 	Wrapper,
 } from './ChangeCategoryPanel.styles';
 
-export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, highlightedCategory }) => {
+export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, highlightedCategory, handleChangeCategory }) => {
 	return (
 		<>
 			<AppShadowLayerBright $isOpen={isOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
@@ -24,7 +24,10 @@ export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, highlightedCat
 				<CategoriesWrapper>
 					<CategoriesList>
 						{categories.map(({ name, imgSrc }, index) => (
-							<CategoriesListItem key={index} $isHighlighted={name === highlightedCategory && name}>
+							<CategoriesListItem
+								key={index}
+								$isHighlighted={name === highlightedCategory && name}
+								onClick={() => handleChangeCategory({ name, imgSrc })}>
 								<button>
 									<img src={imgSrc} alt='' />
 									<p>{name}</p>

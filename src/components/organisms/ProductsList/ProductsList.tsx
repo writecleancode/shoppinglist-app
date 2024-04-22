@@ -116,9 +116,15 @@ export const ProductsList = ({
 			}
 		})
 		.toSorted((a, b) => {
-			if (sortProductsByCategory(a.category.name) < sortProductsByCategory(b.category.name)) {
+			if (
+				sortProductsByCategory(a.userCategory ? a.userCategory.name : a.category.name) <
+				sortProductsByCategory(b.userCategory ? b.userCategory.name : b.category.name)
+			) {
 				return -1;
-			} else if (sortProductsByCategory(a.category.name) > sortProductsByCategory(b.category.name)) {
+			} else if (
+				sortProductsByCategory(a.userCategory ? a.userCategory.name : a.category.name) >
+				sortProductsByCategory(b.userCategory ? b.userCategory.name : b.category.name)
+			) {
 				return 1;
 			} else {
 				return 0;

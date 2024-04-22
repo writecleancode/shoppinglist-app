@@ -44,6 +44,7 @@ export const MainView = () => {
 	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
 	const [editedProduct, setEditedProduct] = useState(initialEditState);
 	const [highlightedCategory, setHighlightedCategory] = useState('');
+	const [categoryChangeProductId, setCategoryChangeProductId] = useState(null);
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
@@ -77,10 +78,12 @@ export const MainView = () => {
 		setHighlightedCategory('');
 	};
 
-	const openCategoryPanel = (clickedCategory: string) => {
+	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string) => {
 		setCategoryPanelState(true);
 		document.getElementById('changeCategoryPanel')!.focus();
 		setHighlightedCategory(clickedCategory);
+
+		clickedId && setCategoryChangeProductId(clickedId);
 	};
 
 	const closeCategoryPanel = () => {
@@ -97,6 +100,51 @@ export const MainView = () => {
 		}
 
 		closeEditPanel();
+	};
+
+	const handleChangeCategory = clickedCategory => {
+		if (categoryChangeProductId) {
+			if (typeof categoryChangeProductId === 'string') {
+				const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
+				console.log(productIndex);
+				setCustomProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						category: {
+							name: clickedCategory.name,
+							imgSrc: clickedCategory.imgSrc,
+						},
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+			} else if (typeof categoryChangeProductId === 'number') {
+				const productIndex = defaultProducts.map(product => product.id).indexOf(categoryChangeProductId);
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						userCategory: {
+							name: clickedCategory.name,
+							imgSrc: clickedCategory.imgSrc,
+						},
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+			}
+
+			setCategoryChangeProductId(null);
+		} else {
+			setEditedProduct(prevProduct => ({
+				...prevProduct,
+				category: {
+					name: clickedCategory.name,
+					imgSrc: clickedCategory.imgSrc,
+				},
+			}));
+		}
+
+		closeCategoryPanel();
 	};
 
 	const handleSaveChangesButton = () => {
@@ -197,6 +245,7 @@ export const MainView = () => {
 				isOpen={isCategoryPanelOpen}
 				closeCategoryPanel={closeCategoryPanel}
 				highlightedCategory={highlightedCategory}
+				handleChangeCategory={handleChangeCategory}
 			/>
 		</Wrapper>
 	);

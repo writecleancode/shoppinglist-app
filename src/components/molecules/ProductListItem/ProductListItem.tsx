@@ -12,7 +12,7 @@ type ProductListItemProps = {
 
 export const ProductListItem = ({
 	setProductsList,
-	product: { id, name, category, quantity, unit, isBought },
+	product: { id, name, category, userCategory, quantity, unit, isBought },
 	setDefaultProducts,
 	setCustomProducts,
 	customProducts,
@@ -115,12 +115,12 @@ export const ProductListItem = ({
 				{quantity > 0 ? unit : ''}
 			</QuantityOfProduct>
 			<CategoryIcon
-				$category={category.name}
+				$category={userCategory ? userCategory.name : category.name}
 				$isBought={isBought}
 				type='button'
 				aria-label='change product category'
-				onClick={() => openCategoryPanel(category.name)}>
-				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />
+				onClick={() => openCategoryPanel(userCategory ? userCategory.name : category.name, id)}>
+				<img src={userCategory ? userCategory.imgSrc : category.imgSrc} alt={`icon of category: ${userCategory ? userCategory.name : category.name}`} />
 			</CategoryIcon>
 		</Wrapper>
 	);
