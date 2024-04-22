@@ -18,6 +18,7 @@ export const ProductsList = ({
 	customProducts,
 	openEditPanel,
 	setEditedProduct,
+	openCategoryPanel,
 }: ProductsListProps) => {
 	const sortProductsByCategory = (productCategory: string) => {
 		switch (productCategory) {
@@ -136,6 +137,7 @@ export const ProductsList = ({
 				sortProductsByCategory={sortProductsByCategory}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
+				openCategoryPanel={openCategoryPanel}
 			/>
 			<BoughtProducts
 				productsToBuy={productsToBuy}
@@ -146,6 +148,7 @@ export const ProductsList = ({
 				customProducts={customProducts}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
+				openCategoryPanel={openCategoryPanel}
 			/>
 		</Wrapper>
 	);

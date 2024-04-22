@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import {
-	AppShadowLayer,
 	CategoryButton,
 	CategoryIconCircle,
 	ChangeQuantityButton,
@@ -17,6 +16,7 @@ import {
 	UnitInput,
 	Wrapper,
 } from './EditPanel.styles';
+import { AppShadowLayer } from 'src/components/atoms/AppShadowLayer/AppShadowLayer';
 
 type EditPanelProps = {
 	isOpen: boolean;

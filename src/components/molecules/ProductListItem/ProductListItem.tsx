@@ -18,6 +18,7 @@ export const ProductListItem = ({
 	customProducts,
 	openEditPanel,
 	setEditedProduct,
+	openCategoryPanel,
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
@@ -113,7 +114,12 @@ export const ProductListItem = ({
 				{quantity}
 				{quantity > 0 ? unit : ''}
 			</QuantityOfProduct>
-			<CategoryIcon $category={category.name} $isBought={isBought} type='button' aria-label='change product category'>
+			<CategoryIcon
+				$category={category.name}
+				$isBought={isBought}
+				type='button'
+				aria-label='change product category'
+				onClick={openCategoryPanel}>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />
 			</CategoryIcon>
 		</Wrapper>

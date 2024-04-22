@@ -7,6 +7,7 @@ import { AddProducts } from './AddProducts';
 import { Wrapper } from './MainView.styles';
 import { products } from 'src/data/products';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
+import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 
 export type ProductType = {
 	id: number | string;
@@ -24,7 +25,7 @@ const initialEditState = {
 	id: 'abc123',
 	name: 'product name',
 	category: {
-		name: 'other',
+		name: 'cakes, desserts, additives',
 		imgSrc: 'src/assets/img/category-icons/other.png',
 	},
 	quantity: -1,
@@ -39,6 +40,7 @@ export const MainView = () => {
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
 	const [shoppingProgress, setShoppingProgress] = useState(0);
 	const [isEditPanelOpen, setEditPanelState] = useState(false);
+	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
 	const [editedProduct, setEditedProduct] = useState(initialEditState);
 
 	const showAddProductView = () => setAddProductState(true);
@@ -70,6 +72,9 @@ export const MainView = () => {
 
 	const closeEditPanel = () => setEditPanelState(false);
 
+	const openCategoryPanel = () => setCategoryPanelState(true)
+	const closeCategoryPanel = () => setCategoryPanelState(false)
+
 	useEffect(() => {
 		setDefaultProducts(products);
 	}, []);
@@ -97,6 +102,7 @@ export const MainView = () => {
 				customProducts={customProducts}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
+				openCategoryPanel={openCategoryPanel}
 			/>
 			<AddButton onClick={showAddProductView} />
 			<AddProducts
@@ -114,7 +120,9 @@ export const MainView = () => {
 				closeEditPanel={closeEditPanel}
 				editedProduct={editedProduct}
 				setEditedProduct={setEditedProduct}
+				openCategoryPanel={openCategoryPanel}
 			/>
+			<ChangeCategoryPanel isOpen={isCategoryPanelOpen} closeCategoryPanel={closeCategoryPanel} />
 		</Wrapper>
 	);
 };

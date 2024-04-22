@@ -204,7 +204,7 @@ export const products = [
 			name: 'cakes, desserts, additives',
 			imgSrc: 'src/assets/img/category-icons/cakes_desserts_additives.png',
 		},
-		quantity: -1,
+		quantity: 0,
 		unit: '',
 		isBought: false,
 	},
@@ -615,17 +615,17 @@ export const products = [
 	// unit: '',
 	// 	isBought: false,
 	// },
-	// {
-	// 	id: 57,
-	// 	name: 'chicken spice',
-	// 	category: {
-	// 		name: 'spices, sauces, additives',
-	// 		imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
-	// 	},
-	// 	quantity: -1,
-	// unit: '',
-	// 	isBought: false,
-	// },
+	{
+		id: 57,
+		name: 'chicken spice',
+		category: {
+			name: 'spices, sauces, additives',
+			imgSrc: 'src/assets/img/category-icons/spices_sauces_additives.png',
+		},
+		quantity: 0,
+	unit: '',
+		isBought: false,
+	},
 	// {
 	// 	id: 58,
 	// 	name: 'chinese soup',
@@ -1154,17 +1154,17 @@ export const products = [
 	// unit: '',
 	// 	isBought: false,
 	// },
-	// {
-	// 	id: 106,
-	// 	name: 'fries',
-	// 	category: {
-	// 		name: 'frozen foods and ice cream',
-	// 		imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
-	// 	},
-	// 	quantity: -1,
-	// unit: '',
-	// 	isBought: false,
-	// },
+	{
+		id: 106,
+		name: 'fries',
+		category: {
+			name: 'frozen foods and ice cream',
+			imgSrc: 'src/assets/img/category-icons/frozen_foods_and_ice_cream.png',
+		},
+		quantity: 0,
+	unit: '',
+		isBought: false,
+	},
 	// {
 	// 	id: 107,
 	// 	name: 'frozen food',

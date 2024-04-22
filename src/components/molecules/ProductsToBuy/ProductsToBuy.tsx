@@ -18,6 +18,7 @@ export const ProductsToBuy = ({
 	sortProductsByCategory,
 	openEditPanel,
 	setEditedProduct,
+	openCategoryPanel,
 }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
@@ -32,6 +33,7 @@ export const ProductsToBuy = ({
 						customProducts={customProducts}
 						openEditPanel={openEditPanel}
 						setEditedProduct={setEditedProduct}
+						openCategoryPanel={openCategoryPanel}
 					/>
 				) : null
 			)}
