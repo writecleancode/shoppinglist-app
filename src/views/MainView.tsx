@@ -8,6 +8,7 @@ import { Wrapper } from './MainView.styles';
 import { products } from 'src/data/products';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
+import { v4 as uuid } from 'uuid';
 
 export type ProductType = {
 	id: number | string;
@@ -107,7 +108,32 @@ export const MainView = () => {
 				...prevProducts.slice(productIndex + 1),
 			]);
 		} else if (typeof editedProduct.id === 'number') {
-			console.log('number');
+			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
+
+			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						category: editedProduct.category,
+						quantity: editedProduct.quantity,
+						unit: editedProduct.unit,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+			} else {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						quantity: -1,
+						unit: '',
+						isBought: false,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+				setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
+			}
 		}
 
 		closeEditPanel();
