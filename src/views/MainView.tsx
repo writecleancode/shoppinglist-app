@@ -72,8 +72,29 @@ export const MainView = () => {
 
 	const closeEditPanel = () => setEditPanelState(false);
 
-	const openCategoryPanel = () => setCategoryPanelState(true)
-	const closeCategoryPanel = () => setCategoryPanelState(false)
+	const openCategoryPanel = () => {
+		setCategoryPanelState(true);
+		document.getElementById('changeCategoryPanel')!.focus();
+	};
+
+	const closeCategoryPanel = () => setCategoryPanelState(false);
+
+	const handleClosePanels = e => {
+		if (e.key !== 'Escape') return;
+
+		if (isCategoryPanelOpen) {
+			closeCategoryPanel();
+			return;
+		}
+
+		closeEditPanel();
+	};
+
+	useEffect(() => {
+		window.addEventListener('keydown', handleClosePanels);
+
+		return () => window.removeEventListener('keydown', handleClosePanels);
+	}, [isEditPanelOpen, isCategoryPanelOpen]);
 
 	useEffect(() => {
 		setDefaultProducts(products);

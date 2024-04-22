@@ -13,8 +13,8 @@ import {
 export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel }) => {
 	return (
 		<>
-			<AppShadowLayerBright $isOpen={isOpen}></AppShadowLayerBright>
-			<Wrapper $isOpen={isOpen}>
+			<AppShadowLayerBright $isOpen={isOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
+			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isOpen}>
 				<Header>
 					<Title>Change category</Title>
 					<CloseButton onClick={closeCategoryPanel}>

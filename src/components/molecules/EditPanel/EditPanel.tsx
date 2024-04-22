@@ -22,12 +22,18 @@ type EditPanelProps = {
 	isOpen: boolean;
 };
 
-export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProduct }: EditPanelProps) => {
-	const checkKey = e => {
-		if (e.key !== 'Escape') return;
+export const EditPanel = ({
+	isOpen,
+	closeEditPanel,
+	editedProduct,
+	setEditedProduct,
+	openCategoryPanel,
+}: EditPanelProps) => {
+	// const checkKey = e => {
+	// 	if (e.key !== 'Escape') return;
 
-		closeEditPanel();
-	};
+	// 	closeEditPanel();
+	// };
 
 	const handleNameChange = e => {
 		setEditedProduct(prevProduct => ({
@@ -66,9 +72,11 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 		}));
 	};
 
-	useEffect(() => {
-		window.addEventListener('keydown', checkKey);
-	}, []);
+	// useEffect(() => {
+	// 	window.addEventListener('keydown', handleClosePanels);
+
+	// 	return () => window.removeEventListener('keydown', handleClosePanels);
+	// }, [isOpen]);
 
 	return (
 		<>
@@ -86,7 +94,7 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
 					<NameInput type='text' value={editedProduct.name} onChange={handleNameChange} />
-					<CategoryButton type='button' aria-label='change product category'>
+					<CategoryButton type='button' aria-label='change product category' onClick={openCategoryPanel}>
 						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
 							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
 						</CategoryIconCircle>
@@ -111,10 +119,18 @@ export const EditPanel = ({ isOpen, closeEditPanel, editedProduct, setEditedProd
 						onChange={handleUnitChange}
 					/>
 					<UnitButtonsWrapper>
-						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'}>l</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('ml')} $isCurrentUnit={editedProduct.unit === 'ml'}>ml</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('kg')} $isCurrentUnit={editedProduct.unit === 'kg'}>kg</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('g')} $isCurrentUnit={editedProduct.unit === 'g'}>g</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'}>
+							l
+						</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('ml')} $isCurrentUnit={editedProduct.unit === 'ml'}>
+							ml
+						</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('kg')} $isCurrentUnit={editedProduct.unit === 'kg'}>
+							kg
+						</UnitButton>
+						<UnitButton onClick={() => handleUnitButtons('g')} $isCurrentUnit={editedProduct.unit === 'g'}>
+							g
+						</UnitButton>
 					</UnitButtonsWrapper>
 					<QuantityButtonWrapper>
 						<ChangeQuantityButton onClick={() => handleQuantityButtons('decrease')}>
