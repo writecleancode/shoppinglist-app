@@ -6,6 +6,8 @@ export const CategoryIcon = styled.button<{ $category: string; $isBought: boolea
 	border-radius: 100rem;
 	width: 3.2rem;
 	height: 3.2rem;
+	box-shadow: 0px 0px 4px inset rgba(0, 0, 0, 0.05);
+	/* box-shadow: 3px -3px 4px inset rgba(0, 0, 0, 0.15); */
 	background-color: ${({ $category, $isBought }) => {
 		if ($isBought) {
 			return 'transparent';

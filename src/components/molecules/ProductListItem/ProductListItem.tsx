@@ -119,7 +119,7 @@ export const ProductListItem = ({
 				$isBought={isBought}
 				type='button'
 				aria-label='change product category'
-				onClick={openCategoryPanel}>
+				onClick={() => openCategoryPanel(category.name)}>
 				<img src={category.imgSrc} alt={`icon of category: ${category.name}`} />
 			</CategoryIcon>
 		</Wrapper>

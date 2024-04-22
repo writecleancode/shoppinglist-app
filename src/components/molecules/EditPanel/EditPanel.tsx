@@ -94,7 +94,10 @@ export const EditPanel = ({
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
 					<NameInput type='text' value={editedProduct.name} onChange={handleNameChange} />
-					<CategoryButton type='button' aria-label='change product category' onClick={openCategoryPanel}>
+					<CategoryButton
+						type='button'
+						aria-label='change product category'
+						onClick={() => openCategoryPanel(editedProduct.category.name)}>
 						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
 							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
 						</CategoryIconCircle>

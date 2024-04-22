@@ -42,6 +42,7 @@ export const MainView = () => {
 	const [isEditPanelOpen, setEditPanelState] = useState(false);
 	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
 	const [editedProduct, setEditedProduct] = useState(initialEditState);
+	const [highlightedCategory, setHighlightedCategory] = useState('');
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
@@ -70,14 +71,21 @@ export const MainView = () => {
 		document.getElementById('editPanel')!.focus();
 	};
 
-	const closeEditPanel = () => setEditPanelState(false);
-
-	const openCategoryPanel = () => {
-		setCategoryPanelState(true);
-		document.getElementById('changeCategoryPanel')!.focus();
+	const closeEditPanel = () => {
+		setEditPanelState(false);
+		setHighlightedCategory('');
 	};
 
-	const closeCategoryPanel = () => setCategoryPanelState(false);
+	const openCategoryPanel = (clickedCategory: string) => {
+		setCategoryPanelState(true);
+		document.getElementById('changeCategoryPanel')!.focus();
+		setHighlightedCategory(clickedCategory);
+	};
+
+	const closeCategoryPanel = () => {
+		setCategoryPanelState(false);
+		setHighlightedCategory('');
+	};
 
 	const handleClosePanels = e => {
 		if (e.key !== 'Escape') return;
@@ -143,7 +151,11 @@ export const MainView = () => {
 				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
 			/>
-			<ChangeCategoryPanel isOpen={isCategoryPanelOpen} closeCategoryPanel={closeCategoryPanel} />
+			<ChangeCategoryPanel
+				isOpen={isCategoryPanelOpen}
+				closeCategoryPanel={closeCategoryPanel}
+				highlightedCategory={highlightedCategory}
+			/>
 		</Wrapper>
 	);
 };
