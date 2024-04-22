@@ -98,6 +98,21 @@ export const MainView = () => {
 		closeEditPanel();
 	};
 
+	const handleSaveChangesButton = () => {
+		if (typeof editedProduct.id === 'string') {
+			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, productIndex),
+				editedProduct,
+				...prevProducts.slice(productIndex + 1),
+			]);
+		} else if (typeof editedProduct.id === 'number') {
+			console.log('number');
+		}
+
+		closeEditPanel();
+	};
+
 	useEffect(() => {
 		window.addEventListener('keydown', handleClosePanels);
 
@@ -150,6 +165,7 @@ export const MainView = () => {
 				editedProduct={editedProduct}
 				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
+				handleSaveChangesButton={handleSaveChangesButton}
 			/>
 			<ChangeCategoryPanel
 				isOpen={isCategoryPanelOpen}

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
 	CategoryButton,
 	CategoryIconCircle,
@@ -28,6 +27,8 @@ export const EditPanel = ({
 	editedProduct,
 	setEditedProduct,
 	openCategoryPanel,
+	handleSaveButton,
+	handleSaveChangesButton,
 }: EditPanelProps) => {
 	// const checkKey = e => {
 	// 	if (e.key !== 'Escape') return;
@@ -87,7 +88,7 @@ export const EditPanel = ({
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
 						abort
 					</ControlChangesButton>
-					<ControlChangesButton>
+					<ControlChangesButton onClick={() => handleSaveChangesButton(editedProduct.id)}>
 						<img src='src/assets/icons/check-small.svg' alt='' />
 						save
 					</ControlChangesButton>
