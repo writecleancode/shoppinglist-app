@@ -30,7 +30,7 @@ export const MainView = () => {
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
 
-	const handleClosePanels = e => {
+	const handleClosePanels = (e: KeyboardEvent) => {
 		if (e.key !== 'Escape') return;
 
 		if (isCategoryPanelOpen) {
