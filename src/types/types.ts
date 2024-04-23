@@ -21,6 +21,7 @@ export type ProductsContextType = {
 	setCustomProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	countShoppingProgress: () => void;
+	removeBoughtProducts: () => void;
 };
 
 export type EditProductContextType = {

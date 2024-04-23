@@ -10,6 +10,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	setCustomProducts: () => {},
 	setProductsList: () => {},
 	countShoppingProgress: () => {},
+	removeBoughtProducts: () => {},
 });
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
@@ -37,6 +38,26 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		setShoppingProgress(boughtProductsPercentage);
 	};
 
+	const removeBoughtProducts = () => {
+		const filteredCustomProducts = customProducts.filter(product => product.isBought === false);
+		const resetDefaultProducts = defaultProducts.map(product => {
+			if (product.isBought === true) {
+				return {
+					id: product.id,
+					name: product.name,
+					category: product.category,
+					quantity: -1,
+					unit: '',
+					isBought: false,
+				};
+			} else {
+				return product;
+			}
+		});
+		setCustomProducts(filteredCustomProducts);
+		setDefaultProducts(resetDefaultProducts);
+	};
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -48,6 +69,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				productsList,
 				setProductsList,
 				countShoppingProgress,
+				removeBoughtProducts,
 			}}>
 			{children}
 		</ProductsContext.Provider>

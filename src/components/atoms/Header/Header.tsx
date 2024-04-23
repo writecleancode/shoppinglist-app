@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { EllipsisButton, H1, Icon, RemoveBoughtProductsButton, Wrapper } from './Header.styles';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
-export const Header = ({ removeBoughtProducts }) => {
+export const Header = () => {
 	const [isRemoveButtonVisible, setRemoveButtonState] = useState(false);
+	const { removeBoughtProducts } = useContext(ProductsContext);
 
 	const handleRemoveButtonState = () => setRemoveButtonState(prevState => !prevState);
 
