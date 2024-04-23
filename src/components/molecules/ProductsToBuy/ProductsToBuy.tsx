@@ -10,7 +10,6 @@ export const ProductsToBuy = ({
 	productsList,
 	sortProductsByCategory,
 	openEditPanel,
-	setEditedProduct,
 	openCategoryPanel,
 }: ProductsToBuyProps) => {
 	return (
@@ -21,7 +20,6 @@ export const ProductsToBuy = ({
 						key={product.id}
 						product={product}
 						openEditPanel={openEditPanel}
-						setEditedProduct={setEditedProduct}
 						openCategoryPanel={openCategoryPanel}
 					/>
 				) : null

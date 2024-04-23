@@ -7,12 +7,7 @@ type ProductsListProps = {
 	productsList: ProductType[];
 };
 
-export const ProductsList = ({
-	productsList,
-	openEditPanel,
-	setEditedProduct,
-	openCategoryPanel,
-}: ProductsListProps) => {
+export const ProductsList = ({ productsList, openEditPanel, openCategoryPanel }: ProductsListProps) => {
 	const sortProductsByCategory = (productCategory: string) => {
 		switch (productCategory) {
 			case 'appliances and electronics':
@@ -130,13 +125,11 @@ export const ProductsList = ({
 				productsList={sortedProductsList}
 				sortProductsByCategory={sortProductsByCategory}
 				openEditPanel={openEditPanel}
-				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
 			/>
 			<BoughtProducts
 				productsList={sortedProductsList}
 				openEditPanel={openEditPanel}
-				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
 			/>
 		</Wrapper>

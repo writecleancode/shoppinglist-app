@@ -21,6 +21,26 @@ export type ProductsContextType = {
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
+export type EditProductContextType = {
+	editedProduct: ProductType;
+	setEditedProduct: React.Dispatch<React.SetStateAction<ProductType>>;
+};
+
+export type ChangeCategoryContextType = {
+	highlightedCategory: string;
+	categoryChangeProductId: string | null;
+	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
+	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<null>>;
+};
+
 export type ProductsProviderProps = {
+	children: ReactNode;
+};
+
+export type EditProductProviderProps = {
+	children: ReactNode;
+};
+
+export type ChangeCategoryProviderProps = {
 	children: ReactNode;
 };

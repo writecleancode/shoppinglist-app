@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid';
+import { ProductsContext } from 'src/providers/ProductsProvider';
+import { EditProductContext } from 'src/providers/EditProductProvider';
+import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
@@ -9,27 +11,13 @@ import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 import { Wrapper } from './MainView.styles';
-import { ProductType } from 'src/types/types';
-import { ProductsContext } from 'src/providers/ProductsProvider';
-
-const initialEditState = {
-	id: 'abc123',
-	name: 'product name',
-	category: {
-		name: 'other',
-		imgSrc: 'src/assets/img/category-icons/other.png',
-	},
-	quantity: -1,
-	unit: '',
-	isBought: false,
-};
 
 export const MainView = () => {
 	const { defaultProducts, customProducts, productsList, setDefaultProducts, setCustomProducts, setProductsList } =
 		useContext(ProductsContext);
-	const [editedProduct, setEditedProduct] = useState(initialEditState);
-	const [highlightedCategory, setHighlightedCategory] = useState('');
-	const [categoryChangeProductId, setCategoryChangeProductId] = useState(null);
+	const { setEditedProduct } = useContext(EditProductContext);
+	const { highlightedCategory, categoryChangeProductId, setHighlightedCategory, setCategoryChangeProductId } =
+		useContext(ChangeCategoryContext);
 	const [isAddProductActive, setAddProductState] = useState(false);
 	const [isEditPanelOpen, setEditPanelState] = useState(false);
 	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
@@ -95,7 +83,6 @@ export const MainView = () => {
 		if (categoryChangeProductId) {
 			if (typeof categoryChangeProductId === 'string') {
 				const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
-				console.log(productIndex);
 				setCustomProducts(prevProducts => [
 					...prevProducts.slice(0, productIndex),
 					{
@@ -134,46 +121,6 @@ export const MainView = () => {
 		}
 
 		closeCategoryPanel();
-	};
-
-	const handleSaveChangesButton = () => {
-		if (typeof editedProduct.id === 'string') {
-			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
-			setCustomProducts(prevProducts => [
-				...prevProducts.slice(0, productIndex),
-				editedProduct,
-				...prevProducts.slice(productIndex + 1),
-			]);
-		} else if (typeof editedProduct.id === 'number') {
-			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
-
-			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						category: editedProduct.category,
-						quantity: editedProduct.quantity,
-						unit: editedProduct.unit,
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
-			} else {
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						quantity: -1,
-						unit: '',
-						isBought: false,
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
-				setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
-			}
-		}
-
-		closeEditPanel();
 	};
 
 	const removeBoughtProducts = () => {
@@ -220,22 +167,10 @@ export const MainView = () => {
 				<Header removeBoughtProducts={removeBoughtProducts} />
 				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
-			<ProductsList
-				productsList={productsList}
-				openEditPanel={openEditPanel}
-				setEditedProduct={setEditedProduct}
-				openCategoryPanel={openCategoryPanel}
-			/>
+			<ProductsList productsList={productsList} openEditPanel={openEditPanel} openCategoryPanel={openCategoryPanel} />
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
-			<EditPanel
-				isOpen={isEditPanelOpen}
-				closeEditPanel={closeEditPanel}
-				editedProduct={editedProduct}
-				setEditedProduct={setEditedProduct}
-				openCategoryPanel={openCategoryPanel}
-				handleSaveChangesButton={handleSaveChangesButton}
-			/>
+			<EditPanel isOpen={isEditPanelOpen} closeEditPanel={closeEditPanel} openCategoryPanel={openCategoryPanel} />
 			<ChangeCategoryPanel
 				isOpen={isCategoryPanelOpen}
 				closeCategoryPanel={closeCategoryPanel}

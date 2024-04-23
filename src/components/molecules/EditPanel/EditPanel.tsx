@@ -1,3 +1,4 @@
+import { ProductType } from 'src/types/types';
 import {
 	CategoryButton,
 	CategoryIconCircle,
@@ -16,20 +17,18 @@ import {
 	Wrapper,
 } from './EditPanel.styles';
 import { AppShadowLayer } from 'src/components/atoms/AppShadowLayer/AppShadowLayer';
+import { useContext } from 'react';
+import { ProductsContext } from 'src/providers/ProductsProvider';
+import { v4 as uuid } from 'uuid';
+import { EditProductContext } from 'src/providers/EditProductProvider';
 
 type EditPanelProps = {
 	isOpen: boolean;
 };
 
-export const EditPanel = ({
-	isOpen,
-	closeEditPanel,
-	editedProduct,
-	setEditedProduct,
-	openCategoryPanel,
-	handleSaveButton,
-	handleSaveChangesButton,
-}: EditPanelProps) => {
+export const EditPanel = ({ isOpen, closeEditPanel, openCategoryPanel, handleSaveButton }: EditPanelProps) => {
+	const { defaultProducts, customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
+	const { editedProduct, setEditedProduct } = useContext(EditProductContext);
 	// const checkKey = e => {
 	// 	if (e.key !== 'Escape') return;
 
@@ -71,6 +70,46 @@ export const EditPanel = ({
 			...prevProduct,
 			quantity: prevProduct.quantity + quantityChanger,
 		}));
+	};
+
+	const handleSaveChangesButton = () => {
+		if (typeof editedProduct.id === 'string') {
+			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, productIndex),
+				editedProduct,
+				...prevProducts.slice(productIndex + 1),
+			]);
+		} else if (typeof editedProduct.id === 'number') {
+			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
+
+			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						category: editedProduct.category,
+						quantity: editedProduct.quantity,
+						unit: editedProduct.unit,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+			} else {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						quantity: -1,
+						unit: '',
+						isBought: false,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+				setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
+			}
+		}
+
+		closeEditPanel();
 	};
 
 	// useEffect(() => {

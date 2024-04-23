@@ -5,6 +5,7 @@ import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { ProductName, Wrapper } from './ProductListItem.styles';
 import { ProductsContext } from 'src/providers/ProductsProvider';
+import { EditProductContext } from 'src/providers/EditProductProvider';
 
 type ProductListItemProps = {
 	product: ProductType;
@@ -13,10 +14,10 @@ type ProductListItemProps = {
 export const ProductListItem = ({
 	product: { id, name, category, userCategory, quantity, unit, isBought },
 	openEditPanel,
-	setEditedProduct,
 	openCategoryPanel,
 }: ProductListItemProps) => {
 	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
+	const { setEditedProduct } = useContext(EditProductContext);
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
 	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {

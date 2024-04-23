@@ -5,12 +5,7 @@ type BoughtProductsProps = {
 	productsList: ProductType[];
 };
 
-export const BoughtProducts = ({
-	productsList,
-	openEditPanel,
-	setEditedProduct,
-	openCategoryPanel,
-}: BoughtProductsProps) => {
+export const BoughtProducts = ({ productsList, openEditPanel, openCategoryPanel }: BoughtProductsProps) => {
 	return (
 		<ul>
 			{productsList.map(product =>
@@ -19,7 +14,6 @@ export const BoughtProducts = ({
 						key={product.id}
 						product={product}
 						openEditPanel={openEditPanel}
-						setEditedProduc={setEditedProduct}
 						openCategoryPanel={openCategoryPanel}
 					/>
 				) : null

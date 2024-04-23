@@ -9,8 +9,12 @@ import {
 	Title,
 	Wrapper,
 } from './ChangeCategoryPanel.styles';
+import { useContext } from 'react';
+import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 
-export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, highlightedCategory, handleChangeCategory }) => {
+export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, handleChangeCategory }) => {
+	const { highlightedCategory } = useContext(ChangeCategoryContext);
+
 	return (
 		<>
 			<AppShadowLayerBright $isOpen={isOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
