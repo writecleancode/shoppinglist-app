@@ -18,12 +18,6 @@ export const Wrapper = styled.div`
 		overflow: clip;
 	}
 
-	/* @media (min-height: 880px) {
-		border-radius: 24px;
-		height: 100%;
-		max-height: 880px;
-	} */
-
 	@media (min-width: 992px) {
 		max-width: 720px;
 	}
