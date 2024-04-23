@@ -9,24 +9,13 @@ import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 import { Wrapper } from './MainView.styles';
-
-export type ProductType = {
-	id: number | string;
-	name: string;
-	category: {
-		name: string;
-		imgSrc: string;
-	};
-	quantity: number;
-	unit: string;
-	isBought: boolean;
-};
+import { ProductType } from 'src/types/types';
 
 const initialEditState = {
 	id: 'abc123',
 	name: 'product name',
 	category: {
-		name: 'cakes, desserts, additives',
+		name: 'other',
 		imgSrc: 'src/assets/img/category-icons/other.png',
 	},
 	quantity: -1,
@@ -35,16 +24,16 @@ const initialEditState = {
 };
 
 export const MainView = () => {
-	const [isAddProductActive, setAddProductState] = useState(false);
 	const [defaultProducts, setDefaultProducts] = useState<never[] | ProductType[]>([]);
 	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
 	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
-	const [shoppingProgress, setShoppingProgress] = useState(0);
-	const [isEditPanelOpen, setEditPanelState] = useState(false);
-	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
 	const [editedProduct, setEditedProduct] = useState(initialEditState);
 	const [highlightedCategory, setHighlightedCategory] = useState('');
 	const [categoryChangeProductId, setCategoryChangeProductId] = useState(null);
+	const [isAddProductActive, setAddProductState] = useState(false);
+	const [isEditPanelOpen, setEditPanelState] = useState(false);
+	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
+	const [shoppingProgress, setShoppingProgress] = useState(0);
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
