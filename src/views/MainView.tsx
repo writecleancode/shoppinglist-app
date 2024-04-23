@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
-import { Wrapper } from './MainView.styles';
-import { products } from 'src/data/products';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
-import { v4 as uuid } from 'uuid';
+import { Wrapper } from './MainView.styles';
 
 export type ProductType = {
 	id: number | string;
