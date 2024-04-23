@@ -22,26 +22,11 @@ html {
 }
 
 body {
-    /* position: relative;
-    display: flex;
-    flex-direction: column;
-    max-width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background-color: ${({ theme }) => theme.colors.dirtyWhite}; */
     color: ${({ theme }) => theme.colors.black};
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 1.5;
-    /* overflow: hidden;
-	overflow: clip; */
-
-    /* @media (min-width: 720px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    } */
 }
 
 img {
