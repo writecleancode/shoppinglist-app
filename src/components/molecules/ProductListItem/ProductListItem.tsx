@@ -1,25 +1,22 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { ProductName, Wrapper } from './ProductListItem.styles';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
 type ProductListItemProps = {
-	setProductsList: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
 	product: ProductType;
 };
 
 export const ProductListItem = ({
-	setProductsList,
 	product: { id, name, category, userCategory, quantity, unit, isBought },
-	setDefaultProducts,
-	setCustomProducts,
-	customProducts,
 	openEditPanel,
 	setEditedProduct,
 	openCategoryPanel,
 }: ProductListItemProps) => {
+	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
 	const [clickedProductId, setClickedProductId] = useState(-1);
 
 	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {
@@ -120,7 +117,10 @@ export const ProductListItem = ({
 				type='button'
 				aria-label='change product category'
 				onClick={() => openCategoryPanel(userCategory ? userCategory.name : category.name, id)}>
-				<img src={userCategory ? userCategory.imgSrc : category.imgSrc} alt={`icon of category: ${userCategory ? userCategory.name : category.name}`} />
+				<img
+					src={userCategory ? userCategory.imgSrc : category.imgSrc}
+					alt={`icon of category: ${userCategory ? userCategory.name : category.name}`}
+				/>
 			</CategoryIcon>
 		</Wrapper>
 	);

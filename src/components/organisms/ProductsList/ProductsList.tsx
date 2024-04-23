@@ -1,21 +1,14 @@
 import { ProductsToBuy } from 'src/components/molecules/ProductsToBuy/ProductsToBuy';
 import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtProducts';
 import { Wrapper } from './ProductsList.styles';
-import { ProductType } from 'src/views/MainView';
+import { ProductType } from 'src/types/types';
 
 type ProductsListProps = {
-	productsToBuy: ProductType[];
-	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
 	productsList: ProductType[];
 };
 
 export const ProductsList = ({
-	productsToBuy,
-	setProductsToBuy,
 	productsList,
-	setDefaultProducts,
-	setCustomProducts,
-	customProducts,
 	openEditPanel,
 	setEditedProduct,
 	openCategoryPanel,
@@ -134,24 +127,14 @@ export const ProductsList = ({
 	return (
 		<Wrapper>
 			<ProductsToBuy
-				productsToBuy={productsToBuy}
-				setProductsToBuy={setProductsToBuy}
 				productsList={sortedProductsList}
-				setDefaultProducts={setDefaultProducts}
-				setCustomProducts={setCustomProducts}
-				customProducts={customProducts}
 				sortProductsByCategory={sortProductsByCategory}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
 			/>
 			<BoughtProducts
-				productsToBuy={productsToBuy}
-				setProductsToBuy={setProductsToBuy}
 				productsList={sortedProductsList}
-				setDefaultProducts={setDefaultProducts}
-				setCustomProducts={setCustomProducts}
-				customProducts={customProducts}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}

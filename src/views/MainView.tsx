@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
@@ -10,6 +10,7 @@ import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 import { Wrapper } from './MainView.styles';
 import { ProductType } from 'src/types/types';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
 const initialEditState = {
 	id: 'abc123',
@@ -24,9 +25,8 @@ const initialEditState = {
 };
 
 export const MainView = () => {
-	const [defaultProducts, setDefaultProducts] = useState<never[] | ProductType[]>([]);
-	const [customProducts, setCustomProducts] = useState<never[] | ProductType[]>([]);
-	const [productsList, setProductsList] = useState<never[] | ProductType[]>([]);
+	const { defaultProducts, customProducts, productsList, setDefaultProducts, setCustomProducts, setProductsList } =
+		useContext(ProductsContext);
 	const [editedProduct, setEditedProduct] = useState(initialEditState);
 	const [highlightedCategory, setHighlightedCategory] = useState('');
 	const [categoryChangeProductId, setCategoryChangeProductId] = useState(null);
@@ -197,22 +197,22 @@ export const MainView = () => {
 	};
 
 	useEffect(() => {
-		window.addEventListener('keydown', handleClosePanels);
-
-		return () => window.removeEventListener('keydown', handleClosePanels);
-	}, [isEditPanelOpen, isCategoryPanelOpen]);
-
-	useEffect(() => {
 		setDefaultProducts(products);
 	}, []);
+
+	useEffect(() => {
+		setProductsList([...defaultProducts, ...customProducts]);
+	}, [defaultProducts, customProducts]);
 
 	useEffect(() => {
 		countShoppingProgress();
 	}, [productsList]);
 
 	useEffect(() => {
-		setProductsList([...defaultProducts, ...customProducts]);
-	}, [defaultProducts, customProducts]);
+		window.addEventListener('keydown', handleClosePanels);
+
+		return () => window.removeEventListener('keydown', handleClosePanels);
+	}, [isEditPanelOpen, isCategoryPanelOpen]);
 
 	return (
 		<Wrapper>
@@ -221,27 +221,13 @@ export const MainView = () => {
 				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
 			<ProductsList
-				productsToBuy={defaultProducts}
-				setProductsToBuy={setDefaultProducts}
 				productsList={productsList}
-				setDefaultProducts={setDefaultProducts}
-				setCustomProducts={setCustomProducts}
-				customProducts={customProducts}
 				openEditPanel={openEditPanel}
 				setEditedProduct={setEditedProduct}
 				openCategoryPanel={openCategoryPanel}
 			/>
 			<AddButton onClick={showAddProductView} />
-			<AddProducts
-				defaultProducts={defaultProducts}
-				setDefaultProducts={setDefaultProducts}
-				isActive={isAddProductActive}
-				hideAddProductView={hideAddProductView}
-				customProducts={customProducts}
-				setCustomProducts={setCustomProducts}
-				productsList={productsList}
-				setProductsList={setProductsList}
-			/>
+			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel
 				isOpen={isEditPanelOpen}
 				closeEditPanel={closeEditPanel}

@@ -1,9 +1,10 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
-import { ProductType } from './MainView';
 import { v4 as uuid } from 'uuid';
+import { ProductType } from 'src/types/types';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
 export const initialProductState = {
 	name: '',
@@ -17,12 +18,8 @@ export const initialProductState = {
 };
 
 type AddItemProps = {
-	defaultProducts: ProductType[];
 	isActive: boolean;
-	setDefaultProducts: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	hideAddProductView: () => void;
-	customProducts: ProductType[];
-	setCustomProducts: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 };
 
 export type CustomProductType = {
@@ -36,16 +33,8 @@ export type CustomProductType = {
 	isBought: boolean;
 };
 
-export const AddProducts = ({
-	defaultProducts,
-	setDefaultProducts,
-	isActive,
-	hideAddProductView,
-	customProducts,
-	setCustomProducts,
-	productsList,
-	setProductsList,
-}: AddItemProps) => {
+export const AddProducts = ({ isActive, hideAddProductView }: AddItemProps) => {
+	const { defaultProducts, customProducts, productsList, setCustomProducts } = useContext(ProductsContext);
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(defaultProducts);
 	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
@@ -122,24 +111,18 @@ export const AddProducts = ({
 						searchInputValue={searchInputValue}
 						setSearchInputValue={setSearchInputValue}
 						clearInput={clearInput}
-						defaultProducts={defaultProducts}
 						setProductsToAdd={setProductsToAdd}
 						customProduct={customProduct}
 						setCustomProduct={setCustomProduct}
-						productsList={productsList}
-						setProductsList={setProductsList}
 					/>
 				</SearchWrapper>
 			</div>
 			<ProductsToAddList
-				setDefaultProducts={setDefaultProducts}
 				products={productsToAdd}
 				customProduct={customProduct}
 				setCustomProduct={setCustomProduct}
 				clearInput={clearInput}
 				setProductsToAdd={setProductsToAdd}
-				customProducts={customProducts}
-				setCustomProducts={setCustomProducts}
 			/>
 		</Wrapper>
 	);

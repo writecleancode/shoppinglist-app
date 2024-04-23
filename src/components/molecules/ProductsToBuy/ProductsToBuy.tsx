@@ -1,20 +1,13 @@
 import { StyledList } from './ProductsToBuy.styles';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { ProductType } from 'src/views/MainView';
+import { ProductType } from 'src/types/types';
 
 type ProductsToBuyProps = {
-	productsToBuy: ProductType[];
-	setProductsToBuy: React.Dispatch<React.SetStateAction<ProductType[] | never[]>>;
 	productsList: ProductType[];
 };
 
 export const ProductsToBuy = ({
-	productsToBuy,
-	setProductsToBuy,
 	productsList,
-	setDefaultProducts,
-	setCustomProducts,
-	customProducts,
 	sortProductsByCategory,
 	openEditPanel,
 	setEditedProduct,
@@ -27,10 +20,6 @@ export const ProductsToBuy = ({
 					<ProductListItem
 						key={product.id}
 						product={product}
-						setProductsList={setProductsToBuy}
-						setDefaultProducts={setDefaultProducts}
-						setCustomProducts={setCustomProducts}
-						customProducts={customProducts}
 						openEditPanel={openEditPanel}
 						setEditedProduct={setEditedProduct}
 						openCategoryPanel={openCategoryPanel}

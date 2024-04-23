@@ -1,14 +1,14 @@
-import { Dispatch, FormEvent, useCallback } from 'react';
+import { Dispatch, FormEvent, useCallback, useContext } from 'react';
 import { debounce } from 'lodash';
-import { ProductType } from 'src/views/MainView';
 import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
 import { CustomProductType, initialProductState } from 'src/views/AddProducts';
+import { ProductType } from 'src/types/types';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
 type SearchBarProps = {
 	searchInputValue: string;
 	setSearchInputValue: Dispatch<React.SetStateAction<string>>;
 	clearInput: () => void;
-	defaultProducts: ProductType[];
 	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	customProduct: CustomProductType;
 	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
@@ -18,13 +18,12 @@ export const SearchBar = ({
 	searchInputValue,
 	setSearchInputValue,
 	clearInput,
-	defaultProducts,
 	setProductsToAdd,
 	customProduct,
 	setCustomProduct,
-	productsList,
-	setProductsList,
 }: SearchBarProps) => {
+	const { productsList } = useContext(ProductsContext);
+
 	const updateProductsList = useCallback(
 		debounce((searchPhrase = '') => {
 			if (!searchPhrase) return setProductsToAdd(productsList);

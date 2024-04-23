@@ -1,11 +1,11 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { Dispatch, useContext, useState } from 'react';
 import { ProductType } from 'src/views/MainView';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
 import { CustomProductType } from 'src/views/AddProducts';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 
 type ProductsToAddListProps = {
-	setDefaultProducts: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	products: ProductType[];
 	customProduct: CustomProductType;
 	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
@@ -14,15 +14,13 @@ type ProductsToAddListProps = {
 let timeout: NodeJS.Timeout;
 
 export const ProductsToAddList = ({
-	setDefaultProducts,
 	products,
 	customProduct,
 	setCustomProduct,
-	customProducts,
-	setCustomProducts,
 	clearInput,
 	setProductsToAdd,
 }: ProductsToAddListProps) => {
+	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
 	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
 	const [quantityNumber, setQuantityNumber] = useState(-1); // used for plus icon rotate animation - to prevent animation after custom product is replaced by another
 
