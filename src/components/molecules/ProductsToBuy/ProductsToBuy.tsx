@@ -6,23 +6,11 @@ type ProductsToBuyProps = {
 	productsList: ProductType[];
 };
 
-export const ProductsToBuy = ({
-	productsList,
-	sortProductsByCategory,
-	openEditPanel,
-	openCategoryPanel,
-}: ProductsToBuyProps) => {
+export const ProductsToBuy = ({ productsList, sortProductsByCategory }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
 			{productsList.map(product =>
-				product.quantity >= 0 && !product.isBought ? (
-					<ProductListItem
-						key={product.id}
-						product={product}
-						openEditPanel={openEditPanel}
-						openCategoryPanel={openCategoryPanel}
-					/>
-				) : null
+				product.quantity >= 0 && !product.isBought ? <ProductListItem key={product.id} product={product} /> : null
 			)}
 		</StyledList>
 	);

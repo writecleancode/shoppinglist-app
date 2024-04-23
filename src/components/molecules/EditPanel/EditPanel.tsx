@@ -21,14 +21,12 @@ import { useContext } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
 import { v4 as uuid } from 'uuid';
 import { EditProductContext } from 'src/providers/EditProductProvider';
+import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 
-type EditPanelProps = {
-	isOpen: boolean;
-};
-
-export const EditPanel = ({ isOpen, closeEditPanel, openCategoryPanel, handleSaveButton }: EditPanelProps) => {
+export const EditPanel = () => {
 	const { defaultProducts, customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
-	const { editedProduct, setEditedProduct } = useContext(EditProductContext);
+	const { isEditPanelOpen, editedProduct, closeEditPanel, setEditedProduct } = useContext(EditProductContext);
+	const { openCategoryPanel } = useContext(ChangeCategoryContext);
 	// const checkKey = e => {
 	// 	if (e.key !== 'Escape') return;
 
@@ -120,8 +118,8 @@ export const EditPanel = ({ isOpen, closeEditPanel, openCategoryPanel, handleSav
 
 	return (
 		<>
-			<AppShadowLayer $isOpen={isOpen} onClick={closeEditPanel}></AppShadowLayer>
-			<Wrapper id='editPanel' tabIndex={0} $isOpen={isOpen}>
+			<AppShadowLayer $isOpen={isEditPanelOpen} onClick={closeEditPanel}></AppShadowLayer>
+			<Wrapper id='editPanel' tabIndex={0} $isOpen={isEditPanelOpen}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />

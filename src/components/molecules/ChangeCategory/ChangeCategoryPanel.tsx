@@ -12,13 +12,13 @@ import {
 import { useContext } from 'react';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 
-export const ChangeCategoryPanel = ({ isOpen, closeCategoryPanel, handleChangeCategory }) => {
-	const { highlightedCategory } = useContext(ChangeCategoryContext);
+export const ChangeCategoryPanel = ({ handleChangeCategory }) => {
+	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel } = useContext(ChangeCategoryContext);
 
 	return (
 		<>
-			<AppShadowLayerBright $isOpen={isOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
-			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isOpen}>
+			<AppShadowLayerBright $isOpen={isCategoryPanelOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
+			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isCategoryPanelOpen}>
 				<Header>
 					<Title>Change category</Title>
 					<CloseButton onClick={closeCategoryPanel}>

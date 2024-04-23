@@ -5,18 +5,11 @@ type BoughtProductsProps = {
 	productsList: ProductType[];
 };
 
-export const BoughtProducts = ({ productsList, openEditPanel, openCategoryPanel }: BoughtProductsProps) => {
+export const BoughtProducts = ({ productsList }: BoughtProductsProps) => {
 	return (
 		<ul>
 			{productsList.map(product =>
-				product.quantity >= 0 && product.isBought ? (
-					<ProductListItem
-						key={product.id}
-						product={product}
-						openEditPanel={openEditPanel}
-						openCategoryPanel={openCategoryPanel}
-					/>
-				) : null
+				product.quantity >= 0 && product.isBought ? <ProductListItem key={product.id} product={product} /> : null
 			)}
 		</ul>
 	);

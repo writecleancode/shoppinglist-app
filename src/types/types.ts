@@ -16,21 +16,29 @@ export type ProductsContextType = {
 	defaultProducts: never[] | ProductType[];
 	customProducts: never[] | ProductType[];
 	productsList: never[] | ProductType[];
+	shoppingProgress: number;
 	setDefaultProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setCustomProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+	countShoppingProgress: () => void;
 };
 
 export type EditProductContextType = {
+	isEditPanelOpen: boolean;
 	editedProduct: ProductType;
+	openEditPanel: () => void;
+	closeEditPanel: () => void;
 	setEditedProduct: React.Dispatch<React.SetStateAction<ProductType>>;
 };
 
 export type ChangeCategoryContextType = {
+	isCategoryPanelOpen: boolean;
 	highlightedCategory: string;
-	categoryChangeProductId: string | null;
+	categoryChangeProductId: string | number | null;
+	openCategoryPanel: (clickedCategory: string, clickedId?: number | string) => void;
+	closeCategoryPanel: () => void;
 	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
-	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<null>>;
+	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<string | number | null>>;
 };
 
 export type ProductsProviderProps = {

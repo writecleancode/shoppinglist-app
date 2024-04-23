@@ -1,13 +1,13 @@
+import { useContext } from 'react';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 import { Bar, Wrapper } from './ProgressBar.styles';
 
-type ProgressBarProps = {
-	currentProgress: number;
-};
+export const ProgressBar = () => {
+	const { shoppingProgress } = useContext(ProductsContext);
 
-export const ProgressBar = ({ currentProgress }: ProgressBarProps) => {
 	return (
 		<Wrapper>
-			<Bar $currentProgress={currentProgress} />
+			<Bar $currentProgress={shoppingProgress} />
 		</Wrapper>
 	);
 };

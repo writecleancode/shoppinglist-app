@@ -13,60 +13,22 @@ import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/Cha
 import { Wrapper } from './MainView.styles';
 
 export const MainView = () => {
-	const { defaultProducts, customProducts, productsList, setDefaultProducts, setCustomProducts, setProductsList } =
-		useContext(ProductsContext);
-	const { setEditedProduct } = useContext(EditProductContext);
-	const { highlightedCategory, categoryChangeProductId, setHighlightedCategory, setCategoryChangeProductId } =
-		useContext(ChangeCategoryContext);
 	const [isAddProductActive, setAddProductState] = useState(false);
-	const [isEditPanelOpen, setEditPanelState] = useState(false);
-	const [isCategoryPanelOpen, setCategoryPanelState] = useState(false);
-	const [shoppingProgress, setShoppingProgress] = useState(0);
+	const {
+		defaultProducts,
+		customProducts,
+		productsList,
+		setDefaultProducts,
+		setCustomProducts,
+		setProductsList,
+		countShoppingProgress,
+	} = useContext(ProductsContext);
+	const { isEditPanelOpen, closeEditPanel, setEditedProduct } = useContext(EditProductContext);
+	const { isCategoryPanelOpen, categoryChangeProductId, closeCategoryPanel, setCategoryChangeProductId } =
+		useContext(ChangeCategoryContext);
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
-
-	const countShoppingProgress = () => {
-		let productToBuy = 0;
-		let boughtProducts = 0;
-
-		for (let i = 0; i < productsList.length; i++) {
-			if (productsList[i].quantity >= 0) productToBuy++;
-		}
-
-		for (let i = 0; i < productsList.length; i++) {
-			if (productsList[i].quantity >= 0 && productsList[i].isBought === true) {
-				boughtProducts++;
-			}
-		}
-
-		const boughtProductsPercentage = Math.round((boughtProducts / productToBuy) * 100);
-
-		setShoppingProgress(boughtProductsPercentage);
-	};
-
-	const openEditPanel = () => {
-		setEditPanelState(true);
-		document.getElementById('editPanel')!.focus();
-	};
-
-	const closeEditPanel = () => {
-		setEditPanelState(false);
-		setHighlightedCategory('');
-	};
-
-	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string) => {
-		setCategoryPanelState(true);
-		document.getElementById('changeCategoryPanel')!.focus();
-		setHighlightedCategory(clickedCategory);
-
-		clickedId && setCategoryChangeProductId(clickedId);
-	};
-
-	const closeCategoryPanel = () => {
-		setCategoryPanelState(false);
-		setHighlightedCategory('');
-	};
 
 	const handleClosePanels = e => {
 		if (e.key !== 'Escape') return;
@@ -165,18 +127,13 @@ export const MainView = () => {
 		<Wrapper>
 			<div>
 				<Header removeBoughtProducts={removeBoughtProducts} />
-				<ProgressBar currentProgress={shoppingProgress} />
+				<ProgressBar />
 			</div>
-			<ProductsList productsList={productsList} openEditPanel={openEditPanel} openCategoryPanel={openCategoryPanel} />
+			<ProductsList productsList={productsList} />
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
-			<EditPanel isOpen={isEditPanelOpen} closeEditPanel={closeEditPanel} openCategoryPanel={openCategoryPanel} />
-			<ChangeCategoryPanel
-				isOpen={isCategoryPanelOpen}
-				closeCategoryPanel={closeCategoryPanel}
-				highlightedCategory={highlightedCategory}
-				handleChangeCategory={handleChangeCategory}
-			/>
+			<EditPanel />
+			<ChangeCategoryPanel handleChangeCategory={handleChangeCategory} />
 		</Wrapper>
 	);
 };
