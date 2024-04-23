@@ -187,6 +187,26 @@ export const MainView = () => {
 		closeEditPanel();
 	};
 
+	const removeBoughtProducts = () => {
+		const filteredCustomProducts = customProducts.filter(product => product.isBought === false);
+		const resetDefaultProducts = defaultProducts.map(product => {
+			if (product.isBought === true) {
+				return {
+					id: product.id,
+					name: product.name,
+					category: product.category,
+					quantity: -1,
+					unit: '',
+					isBought: false,
+				};
+			} else {
+				return product;
+			}
+		});
+		setCustomProducts(filteredCustomProducts);
+		setDefaultProducts(resetDefaultProducts);
+	};
+
 	useEffect(() => {
 		window.addEventListener('keydown', handleClosePanels);
 
@@ -208,7 +228,7 @@ export const MainView = () => {
 	return (
 		<Wrapper>
 			<div>
-				<Header />
+				<Header removeBoughtProducts={removeBoughtProducts} />
 				<ProgressBar currentProgress={shoppingProgress} />
 			</div>
 			<ProductsList

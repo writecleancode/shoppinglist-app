@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { EllipsisButton, H1, Icon, RemoveBoughtProductsButton, Wrapper } from './Header.styles';
 
-export const Header = () => {
+export const Header = ({ removeBoughtProducts }) => {
 	const [isRemoveButtonVisible, setRemoveButtonState] = useState(false);
 
 	const handleRemoveButtonState = () => setRemoveButtonState(prevState => !prevState);
 
 	const handleRemoveBoughtProductsButton = () => {
+		removeBoughtProducts();
 		setRemoveButtonState(false);
 	};
 
