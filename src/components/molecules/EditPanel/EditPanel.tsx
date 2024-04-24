@@ -25,11 +25,6 @@ export const EditPanel = () => {
 	const { updateProductsList } = useContext(ProductsContext);
 	const { isEditPanelOpen, editedProduct, closeEditPanel, dispatch } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
-	// const checkKey = e => {
-	// 	if (e.key !== 'Escape') return;
-
-	// 	closeEditPanel();
-	// };
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		dispatch({ type: actionTypes.inputChange, key: e.target.name, value: e.target.value });
@@ -52,12 +47,6 @@ export const EditPanel = () => {
 		updateProductsList(editedProduct);
 		closeEditPanel();
 	};
-
-	// useEffect(() => {
-	// 	window.addEventListener('keydown', handleClosePanels);
-
-	// 	return () => window.removeEventListener('keydown', handleClosePanels);
-	// }, [isOpen]);
 
 	return (
 		<>
