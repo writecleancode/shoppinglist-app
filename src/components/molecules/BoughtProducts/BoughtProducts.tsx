@@ -1,5 +1,5 @@
-import { ProductType } from 'src/views/MainView';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
+import { ProductType } from 'src/types/types';
 
 type BoughtProductsProps = {
 	productsList: ProductType[];

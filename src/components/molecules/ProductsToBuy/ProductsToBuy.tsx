@@ -1,5 +1,5 @@
-import { StyledList } from './ProductsToBuy.styles';
 import { ProductListItem } from '../ProductListItem/ProductListItem';
+import { StyledList } from './ProductsToBuy.styles';
 import { ProductType } from 'src/types/types';
 
 type ProductsToBuyProps = {
