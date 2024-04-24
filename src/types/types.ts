@@ -45,6 +45,7 @@ export type ProductsContextType = {
 	countShoppingProgress: () => void;
 	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
 	removeBoughtProducts: () => void;
+	updateProductsList: (editedProduct: ProductType) => void;
 };
 
 export type BoughtProductsProps = {

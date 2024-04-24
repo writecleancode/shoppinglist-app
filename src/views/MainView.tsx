@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
-import { EditProductContext } from 'src/providers/EditProductProvider';
+import { EditProductContext, actionTypes } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
@@ -23,7 +23,7 @@ export const MainView = () => {
 		setProductsList,
 		countShoppingProgress,
 	} = useContext(ProductsContext);
-	const { isEditPanelOpen, closeEditPanel, setEditedProduct } = useContext(EditProductContext);
+	const { isEditPanelOpen, closeEditPanel, dispatch } = useContext(EditProductContext);
 	const { isCategoryPanelOpen, categoryChangeProductId, closeCategoryPanel, setCategoryChangeProductId } =
 		useContext(ChangeCategoryContext);
 
@@ -73,13 +73,11 @@ export const MainView = () => {
 
 			setCategoryChangeProductId(null);
 		} else {
-			setEditedProduct(prevProduct => ({
-				...prevProduct,
-				category: {
-					name: clickedCategory.name,
-					imgSrc: clickedCategory.imgSrc,
-				},
-			}));
+			dispatch({
+				type: actionTypes.updateCategory,
+				categoryName: clickedCategory.name,
+				categoryImgSrc: clickedCategory.imgSrc,
+			});
 		}
 
 		closeCategoryPanel();

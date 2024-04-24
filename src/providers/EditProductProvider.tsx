@@ -18,8 +18,10 @@ const initialEditState = {
 export const actionTypes = {
 	setEditedProduct: 'SET CLIKED PRODUCT AS EDITED PRODUCT',
 	inputChange: 'INPUT CHANGE',
+	quantityChange: 'QUANTITY CHANGE',
 	quantityButtonChange: 'QUANTITY CHANGE BY BUTTONS',
 	unitButtonsChange: 'UNIT CHANGE BY BUTTONS',
+	updateCategory: 'UPDATE CATEGORY',
 };
 
 const reducer = (state: ProductType, action: Record<string, any>) => {
@@ -44,6 +46,13 @@ const reducer = (state: ProductType, action: Record<string, any>) => {
 			};
 		}
 
+		case actionTypes.quantityChange: {
+			return {
+				...state,
+				quantity: Number(action.value),
+			};
+		}
+
 		case actionTypes.quantityButtonChange:
 			return {
 				...state,
@@ -55,6 +64,16 @@ const reducer = (state: ProductType, action: Record<string, any>) => {
 				...state,
 				unit: action.unit,
 			};
+
+		case actionTypes.updateCategory: {
+			return {
+				...state,
+				category: {
+					name: action.categoryName,
+					imgSrc: action.categoryImgSrc,
+				},
+			};
+		}
 
 		default:
 			return state;

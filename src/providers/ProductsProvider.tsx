@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import { ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
 
 export const ProductsContext = createContext<ProductsContextType>({
@@ -12,6 +13,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	countShoppingProgress: () => {},
 	handleBoughtStatus: () => {},
 	removeBoughtProducts: () => {},
+	updateProductsList: () => {},
 });
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
@@ -89,6 +91,44 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		setDefaultProducts(resetDefaultProducts);
 	};
 
+	const updateProductsList = (editedProduct: ProductType) => {
+		if (typeof editedProduct.id === 'string') {
+			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, productIndex),
+				editedProduct,
+				...prevProducts.slice(productIndex + 1),
+			]);
+		} else if (typeof editedProduct.id === 'number') {
+			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
+
+			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						userCategory: editedProduct.category,
+						quantity: editedProduct.quantity,
+						unit: editedProduct.unit,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+			} else {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productIndex),
+					{
+						...prevProducts[productIndex],
+						quantity: -1,
+						unit: '',
+						isBought: false,
+					},
+					...prevProducts.slice(productIndex + 1),
+				]);
+				setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
+			}
+		}
+	};
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -102,6 +142,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				countShoppingProgress,
 				handleBoughtStatus,
 				removeBoughtProducts,
+				updateProductsList,
 			}}>
 			{children}
 		</ProductsContext.Provider>
