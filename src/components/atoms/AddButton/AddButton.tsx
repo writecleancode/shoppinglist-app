@@ -9,12 +9,11 @@ export const Wrapper = styled.button`
 	gap: 0.4rem;
 	padding: 0.8rem 1.6rem 0.8rem 0.8rem;
 	border: none;
-	border-radius: 100rem;
+	border-radius: 100px;
 	background-color: ${({ theme }) => theme.colors.secondary};
 	color: #fff;
 	box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.25);
 	font-size: 1.6rem;
-	font-weight: bold;
 	text-transform: uppercase;
 
 	@media (min-width: 576px) {
@@ -24,7 +23,7 @@ export const Wrapper = styled.button`
 
 export const AddButton = (props: any) => {
 	return (
-		<Wrapper type='button' {...props}>
+		<Wrapper {...props} aria-label='add products'>
 			<img src='src/assets/icons/plus.svg' alt='' />
 			Add
 		</Wrapper>
