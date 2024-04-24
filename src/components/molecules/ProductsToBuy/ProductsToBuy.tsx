@@ -6,7 +6,7 @@ type ProductsToBuyProps = {
 	productsList: ProductType[];
 };
 
-export const ProductsToBuy = ({ productsList, sortProductsByCategory }: ProductsToBuyProps) => {
+export const ProductsToBuy = ({ productsList }: ProductsToBuyProps) => {
 	return (
 		<StyledList>
 			{productsList.map(product =>

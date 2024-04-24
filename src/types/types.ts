@@ -7,6 +7,10 @@ export type ProductType = {
 		name: string;
 		imgSrc: string;
 	};
+	userCategory?: {
+		name: string;
+		imgSrc: string;
+	};
 	quantity: number;
 	unit: string;
 	isBought: boolean;
