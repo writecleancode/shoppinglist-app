@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer, useState } from 'react';
 import { EditProductContextType, EditProductProviderProps, ProductType } from 'src/types/types';
 
 const initialEditPanelState = false;
@@ -15,17 +15,63 @@ const initialEditState = {
 	isBought: false,
 };
 
+export const actionTypes = {
+	setEditedProduct: 'SET CLIKED PRODUCT AS EDITED PRODUCT',
+	inputChange: 'INPUT CHANGE',
+	quantityButtonChange: 'QUANTITY CHANGE BY BUTTONS',
+	unitButtonsChange: 'UNIT CHANGE BY BUTTONS',
+};
+
+const reducer = (state: ProductType, action: Record<string, any>) => {
+	switch (action.type) {
+		case actionTypes.setEditedProduct:
+			return {
+				id: action.id,
+				name: action.name,
+				category: {
+					name: action.userCategory ? action.userCategory.name : action.category.name,
+					imgSrc: action.userCategory ? action.userCategory.imgSrc : action.category.imgSrc,
+				},
+				quantity: action.quantity,
+				unit: action.unit,
+				isBought: action.isBought,
+			};
+
+		case actionTypes.inputChange: {
+			return {
+				...state,
+				[action.key]: action.value,
+			};
+		}
+
+		case actionTypes.quantityButtonChange:
+			return {
+				...state,
+				quantity: state.quantity + action.quantityChanger,
+			};
+
+		case actionTypes.unitButtonsChange:
+			return {
+				...state,
+				unit: action.unit,
+			};
+
+		default:
+			return state;
+	}
+};
+
 export const EditProductContext = createContext<EditProductContextType>({
 	isEditPanelOpen: initialEditPanelState,
 	editedProduct: initialEditState,
 	openEditPanel: () => {},
 	closeEditPanel: () => {},
-	setEditedProduct: () => {},
+	dispatch: () => {},
 });
 
 export const EditProductProvider = ({ children }: EditProductProviderProps) => {
 	const [isEditPanelOpen, setEditPanelState] = useState(initialEditPanelState);
-	const [editedProduct, setEditedProduct] = useState<ProductType>(initialEditState);
+	const [editedProduct, dispatch] = useReducer(reducer, initialEditState);
 
 	const openEditPanel = () => {
 		setEditPanelState(true);
@@ -43,7 +89,7 @@ export const EditProductProvider = ({ children }: EditProductProviderProps) => {
 				editedProduct,
 				openEditPanel,
 				closeEditPanel,
-				setEditedProduct,
+				dispatch,
 			}}>
 			{children}
 		</EditProductContext.Provider>

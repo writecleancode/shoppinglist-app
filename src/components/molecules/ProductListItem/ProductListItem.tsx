@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
-import { EditProductContext } from 'src/providers/EditProductProvider';
+import { EditProductContext, actionTypes } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
@@ -13,7 +13,7 @@ export const ProductListItem = ({
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState<string | number>(-1);
 	const { handleBoughtStatus } = useContext(ProductsContext);
-	const { openEditPanel, setEditedProduct } = useContext(EditProductContext);
+	const { openEditPanel, dispatch } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
 
 	const handleBoughtStatusButton = (productId: number | string, isBought: boolean) => {
@@ -22,17 +22,7 @@ export const ProductListItem = ({
 	};
 
 	const handleProductClick = () => {
-		setEditedProduct({
-			id,
-			name,
-			category: {
-				name: userCategory ? userCategory.name : category.name,
-				imgSrc: userCategory ? userCategory.imgSrc : category.imgSrc,
-			},
-			quantity,
-			unit,
-			isBought,
-		});
+		dispatch({ type: actionTypes.setEditedProduct, id, name, category, userCategory, quantity, unit, isBought });
 		openEditPanel();
 	};
 

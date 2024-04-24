@@ -1,7 +1,7 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import { ProductsContext } from 'src/providers/ProductsProvider';
-import { EditProductContext } from 'src/providers/EditProductProvider';
+import { EditProductContext, actionTypes } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { AppShadowLayer } from 'src/components/atoms/AppShadowLayer/AppShadowLayer';
 import {
@@ -24,7 +24,7 @@ import {
 
 export const EditPanel = () => {
 	const { defaultProducts, customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
-	const { isEditPanelOpen, editedProduct, closeEditPanel, setEditedProduct } = useContext(EditProductContext);
+	const { isEditPanelOpen, editedProduct, closeEditPanel, dispatch } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
 	// const checkKey = e => {
 	// 	if (e.key !== 'Escape') return;
@@ -32,41 +32,17 @@ export const EditPanel = () => {
 	// 	closeEditPanel();
 	// };
 
-	const handleNameChange = e => {
-		setEditedProduct(prevProduct => ({
-			...prevProduct,
-			name: e.target.value,
-		}));
+	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		dispatch({ type: actionTypes.inputChange, key: e.target.name, value: e.target.value });
 	};
 
-	const handleQuantityChange = e => {
-		setEditedProduct(prevProduct => ({
-			...prevProduct,
-			quantity: Number(e.target.value),
-		}));
+	const handleUnitButtons = (unit: string) => {
+		dispatch({ type: actionTypes.unitButtonsChange, unit });
 	};
 
-	const handleUnitChange = e => {
-		setEditedProduct(prevProduct => ({
-			...prevProduct,
-			unit: e.target.value,
-		}));
-	};
-
-	const handleUnitButtons = unit => {
-		setEditedProduct(prevProduct => ({
-			...prevProduct,
-			unit: unit,
-		}));
-	};
-
-	const handleQuantityButtons = direction => {
+	const handleQuantityButtons = (direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
-
-		setEditedProduct(prevProduct => ({
-			...prevProduct,
-			quantity: prevProduct.quantity + quantityChanger,
-		}));
+		dispatch({ type: actionTypes.quantityButtonChange, quantityChanger });
 	};
 
 	const handleSaveChangesButton = () => {
@@ -130,7 +106,7 @@ export const EditPanel = () => {
 					</ControlChangesButton>
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
-					<NameInput type='text' value={editedProduct.name} onChange={handleNameChange} />
+					<NameInput type='text' name='name' value={editedProduct.name} onChange={handleInputChange} />
 					<CategoryButton
 						type='button'
 						aria-label='change product category'
@@ -145,18 +121,20 @@ export const EditPanel = () => {
 				<QuantityWrapper>
 					<QuantityInput
 						type='number'
+						name='quantity'
 						placeholder='quantity'
 						min='0'
 						max='9999999'
 						value={editedProduct.quantity > 0 ? editedProduct.quantity : ''}
-						onChange={handleQuantityChange}
+						onChange={handleInputChange}
 					/>
 					<UnitInput
 						type='text'
+						name='unit'
 						placeholder='unit'
 						maxLength={10}
 						value={editedProduct.unit}
-						onChange={handleUnitChange}
+						onChange={handleInputChange}
 					/>
 					<UnitButtonsWrapper>
 						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'}>

@@ -31,7 +31,7 @@ export type EditProductContextType = {
 	editedProduct: ProductType;
 	openEditPanel: () => void;
 	closeEditPanel: () => void;
-	setEditedProduct: React.Dispatch<React.SetStateAction<ProductType>>;
+	dispatch: React.Dispatch<any>;
 };
 
 export type ProductsContextType = {
