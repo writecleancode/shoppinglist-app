@@ -42,10 +42,9 @@ export const ControlChangesButton = styled.button<{ $isAbort?: boolean }>`
 	gap: 0.8rem;
 	padding: 0.8rem 1.6rem;
 	border: 3px solid ${({ $isAbort }) => ($isAbort ? '#f55a5a' : '#56b93c')};
-	border-radius: 100rem;
+	border-radius: 100px;
 	background-color: #fff;
 	font-size: 1.4rem;
-	/* font-weight: 900; */
 	text-transform: uppercase;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 
@@ -71,12 +70,10 @@ export const StyledInput = styled.input`
 	margin-bottom: auto;
 	padding: 0.8rem;
 	border: none;
-	border-radius: 0.8rem;
+	border-radius: 8px;
 	background-color: #f0f0f0;
-	/* background-color: #fff; */
 	font-size: 1.4rem;
 	width: 100%;
-	/* box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); */
 
 	&:focus {
 		outline-color: ${({ theme }) => theme.colors.secondary};
@@ -118,7 +115,6 @@ export const CategoryIconCircle = styled(CategoryIcon)`
 	justify-content: center;
 	align-items: center;
 	margin: 0;
-	/* box-shadow: 0 0 4px rgba(0, 0, 0, .3); */
 `;
 
 export const ChevronRight = styled.img`
@@ -127,8 +123,8 @@ export const ChevronRight = styled.img`
 
 export const QuantityWrapper = styled.div`
 	display: grid;
-	grid-template-rows: auto auto;
-	grid-template-columns: auto auto auto;
+	grid-template-rows: repeat(2, auto);
+	grid-template-columns: repeat(3, auto);
 	gap: 0.8rem;
 
 	@media (min-width: 500px) {
@@ -170,7 +166,7 @@ export const UnitButtonsWrapper = styled.div`
 export const UnitButton = styled.button<{ $isCurrentUnit: boolean }>`
 	padding: 0.4rem 0.8rem;
 	border: none;
-	border-radius: 0.8rem;
+	border-radius: 8px;
 	background-color: #fafafa;
 	background-color: ${({ $isCurrentUnit }) => ($isCurrentUnit ? '#d4e8ff' : '#fff')};
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
@@ -192,8 +188,8 @@ export const QuantityButtonWrapper = styled.div`
 export const ChangeQuantityButton = styled.button`
 	padding: 0.4rem;
 	border: none;
-	background-color: transparent;
 	border-radius: 50%;
+	background-color: transparent;
 
 	img {
 		padding: 0.4rem;

@@ -65,7 +65,6 @@ export const EditPanel = () => {
 				<MainInfoWrapper>
 					<NameInput type='text' name='name' value={editedProduct.name} onChange={handleInputChange} />
 					<CategoryButton
-						type='button'
 						aria-label='change product category'
 						onClick={() => openCategoryPanel(editedProduct.category.name)}>
 						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
@@ -94,24 +93,40 @@ export const EditPanel = () => {
 						onChange={handleInputChange}
 					/>
 					<UnitButtonsWrapper>
-						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'}>
+						<UnitButton
+							onClick={() => handleUnitButtons('l')}
+							$isCurrentUnit={editedProduct.unit === 'l'}
+							aria-label='set unit: l'>
 							l
 						</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('ml')} $isCurrentUnit={editedProduct.unit === 'ml'}>
+						<UnitButton
+							onClick={() => handleUnitButtons('ml')}
+							$isCurrentUnit={editedProduct.unit === 'ml'}
+							aria-label='set unit: ml'>
 							ml
 						</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('kg')} $isCurrentUnit={editedProduct.unit === 'kg'}>
+						<UnitButton
+							onClick={() => handleUnitButtons('kg')}
+							$isCurrentUnit={editedProduct.unit === 'kg'}
+							aria-label='set unit: kg'>
 							kg
 						</UnitButton>
-						<UnitButton onClick={() => handleUnitButtons('g')} $isCurrentUnit={editedProduct.unit === 'g'}>
+						<UnitButton
+							onClick={() => handleUnitButtons('g')}
+							$isCurrentUnit={editedProduct.unit === 'g'}
+							aria-label='set unit: g'>
 							g
 						</UnitButton>
 					</UnitButtonsWrapper>
 					<QuantityButtonWrapper>
-						<ChangeQuantityButton onClick={() => handleQuantityButtons('decrease')}>
+						<ChangeQuantityButton
+							onClick={() => handleQuantityButtons('decrease')}
+							aria-label={`decrease quantity of ${editedProduct.name}`}>
 							<img src='src/assets/icons/minus.svg' alt='' />
 						</ChangeQuantityButton>
-						<ChangeQuantityButton onClick={() => handleQuantityButtons('increase')}>
+						<ChangeQuantityButton
+							onClick={() => handleQuantityButtons('increase')}
+							aria-label={`increase quantity of ${editedProduct.name}`}>
 							<img src='src/assets/icons/plus.svg' alt='' />
 						</ChangeQuantityButton>
 					</QuantityButtonWrapper>
