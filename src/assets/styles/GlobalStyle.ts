@@ -19,6 +19,7 @@ html {
     scroll-behavior: smooth;
     overflow: hidden;
 	overflow: clip;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {

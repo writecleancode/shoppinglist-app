@@ -15,7 +15,7 @@ export const Wrapper = styled.header`
 	}
 `;
 
-export const Icon = styled.img`
+export const CartIcon = styled.img`
 	width: 2.4rem;
 `;
 
@@ -29,7 +29,6 @@ export const EllipsisButton = styled.button`
 	padding: 0.8rem;
 	border: none;
 	background-color: transparent;
-	-webkit-tap-highlight-color: transparent;
 `;
 
 export const RemoveBoughtProductsButton = styled.button<{ $isVisible: boolean }>`
@@ -40,13 +39,11 @@ export const RemoveBoughtProductsButton = styled.button<{ $isVisible: boolean }>
 	gap: 0.8rem;
 	padding: 0.8rem 1.6rem;
 	background-color: #eee;
-	border: 3px solid #aaa;
 	border: none;
 	border-radius: 100px;
 	color: #f10a0a;
-	font-size: 1.5rem;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	translate: ${({ $isVisible }) => ($isVisible ? '0 0' : 'calc(100% + 4rem) 0')};
+	font-size: 1.5rem;
 	translate: ${({ $isVisible }) => ($isVisible ? '0 0' : '0 145%')};
 	opacity: ${({ $isVisible }) => ($isVisible ? '1' : '0')};
 	transition: translate 0.2s ease-in-out, opacity 0.2s;

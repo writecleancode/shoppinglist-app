@@ -41,7 +41,7 @@ export const MainView = () => {
 		closeEditPanel();
 	};
 
-	const handleChangeCategory = clickedCategory => {
+	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
 		if (categoryChangeProductId) {
 			if (typeof categoryChangeProductId === 'string') {
 				const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
