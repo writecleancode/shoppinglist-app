@@ -15,7 +15,7 @@ export const Wrapper = styled.li<{ $isBought: boolean }>`
 	}
 `;
 
-export const ProductName = styled.button`
+export const ProductNameButton = styled.button`
 	display: inline-block;
 	flex-grow: 10;
 	padding: 0.8rem 0;

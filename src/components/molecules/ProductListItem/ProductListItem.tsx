@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
-import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
-import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
-import { ProductType } from 'src/views/MainView';
-import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
-import { ProductName, Wrapper } from './ProductListItem.styles';
 import { ProductsContext } from 'src/providers/ProductsProvider';
 import { EditProductContext } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
+import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
+import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
+import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
+import { ProductNameButton, Wrapper } from './ProductListItem.styles';
+import { ProductType } from 'src/types/types';
 
 type ProductListItemProps = {
 	product: ProductType;
@@ -15,10 +15,10 @@ type ProductListItemProps = {
 export const ProductListItem = ({
 	product: { id, name, category, userCategory, quantity, unit, isBought },
 }: ProductListItemProps) => {
+	const [clickedProductId, setClickedProductId] = useState<string | number>(-1);
 	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
 	const { openEditPanel, setEditedProduct } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
-	const [clickedProductId, setClickedProductId] = useState(-1);
 
 	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {
 		setClickedProductId(productId);
@@ -107,7 +107,9 @@ export const ProductListItem = ({
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
 				onClick={() => handleBoughtStatus(id, isBought)}
 			/>
-			<ProductName onClick={handleOpenEditPanel}>{name}</ProductName>
+			<ProductNameButton onClick={handleOpenEditPanel} aria-label={`${name} (click to edit product details)`}>
+				{name}
+			</ProductNameButton>
 			<QuantityOfProduct $quantity={quantity}>
 				{quantity}
 				{quantity > 0 ? unit : ''}
