@@ -1,4 +1,9 @@
-import { ProductType } from 'src/types/types';
+import { useContext } from 'react';
+import { v4 as uuid } from 'uuid';
+import { ProductsContext } from 'src/providers/ProductsProvider';
+import { EditProductContext } from 'src/providers/EditProductProvider';
+import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
+import { AppShadowLayer } from 'src/components/atoms/AppShadowLayer/AppShadowLayer';
 import {
 	CategoryButton,
 	CategoryIconCircle,
@@ -16,12 +21,6 @@ import {
 	UnitInput,
 	Wrapper,
 } from './EditPanel.styles';
-import { AppShadowLayer } from 'src/components/atoms/AppShadowLayer/AppShadowLayer';
-import { useContext } from 'react';
-import { ProductsContext } from 'src/providers/ProductsProvider';
-import { v4 as uuid } from 'uuid';
-import { EditProductContext } from 'src/providers/EditProductProvider';
-import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 
 export const EditPanel = () => {
 	const { defaultProducts, customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
