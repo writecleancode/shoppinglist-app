@@ -58,15 +58,9 @@ const barsSlide = keyframes`
 
 export const Wrapper = styled.button`
 	position: relative;
-	/* margin-right: 0.8rem; */
 	padding: 0.8rem;
 	border: none;
 	background-color: transparent;
-	
-	@media (min-width: 576px) {
-		/* margin-right: 1.6rem; */
-		/* margin-right: 0.8rem; */
-	}
 `;
 
 export const Circle = styled.div<{ $animationType: string; $isBought: boolean }>`
@@ -78,7 +72,6 @@ export const Circle = styled.div<{ $animationType: string; $isBought: boolean }>
 	height: 24px;
 	visibility: ${({ $isBought, $animationType }) =>
 		$isBought && $animationType !== 'uncheckAnimation' ? 'hidden' : 'visible'};
-	/* animation: ${hideCircle} .3s linear forwards; */
 
 	${({ $animationType }) => {
 		if ($animationType === 'checkAnimation')
@@ -117,7 +110,6 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 		width: 13px;
 		height: 5px;
 		rotate: 43deg;
-		/* animation: ${revealCheckOne} 0.1s linear 1s forwards; */
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
@@ -129,7 +121,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 					animation: ${revealCheckOne} 0.05s linear 0.05s reverse both;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
-		}}/* translate: 8px 8px; */
+		}}
 	}
 
 	&::after {
@@ -138,7 +130,6 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 		width: 5px;
 		height: 14px;
 		rotate: 38deg;
-		/* animation: ${revealCheckTwo} 0.1s linear 1.1s forwards; */
 
 		${({ $animationType }) => {
 			if ($animationType === 'checkAnimation')
@@ -150,7 +141,7 @@ export const IconWrapper = styled.div<{ $animationType: string; $isBought: boole
 					animation: ${revealCheckTwo} 0.05s linear reverse both;
 				`;
 			if ($animationType === 'noAnimation') return 'animation: none;';
-		}}/* translate: 9px -11px; */
+		}}
 	}
 `;
 
@@ -163,7 +154,7 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 		position: absolute;
 		width: 8px;
 		height: 3px;
-		border-radius: 100rem;
+		border-radius: 100px;
 		background-color: #fff;
 		overflow: clip;
 		overflow: hidden;
@@ -172,14 +163,12 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 			content: '';
 			position: absolute;
 			inset: 0;
-			border-radius: 100rem;
+			border-radius: 100px;
 			background-color: #0f9e0d;
 			translate: 100% 0;
 		}
 
 		&:nth-child(odd)::after {
-			/* animation: ${barsSlide} 0.8s 1s; */
-
 			${({ $animationType }) => {
 				if ($animationType === 'checkAnimation')
 					return css`
@@ -190,8 +179,6 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 		}
 
 		&:nth-child(even)::after {
-			/* animation: ${barsSlide} 1s 1s; */
-
 			${({ $animationType }) => {
 				if ($animationType === 'checkAnimation')
 					return css`
@@ -206,15 +193,15 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 		top: 0;
 		left: 50%;
 		transform-origin: 0 50%;
-		rotate: 90deg;
 		translate: 0 -50%;
+		rotate: 90deg;
 	}
 
 	.bar-top-left {
-		rotate: 45deg;
 		top: 20%;
 		left: 20%;
 		translate: -50% -50%;
+		rotate: 45deg;
 	}
 
 	.bar-left {
@@ -224,25 +211,25 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 	}
 
 	.bar-bottom-left {
-		rotate: -45deg;
 		bottom: 20%;
 		left: 20%;
 		translate: -50% 50%;
+		rotate: -45deg;
 	}
 
 	.bar-bottom {
 		bottom: 0;
 		left: 50%;
+		transform-origin: 0 50%;
 		translate: 0 50%;
 		rotate: -90deg;
-		transform-origin: 0 50%;
 	}
 
 	.bar-bottom-right {
 		bottom: 20%;
 		right: 20%;
-		rotate: -135deg;
 		translate: 50% 50%;
+		rotate: -135deg;
 	}
 
 	.bar-right {
@@ -254,7 +241,7 @@ export const BarsWrapper = styled.div<{ $animationType: string }>`
 	.bar-top-right {
 		top: 20%;
 		right: 20%;
-		rotate: 135deg;
 		translate: 50% -50%;
+		rotate: 135deg;
 	}
 `;

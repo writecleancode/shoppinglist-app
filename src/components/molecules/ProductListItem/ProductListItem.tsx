@@ -25,7 +25,7 @@ export const ProductListItem = ({
 		handleBoughtStatus(productId, isBought);
 	};
 
-	const handleOpenEditPanel = () => {
+	const handleProductClick = () => {
 		setEditedProduct({
 			id,
 			name,
@@ -47,7 +47,7 @@ export const ProductListItem = ({
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
 				onClick={() => handleBoughtStatusButton(id, isBought)}
 			/>
-			<ProductNameButton onClick={handleOpenEditPanel} aria-label={`${name} (click to edit product details)`}>
+			<ProductNameButton onClick={handleProductClick} aria-label={`${name} (click to edit product details)`}>
 				{name}
 			</ProductNameButton>
 			<QuantityOfProduct $quantity={quantity}>

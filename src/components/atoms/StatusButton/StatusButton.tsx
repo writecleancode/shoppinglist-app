@@ -9,7 +9,7 @@ type StatusButtonProps = {
 
 export const StatusButton = ({ isBought, animationType, ...props }: StatusButtonProps) => {
 	return (
-		<Wrapper {...props} type='button' aria-label={isBought ? 'mark product as not bought' : 'mark product as bought'}>
+		<Wrapper {...props} aria-label={isBought ? 'mark product as not bought' : 'mark product as bought'}>
 			<Circle $isBought={isBought} $animationType={animationType} />
 			<IconWrapper $isBought={isBought} $animationType={animationType}>
 				<CheckIcon />
