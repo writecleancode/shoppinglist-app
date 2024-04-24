@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 export const Bar = styled.span<{ $currentProgress: number }>`
 	display: block;
 	position: relative;
-	border-radius: 100rem;
+	border-radius: 100px;
 	min-height: 8px;
 	background-color: #d9d9d9;
 	overflow: hidden;
