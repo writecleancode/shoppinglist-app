@@ -29,7 +29,10 @@ export const ProductListItem = ({
 		setEditedProduct({
 			id,
 			name,
-			category,
+			category: {
+				name: userCategory ? userCategory.name : category.name,
+				imgSrc: userCategory ? userCategory.imgSrc : category.imgSrc,
+			},
 			quantity,
 			unit,
 			isBought,

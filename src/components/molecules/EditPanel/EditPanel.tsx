@@ -86,7 +86,7 @@ export const EditPanel = () => {
 					...prevProducts.slice(0, productIndex),
 					{
 						...prevProducts[productIndex],
-						category: editedProduct.category,
+						userCategory: editedProduct.category,
 						quantity: editedProduct.quantity,
 						unit: editedProduct.unit,
 					},
