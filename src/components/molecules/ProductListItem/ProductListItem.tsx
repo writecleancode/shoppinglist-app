@@ -16,76 +16,13 @@ export const ProductListItem = ({
 	product: { id, name, category, userCategory, quantity, unit, isBought },
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState<string | number>(-1);
-	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
+	const { handleBoughtStatus } = useContext(ProductsContext);
 	const { openEditPanel, setEditedProduct } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
 
-	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {
+	const handleBoughtStatusButton = (productId: number | string, isBought: boolean) => {
 		setClickedProductId(productId);
-
-		const timeoutValue = isBought ? 400 : 650;
-
-		if (typeof productId === 'number') {
-			setTimeout(() => {
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productId - 1),
-					{
-						...prevProducts[productId - 1],
-						isBought: !prevProducts[productId - 1].isBought,
-					},
-					...prevProducts.slice(productId),
-				]);
-			}, timeoutValue);
-		} else {
-			setTimeout(() => {
-				const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
-
-				setCustomProducts(prevProducts => [
-					...prevProducts.slice(0, checkedProductIndex),
-					{
-						...prevProducts[checkedProductIndex],
-						isBought: !prevProducts[checkedProductIndex].isBought,
-					},
-					...prevProducts.slice(checkedProductIndex + 1),
-				]);
-			}, timeoutValue);
-		}
-
-		// setTimeout(() => {
-		// 	setClickedProductId(-1);
-
-		// 	if (typeof productId === 'number') {
-		// 		setDefaultProducts(prevProducts => [
-		// 			...prevProducts.slice(0, productId - 1),
-		// 			{
-		// 				...prevProducts[productId - 1],
-		// 				isBought: !prevProducts[productId - 1].isBought,
-		// 			},
-		// 			...prevProducts.slice(productId),
-		// 		]);
-		// 	} else {
-		// 		const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
-
-		// 		setCustomProducts(prevProducts => [
-		// 			...prevProducts.slice(0, checkedProductIndex),
-		// 			{
-		// 				...prevProducts[checkedProductIndex],
-		// 				isBought: !prevProducts[checkedProductIndex].isBought,
-		// 			},
-		// 			...prevProducts.slice(checkedProductIndex + 1),
-		// 		]);
-		// 	}
-
-		// 	// setProductsList(productsList => [
-		// 	// 	...productsList.slice(0, productId - 1),
-		// 	// 	{
-		// 	// 		...productsList[productId - 1],
-		// 	// 		isBought: !productsList[productId - 1].isBought,
-		// 	// 	},
-		// 	// 	...productsList.slice(productId),
-		// 	// ]);
-
-		// }, timeoutValue);
+		handleBoughtStatus(productId, isBought);
 	};
 
 	const handleOpenEditPanel = () => {
@@ -105,7 +42,7 @@ export const ProductListItem = ({
 			<StatusButton
 				isBought={isBought}
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
-				onClick={() => handleBoughtStatus(id, isBought)}
+				onClick={() => handleBoughtStatusButton(id, isBought)}
 			/>
 			<ProductNameButton onClick={handleOpenEditPanel} aria-label={`${name} (click to edit product details)`}>
 				{name}

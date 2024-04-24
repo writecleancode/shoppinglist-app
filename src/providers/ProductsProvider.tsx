@@ -10,6 +10,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	setCustomProducts: () => {},
 	setProductsList: () => {},
 	countShoppingProgress: () => {},
+	handleBoughtStatus: () => {},
 	removeBoughtProducts: () => {},
 });
 
@@ -36,6 +37,36 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		const boughtProductsPercentage = Math.round((boughtProducts / productToBuy) * 100);
 
 		setShoppingProgress(boughtProductsPercentage);
+	};
+
+	const handleBoughtStatus = (productId: number | string, isBought: boolean) => {
+		const timeoutValue = isBought ? 400 : 650;
+
+		if (typeof productId === 'number') {
+			setTimeout(() => {
+				setDefaultProducts(prevProducts => [
+					...prevProducts.slice(0, productId - 1),
+					{
+						...prevProducts[productId - 1],
+						isBought: !prevProducts[productId - 1].isBought,
+					},
+					...prevProducts.slice(productId),
+				]);
+			}, timeoutValue);
+		} else {
+			setTimeout(() => {
+				const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
+
+				setCustomProducts(prevProducts => [
+					...prevProducts.slice(0, checkedProductIndex),
+					{
+						...prevProducts[checkedProductIndex],
+						isBought: !prevProducts[checkedProductIndex].isBought,
+					},
+					...prevProducts.slice(checkedProductIndex + 1),
+				]);
+			}, timeoutValue);
+		}
 	};
 
 	const removeBoughtProducts = () => {
@@ -69,6 +100,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				productsList,
 				setProductsList,
 				countShoppingProgress,
+				handleBoughtStatus,
 				removeBoughtProducts,
 			}}>
 			{children}

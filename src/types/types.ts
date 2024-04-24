@@ -25,6 +25,7 @@ export type ProductsContextType = {
 	setCustomProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	countShoppingProgress: () => void;
+	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
 	removeBoughtProducts: () => void;
 };
 
