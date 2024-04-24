@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const CategoryIcon = styled.button<{ $category: string; $isBought: boolean }>`
 	margin-left: 0.8rem;
 	border: none;
-	border-radius: 100rem;
+	border-radius: 100px;
 	width: 3.2rem;
 	height: 3.2rem;
 	box-shadow: ${({ $isBought }) => ($isBought ? 'none' : '0px 0px 4px inset rgba(0, 0, 0, 0.05)')};
-	/* box-shadow: 3px -3px 4px inset rgba(0, 0, 0, 0.15); */
 	background-color: ${({ $category, $isBought }) => {
 		if ($isBought) {
 			return 'transparent';
@@ -100,6 +99,6 @@ export const CategoryIcon = styled.button<{ $category: string; $isBought: boolea
 
 	img {
 		width: 24px;
-		min-height: 24px;
+		height: 24px;
 	}
 `;
