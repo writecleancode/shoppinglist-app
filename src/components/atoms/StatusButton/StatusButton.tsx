@@ -1,11 +1,6 @@
 import { CheckIcon } from 'src/assets/icons/CheckIcon';
 import { BarsWrapper, Circle, IconWrapper, Wrapper } from './StatusButton.styles';
-
-type StatusButtonProps = {
-	isBought: boolean;
-	animationType: string;
-	onClick: any;
-};
+import { StatusButtonProps } from 'src/types/types';
 
 export const StatusButton = ({ isBought, animationType, ...props }: StatusButtonProps) => {
 	return (

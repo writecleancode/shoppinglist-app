@@ -16,6 +16,24 @@ export type ProductType = {
 	isBought: boolean;
 };
 
+export type ChangeCategoryContextType = {
+	isCategoryPanelOpen: boolean;
+	highlightedCategory: string;
+	categoryChangeProductId: string | number | null;
+	openCategoryPanel: (clickedCategory: string, clickedId?: number | string) => void;
+	closeCategoryPanel: () => void;
+	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
+	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<string | number | null>>;
+};
+
+export type EditProductContextType = {
+	isEditPanelOpen: boolean;
+	editedProduct: ProductType;
+	openEditPanel: () => void;
+	closeEditPanel: () => void;
+	setEditedProduct: React.Dispatch<React.SetStateAction<ProductType>>;
+};
+
 export type ProductsContextType = {
 	defaultProducts: never[] | ProductType[];
 	customProducts: never[] | ProductType[];
@@ -29,25 +47,11 @@ export type ProductsContextType = {
 	removeBoughtProducts: () => void;
 };
 
-export type EditProductContextType = {
-	isEditPanelOpen: boolean;
-	editedProduct: ProductType;
-	openEditPanel: () => void;
-	closeEditPanel: () => void;
-	setEditedProduct: React.Dispatch<React.SetStateAction<ProductType>>;
+export type BoughtProductsProps = {
+	productsList: ProductType[];
 };
 
-export type ChangeCategoryContextType = {
-	isCategoryPanelOpen: boolean;
-	highlightedCategory: string;
-	categoryChangeProductId: string | number | null;
-	openCategoryPanel: (clickedCategory: string, clickedId?: number | string) => void;
-	closeCategoryPanel: () => void;
-	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
-	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<string | number | null>>;
-};
-
-export type ProductsProviderProps = {
+export type ChangeCategoryProviderProps = {
 	children: ReactNode;
 };
 
@@ -55,6 +59,24 @@ export type EditProductProviderProps = {
 	children: ReactNode;
 };
 
-export type ChangeCategoryProviderProps = {
+export type ProductsListProps = {
+	productsList: ProductType[];
+};
+
+export type ProductListItemProps = {
+	product: ProductType;
+};
+
+export type ProductsProviderProps = {
 	children: ReactNode;
+};
+
+export type ProductsToBuyProps = {
+	productsList: ProductType[];
+};
+
+export type StatusButtonProps = {
+	isBought: boolean;
+	animationType: string;
+	onClick: any;
 };

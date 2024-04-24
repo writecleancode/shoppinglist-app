@@ -2,11 +2,7 @@ import { useSort } from 'src/hooks/useSort';
 import { ProductsToBuy } from 'src/components/molecules/ProductsToBuy/ProductsToBuy';
 import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtProducts';
 import { Wrapper } from './ProductsList.styles';
-import { ProductType } from 'src/types/types';
-
-type ProductsListProps = {
-	productsList: ProductType[];
-};
+import { ProductsListProps } from 'src/types/types';
 
 export const ProductsList = ({ productsList }: ProductsListProps) => {
 	const sortedProductsList = useSort(productsList);

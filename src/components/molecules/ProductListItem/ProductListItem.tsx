@@ -6,11 +6,7 @@ import { StatusButton } from 'src/components/atoms/StatusButton/StatusButton';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 import { ProductNameButton, Wrapper } from './ProductListItem.styles';
-import { ProductType } from 'src/types/types';
-
-type ProductListItemProps = {
-	product: ProductType;
-};
+import { ProductListItemProps } from 'src/types/types';
 
 export const ProductListItem = ({
 	product: { id, name, category, userCategory, quantity, unit, isBought },

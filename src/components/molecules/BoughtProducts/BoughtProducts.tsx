@@ -1,9 +1,5 @@
 import { ProductListItem } from '../ProductListItem/ProductListItem';
-import { ProductType } from 'src/types/types';
-
-type BoughtProductsProps = {
-	productsList: ProductType[];
-};
+import { BoughtProductsProps } from 'src/types/types';
 
 export const BoughtProducts = ({ productsList }: BoughtProductsProps) => {
 	return (
