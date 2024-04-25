@@ -19,9 +19,9 @@ export const MainView = () => {
 		customProducts,
 		productsList,
 		setDefaultProducts,
-		setCustomProducts,
 		setProductsList,
 		countShoppingProgress,
+		updateProductCategory,
 	} = useContext(ProductsContext);
 	const { isEditPanelOpen, closeEditPanel, dispatch } = useContext(EditProductContext);
 	const { isCategoryPanelOpen, categoryChangeProductId, closeCategoryPanel, setCategoryChangeProductId } =
@@ -43,34 +43,7 @@ export const MainView = () => {
 
 	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
 		if (categoryChangeProductId) {
-			if (typeof categoryChangeProductId === 'string') {
-				const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
-				setCustomProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						category: {
-							name: clickedCategory.name,
-							imgSrc: clickedCategory.imgSrc,
-						},
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
-			} else if (typeof categoryChangeProductId === 'number') {
-				const productIndex = defaultProducts.map(product => product.id).indexOf(categoryChangeProductId);
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						userCategory: {
-							name: clickedCategory.name,
-							imgSrc: clickedCategory.imgSrc,
-						},
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
-			}
-
+			updateProductCategory(categoryChangeProductId, clickedCategory);
 			setCategoryChangeProductId(null);
 		} else {
 			dispatch({

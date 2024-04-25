@@ -11,10 +11,7 @@ import {
 	Title,
 	Wrapper,
 } from './ChangeCategoryPanel.styles';
-
-export type ChangeCategoryPanelProps = {
-	handleChangeCategory: (clickedCategory: { name: string; imgSrc: string }) => void;
-};
+import { ChangeCategoryPanelProps } from 'src/types/types';
 
 export const ChangeCategoryPanel = ({ handleChangeCategory }: ChangeCategoryPanelProps) => {
 	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel } = useContext(ChangeCategoryContext);

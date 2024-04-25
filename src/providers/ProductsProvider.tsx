@@ -14,6 +14,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	handleBoughtStatus: () => {},
 	removeBoughtProducts: () => {},
 	updateProductsList: () => {},
+	updateProductCategory: () => {},
 });
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
@@ -129,6 +130,39 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		}
 	};
 
+	const updateProductCategory = (
+		categoryChangeProductId: string | number | null,
+		clickedCategory: { name: string; imgSrc: string }
+	) => {
+		if (typeof categoryChangeProductId === 'string') {
+			const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, productIndex),
+				{
+					...prevProducts[productIndex],
+					category: {
+						name: clickedCategory.name,
+						imgSrc: clickedCategory.imgSrc,
+					},
+				},
+				...prevProducts.slice(productIndex + 1),
+			]);
+		} else if (typeof categoryChangeProductId === 'number') {
+			const productIndex = defaultProducts.map(product => product.id).indexOf(categoryChangeProductId);
+			setDefaultProducts(prevProducts => [
+				...prevProducts.slice(0, productIndex),
+				{
+					...prevProducts[productIndex],
+					userCategory: {
+						name: clickedCategory.name,
+						imgSrc: clickedCategory.imgSrc,
+					},
+				},
+				...prevProducts.slice(productIndex + 1),
+			]);
+		}
+	};
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -143,6 +177,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				handleBoughtStatus,
 				removeBoughtProducts,
 				updateProductsList,
+				updateProductCategory,
 			}}>
 			{children}
 		</ProductsContext.Provider>

@@ -46,10 +46,18 @@ export type ProductsContextType = {
 	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
 	removeBoughtProducts: () => void;
 	updateProductsList: (editedProduct: ProductType) => void;
+	updateProductCategory: (
+		categoryChangeProductId: string | number | null,
+		clickedCategory: { name: string; imgSrc: string }
+	) => void;
 };
 
 export type BoughtProductsProps = {
 	productsList: ProductType[];
+};
+
+export type ChangeCategoryPanelProps = {
+	handleChangeCategory: (clickedCategory: { name: string; imgSrc: string }) => void;
 };
 
 export type ChangeCategoryProviderProps = {
