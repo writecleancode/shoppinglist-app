@@ -17,7 +17,7 @@ export const initialProductState = {
 };
 
 export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) => {
-	const { defaultProducts, productsList, updateCustomProductsQuantity } = useContext(ProductsContext);
+	const { defaultProducts, updateCustomProductsQuantity } = useContext(ProductsContext);
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(defaultProducts);
 	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
@@ -27,12 +27,10 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 		setCustomProduct(initialProductState);
 	};
 
-	const clearInput = () => {
-		setSearchInputValue('');
-	};
+	const clearInput = () => setSearchInputValue('');
 
 	useEffect(() => {
-		isActive ? setProductsToAdd(productsList) : clearInput();
+		isActive ? setProductsToAdd(defaultProducts) : clearInput();
 	}, [isActive]);
 
 	useEffect(() => {
@@ -59,9 +57,9 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 			<ProductsToAddList
 				products={productsToAdd}
 				customProduct={customProduct}
-				setCustomProduct={setCustomProduct}
 				clearInput={clearInput}
 				setProductsToAdd={setProductsToAdd}
+				setCustomProduct={setCustomProduct}
 			/>
 		</Wrapper>
 	);

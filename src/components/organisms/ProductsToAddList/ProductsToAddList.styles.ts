@@ -31,7 +31,7 @@ export const AddProductButton = styled.button`
 
 export const PlusIcon = styled.div<{ $isAdded: boolean; $quantity: number; $isAnimating: boolean }>`
 	border: none;
-	border-radius: 100rem;
+	border-radius: 100px;
 	background-color: ${({ $isAdded, theme }) => ($isAdded ? theme.colors.secondary : theme.colors.grey)};
 	rotate: ${({ $quantity }) => `${$quantity * 180}deg`};
 	scale: ${({ $isAnimating }) => ($isAnimating ? '0.75' : '1')};
@@ -49,8 +49,6 @@ export const DecreaseButton = styled.button<{ $quantity: number }>`
 	translate: 4px;
 	visibility: ${({ $quantity }) => ($quantity >= 0 ? 'visible' : 'hidden')};
 	pointer-events: ${({ $quantity }) => ($quantity >= 0 ? 'auto' : 'none')};
-	/* opacity: ${({ $quantity }) => ($quantity > 0 ? '1' : '0')}; */
-	/* transition: opacity 0.15s; */
 
 	&::before,
 	&::after {
@@ -62,7 +60,7 @@ export const DecreaseButton = styled.button<{ $quantity: number }>`
 		width: 18px;
 		height: 3px;
 		background-color: #e40808;
-		border-radius: 100rem;
+		border-radius: 100px;
 		transition: transform 0.3s;
 	}
 

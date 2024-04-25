@@ -1,13 +1,14 @@
 import { Dispatch, useContext, useState } from 'react';
-import { ProductType } from 'src/views/MainView';
+import { ProductsContext } from 'src/providers/ProductsProvider';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
-import { CustomProductType } from 'src/views/AddProducts';
-import { ProductsContext } from 'src/providers/ProductsProvider';
+import { CustomProductType, ProductType } from 'src/types/types';
 
 type ProductsToAddListProps = {
 	products: ProductType[];
 	customProduct: CustomProductType;
+	clearInput: () => void;
+	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
 };
 
@@ -16,22 +17,30 @@ let timeout: NodeJS.Timeout;
 export const ProductsToAddList = ({
 	products,
 	customProduct,
-	setCustomProduct,
 	clearInput,
 	setProductsToAdd,
+	setCustomProduct,
 }: ProductsToAddListProps) => {
 	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
-	const [lastClickedProductId, setLastClickedProductId] = useState(-1);
+	const [lastClickedProductId, setLastClickedProductId] = useState<number | string>(-1);
 	const [quantityNumber, setQuantityNumber] = useState(-1); // used for plus icon rotate animation - to prevent animation after custom product is replaced by another
+
+	const handlePlusIconScale = (productId: number | string) => {
+		setLastClickedProductId(productId);
+		clearTimeout(timeout);
+		timeout = setTimeout(() => {
+			setLastClickedProductId(-1);
+		}, 500);
+	};
 
 	const handleCustomProductQuantity = (productId: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
 		setQuantityNumber(prevQuantity => prevQuantity + quantityChanger);
-		setCustomProduct(prevState => ({
-			...prevState,
-			quantity: prevState.quantity + quantityChanger,
+		setCustomProduct(prevProduct => ({
+			...prevProduct,
+			quantity: prevProduct.quantity + quantityChanger,
 		}));
 		clearInput();
 	};
@@ -73,22 +82,13 @@ export const ProductsToAddList = ({
 		}
 	};
 
-	const handlePlusIconScale = (productId: number) => {
-		setLastClickedProductId(productId);
-		clearTimeout(timeout);
-		timeout = setTimeout(() => {
-			setLastClickedProductId(-1);
-		}, 500);
-	};
-
 	return (
 		<StyledList>
 			{customProduct.name === '' ? null : (
 				<ProductToAdd key={-999}>
 					<AddProductButton
 						onClick={() => handleCustomProductQuantity(-999, 'increase')}
-						aria-label={`add ${customProduct.name} to the list`}
-						type='button'>
+						aria-label={`add ${customProduct.name} to the list`}>
 						<PlusIcon
 							$isAdded={customProduct.quantity >= 0}
 							$quantity={quantityNumber}
@@ -101,6 +101,7 @@ export const ProductsToAddList = ({
 					<DecreaseButton
 						$quantity={customProduct.quantity}
 						onClick={() => handleCustomProductQuantity(-999, 'decrease')}
+						aria-label={`decrease quantity of ${customProduct.name}`}
 					/>
 				</ProductToAdd>
 			)}
@@ -119,8 +120,7 @@ export const ProductsToAddList = ({
 					<ProductToAdd key={id}>
 						<AddProductButton
 							onClick={() => handleProductQuantity(id, index, 'increase')}
-							aria-label={`add ${name} to the list`}
-							type='button'>
+							aria-label={`add ${name} to the list`}>
 							<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
 								<img src='src/assets/icons/plus-big.svg' alt='' />
 							</PlusIcon>
@@ -130,7 +130,11 @@ export const ProductsToAddList = ({
 							{quantity}
 							{quantity > 0 ? unit : ''}
 						</QuantityOfProduct>
-						<DecreaseButton $quantity={quantity} onClick={() => handleProductQuantity(id, index, 'decrease')} />
+						<DecreaseButton
+							$quantity={quantity}
+							onClick={() => handleProductQuantity(id, index, 'decrease')}
+							aria-label={`decrease quantity of ${name}`}
+						/>
 					</ProductToAdd>
 				))}
 		</StyledList>
