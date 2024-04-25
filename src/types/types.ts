@@ -23,7 +23,7 @@ export type ChangeCategoryContextType = {
 	openCategoryPanel: (clickedCategory: string, clickedId?: number | string) => void;
 	closeCategoryPanel: () => void;
 	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
-	setCategoryChangeProductId: React.Dispatch<React.SetStateAction<string | number | null>>;
+	resetCategoryChangeProductId: () => void;
 };
 
 export type EditProductContextType = {

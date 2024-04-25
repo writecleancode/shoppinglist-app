@@ -196,4 +196,13 @@ export const ChangeQuantityButton = styled.button`
 		border-radius: 50%;
 		background-color: ${({ theme }) => theme.colors.secondary};
 	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		opacity: 0.8;
+
+		img {
+			background-color: ${({ theme }) => theme.colors.grey};
+		}
+	}
 `;

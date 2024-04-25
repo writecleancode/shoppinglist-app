@@ -121,11 +121,13 @@ export const EditPanel = () => {
 					<QuantityButtonWrapper>
 						<ChangeQuantityButton
 							onClick={() => handleQuantityButtons('decrease')}
+							disabled={editedProduct.quantity <= 0}
 							aria-label={`decrease quantity of ${editedProduct.name}`}>
 							<img src='src/assets/icons/minus.svg' alt='' />
 						</ChangeQuantityButton>
 						<ChangeQuantityButton
 							onClick={() => handleQuantityButtons('increase')}
+							disabled={editedProduct.quantity >= 9999999}
 							aria-label={`increase quantity of ${editedProduct.name}`}>
 							<img src='src/assets/icons/plus.svg' alt='' />
 						</ChangeQuantityButton>

@@ -10,7 +10,7 @@ export const ChangeCategoryContext = createContext<ChangeCategoryContextType>({
 	openCategoryPanel: () => {},
 	closeCategoryPanel: () => {},
 	setHighlightedCategory: () => {},
-	setCategoryChangeProductId: () => {},
+	resetCategoryChangeProductId: () => {},
 });
 
 export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps) => {
@@ -31,6 +31,8 @@ export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps
 		setHighlightedCategory('');
 	};
 
+	const resetCategoryChangeProductId = () => setCategoryChangeProductId(null);
+
 	return (
 		<ChangeCategoryContext.Provider
 			value={{
@@ -40,7 +42,7 @@ export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps
 				openCategoryPanel,
 				closeCategoryPanel,
 				setHighlightedCategory,
-				setCategoryChangeProductId,
+				resetCategoryChangeProductId,
 			}}>
 			{children}
 		</ChangeCategoryContext.Provider>

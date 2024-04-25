@@ -22,13 +22,13 @@ export const ChangeCategoryPanel = () => {
 		highlightedCategory,
 		closeCategoryPanel,
 		categoryChangeProductId,
-		setCategoryChangeProductId,
+		resetCategoryChangeProductId,
 	} = useContext(ChangeCategoryContext);
 
 	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
 		if (categoryChangeProductId) {
 			updateProductCategory(categoryChangeProductId, clickedCategory);
-			setCategoryChangeProductId(null);
+			resetCategoryChangeProductId();
 		} else {
 			dispatch({
 				type: actionTypes.updateCategory,
