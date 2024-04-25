@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode } from 'react';
 
 export type CustomProductType = {
 	name: string;
@@ -90,6 +90,14 @@ export type ProductListItemProps = {
 
 export type ProductsProviderProps = {
 	children: ReactNode;
+};
+
+export type ProductsToAddListProps = {
+	products: ProductType[];
+	customProduct: CustomProductType;
+	clearInput: () => void;
+	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
 };
 
 export type ProductsToBuyProps = {

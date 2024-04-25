@@ -1,16 +1,8 @@
-import { Dispatch, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
 import { QuantityOfProduct } from 'src/components/atoms/QuantityOfProduct/QuantityOfProduct';
 import { AddProductButton, DecreaseButton, ProductToAdd, PlusIcon, StyledList } from './ProductsToAddList.styles';
-import { CustomProductType, ProductType } from 'src/types/types';
-
-type ProductsToAddListProps = {
-	products: ProductType[];
-	customProduct: CustomProductType;
-	clearInput: () => void;
-	setProductsToAdd: Dispatch<React.SetStateAction<never[] | ProductType[]>>;
-	setCustomProduct: Dispatch<React.SetStateAction<CustomProductType>>;
-};
+import { ProductsToAddListProps } from 'src/types/types';
 
 let timeout: NodeJS.Timeout;
 
