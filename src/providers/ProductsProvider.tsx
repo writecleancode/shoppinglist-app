@@ -139,6 +139,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				{
 					...prevProducts[productId - 1],
 					quantity: prevProducts[productId - 1].quantity + quantityChanger,
+					unit: prevProducts[productId - 1].quantity + quantityChanger < 0 ? '' : prevProducts[productId - 1].unit,
 				},
 				...prevProducts.slice(productId),
 			]);
@@ -150,6 +151,10 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				{
 					...prevProducts[checkedProductIndex],
 					quantity: prevProducts[checkedProductIndex].quantity + quantityChanger,
+					unit:
+						prevProducts[checkedProductIndex].quantity + quantityChanger < 0
+							? ''
+							: prevProducts[checkedProductIndex - 1].unit,
 				},
 				...prevProducts.slice(checkedProductIndex + 1),
 			]);

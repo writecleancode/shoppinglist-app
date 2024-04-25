@@ -54,6 +54,7 @@ export const ProductsToAddList = ({
 			{
 				...prevProducts[index],
 				quantity: prevProducts[index].quantity + quantityChanger,
+				unit: prevProducts[index].quantity + quantityChanger < 0 ? '' : prevProducts[index].unit,
 			},
 			...prevProducts.slice(index + 1),
 		]);
