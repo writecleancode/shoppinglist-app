@@ -1,9 +1,9 @@
 import { Dispatch, FormEvent, useCallback, useContext } from 'react';
 import { debounce } from 'lodash';
-import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
-import { CustomProductType, initialProductState } from 'src/views/AddProducts';
-import { ProductType } from 'src/types/types';
+import { initialProductState } from 'src/views/AddProducts';
 import { ProductsContext } from 'src/providers/ProductsProvider';
+import { ClearInputButton, SearchInput, Wrapper } from './SearchBar.styles';
+import { CustomProductType, ProductType } from 'src/types/types';
 
 type SearchBarProps = {
 	searchInputValue: string;
@@ -56,10 +56,20 @@ export const SearchBar = ({
 		handleCustomProduct(e.currentTarget.value);
 	};
 
+	const handleClearInputButton = () => {
+		clearInput();
+		setProductsToAdd(productsList);
+	};
+
 	return (
 		<Wrapper>
-			<SearchInput placeholder='add new item' value={searchInputValue} onChange={handleInputChange} />
-			<ClearInputButton aria-label='clear input' type='button' onClick={clearInput}>
+			<SearchInput
+				name='searchInput'
+				placeholder='add new item'
+				value={searchInputValue}
+				onChange={handleInputChange}
+			/>
+			<ClearInputButton onClick={handleClearInputButton} aria-label='clear input'>
 				<img src='src/assets/icons/x-circle.svg' alt='' />
 			</ClearInputButton>
 		</Wrapper>

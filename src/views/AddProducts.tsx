@@ -3,8 +3,8 @@ import { ProductsContext } from 'src/providers/ProductsProvider';
 import { v4 as uuid } from 'uuid';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
 import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
-import { ProductType } from 'src/types/types';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
+import { AddProductsProps, ProductType } from 'src/types/types';
 
 export const initialProductState = {
 	name: '',
@@ -17,23 +17,7 @@ export const initialProductState = {
 	isBought: false,
 };
 
-type AddItemProps = {
-	isActive: boolean;
-	hideAddProductView: () => void;
-};
-
-export type CustomProductType = {
-	name: string;
-	category: {
-		name: string;
-		imgSrc: string;
-	};
-	quantity: number;
-	unit: string;
-	isBought: boolean;
-};
-
-export const AddProducts = ({ isActive, hideAddProductView }: AddItemProps) => {
+export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) => {
 	const { defaultProducts, customProducts, productsList, setCustomProducts } = useContext(ProductsContext);
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(defaultProducts);
 	const [customProduct, setCustomProduct] = useState(initialProductState);

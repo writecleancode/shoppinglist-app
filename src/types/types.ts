@@ -1,5 +1,16 @@
 import { ReactNode } from 'react';
 
+export type CustomProductType = {
+	name: string;
+	category: {
+		name: string;
+		imgSrc: string;
+	};
+	quantity: number;
+	unit: string;
+	isBought: boolean;
+};
+
 export type ProductType = {
 	id: number | string;
 	name: string;
@@ -49,6 +60,11 @@ export type ProductsContextType = {
 		categoryChangeProductId: string | number | null,
 		clickedCategory: { name: string; imgSrc: string }
 	) => void;
+};
+
+export type AddProductsProps = {
+	isActive: boolean;
+	hideAddProductView: () => void;
 };
 
 export type BoughtProductsProps = {
