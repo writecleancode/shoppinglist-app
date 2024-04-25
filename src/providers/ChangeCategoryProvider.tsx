@@ -10,7 +10,6 @@ export const ChangeCategoryContext = createContext<ChangeCategoryContextType>({
 	openCategoryPanel: () => {},
 	closeCategoryPanel: () => {},
 	setHighlightedCategory: () => {},
-	resetCategoryChangeProductId: () => {},
 });
 
 export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps) => {
@@ -19,15 +18,16 @@ export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps
 	const [categoryChangeProductId, setCategoryChangeProductId] = useState<null | string | number>(null);
 
 	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string) => {
+		setHighlightedCategory(clickedCategory);
 		setCategoryPanelState(true);
 		document.getElementById('changeCategoryPanel')!.focus();
-		setHighlightedCategory(clickedCategory);
 
 		clickedId && setCategoryChangeProductId(clickedId);
 	};
 
 	const closeCategoryPanel = () => {
 		setCategoryPanelState(false);
+		resetCategoryChangeProductId();
 		setHighlightedCategory('');
 	};
 
@@ -42,7 +42,6 @@ export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps
 				openCategoryPanel,
 				closeCategoryPanel,
 				setHighlightedCategory,
-				resetCategoryChangeProductId,
 			}}>
 			{children}
 		</ChangeCategoryContext.Provider>

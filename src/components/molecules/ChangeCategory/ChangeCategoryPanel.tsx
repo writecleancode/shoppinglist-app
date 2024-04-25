@@ -17,18 +17,12 @@ import {
 export const ChangeCategoryPanel = () => {
 	const { updateProductCategory } = useContext(ProductsContext);
 	const { dispatch } = useContext(EditProductContext);
-	const {
-		isCategoryPanelOpen,
-		highlightedCategory,
-		closeCategoryPanel,
-		categoryChangeProductId,
-		resetCategoryChangeProductId,
-	} = useContext(ChangeCategoryContext);
+	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel, categoryChangeProductId } =
+		useContext(ChangeCategoryContext);
 
 	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
 		if (categoryChangeProductId) {
 			updateProductCategory(categoryChangeProductId, clickedCategory);
-			resetCategoryChangeProductId();
 		} else {
 			dispatch({
 				type: actionTypes.updateCategory,
