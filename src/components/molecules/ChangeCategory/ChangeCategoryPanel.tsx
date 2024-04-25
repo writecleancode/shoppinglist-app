@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import { ProductsContext } from 'src/providers/ProductsProvider';
+import { EditProductContext, actionTypes } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { categories } from 'src/data/categories';
 import {
@@ -11,10 +13,32 @@ import {
 	Title,
 	Wrapper,
 } from './ChangeCategoryPanel.styles';
-import { ChangeCategoryPanelProps } from 'src/types/types';
 
-export const ChangeCategoryPanel = ({ handleChangeCategory }: ChangeCategoryPanelProps) => {
-	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel } = useContext(ChangeCategoryContext);
+export const ChangeCategoryPanel = () => {
+	const { updateProductCategory } = useContext(ProductsContext);
+	const { dispatch } = useContext(EditProductContext);
+	const {
+		isCategoryPanelOpen,
+		highlightedCategory,
+		closeCategoryPanel,
+		categoryChangeProductId,
+		setCategoryChangeProductId,
+	} = useContext(ChangeCategoryContext);
+
+	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
+		if (categoryChangeProductId) {
+			updateProductCategory(categoryChangeProductId, clickedCategory);
+			setCategoryChangeProductId(null);
+		} else {
+			dispatch({
+				type: actionTypes.updateCategory,
+				categoryName: clickedCategory.name,
+				categoryImgSrc: clickedCategory.imgSrc,
+			});
+		}
+
+		closeCategoryPanel();
+	};
 
 	return (
 		<>

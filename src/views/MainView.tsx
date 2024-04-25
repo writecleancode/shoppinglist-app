@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
-import { EditProductContext, actionTypes } from 'src/providers/EditProductProvider';
+import { EditProductContext } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
@@ -14,18 +14,10 @@ import { Wrapper } from './MainView.styles';
 
 export const MainView = () => {
 	const [isAddProductActive, setAddProductState] = useState(false);
-	const {
-		defaultProducts,
-		customProducts,
-		productsList,
-		setDefaultProducts,
-		setProductsList,
-		countShoppingProgress,
-		updateProductCategory,
-	} = useContext(ProductsContext);
-	const { isEditPanelOpen, closeEditPanel, dispatch } = useContext(EditProductContext);
-	const { isCategoryPanelOpen, categoryChangeProductId, closeCategoryPanel, setCategoryChangeProductId } =
-		useContext(ChangeCategoryContext);
+	const { defaultProducts, customProducts, productsList, setDefaultProducts, setProductsList, countShoppingProgress } =
+		useContext(ProductsContext);
+	const { isEditPanelOpen, closeEditPanel } = useContext(EditProductContext);
+	const { isCategoryPanelOpen, closeCategoryPanel } = useContext(ChangeCategoryContext);
 
 	const showAddProductView = () => setAddProductState(true);
 	const hideAddProductView = () => setAddProductState(false);
@@ -39,21 +31,6 @@ export const MainView = () => {
 		}
 
 		closeEditPanel();
-	};
-
-	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
-		if (categoryChangeProductId) {
-			updateProductCategory(categoryChangeProductId, clickedCategory);
-			setCategoryChangeProductId(null);
-		} else {
-			dispatch({
-				type: actionTypes.updateCategory,
-				categoryName: clickedCategory.name,
-				categoryImgSrc: clickedCategory.imgSrc,
-			});
-		}
-
-		closeCategoryPanel();
 	};
 
 	useEffect(() => {
@@ -84,7 +61,7 @@ export const MainView = () => {
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel />
-			<ChangeCategoryPanel handleChangeCategory={handleChangeCategory} />
+			<ChangeCategoryPanel />
 		</Wrapper>
 	);
 };

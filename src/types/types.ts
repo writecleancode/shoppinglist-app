@@ -56,10 +56,6 @@ export type BoughtProductsProps = {
 	productsList: ProductType[];
 };
 
-export type ChangeCategoryPanelProps = {
-	handleChangeCategory: (clickedCategory: { name: string; imgSrc: string }) => void;
-};
-
 export type ChangeCategoryProviderProps = {
 	children: ReactNode;
 };
