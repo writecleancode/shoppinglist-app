@@ -22,46 +22,14 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
 
-	const handleCustomProducts = () => {
-		// if (customProduct.quantity >= 0) {
-		// 	setCustomProducts([{ ...customProduct, id: uuid(), name: searchInputValue }, ...customProducts]);
-		// }
-
-		setCustomProduct(initialProductState);
-	};
-
 	const handleBackButton = () => {
 		hideAddProductView();
-		handleCustomProducts();
+		setCustomProduct(initialProductState);
 	};
 
 	const clearInput = () => {
 		setSearchInputValue('');
 	};
-
-	// const sortedProductsToAdd = productsToAdd.toSorted((a, b) => {
-	// 	if (a.name < b.name) {
-	// 		return -1;
-	// 	} else if (a.name > b.name) {
-	// 		return 1;
-	// 	} else {
-	// 		return 0;
-	// 	}
-	// });
-
-	// useEffect(() => {
-	// 	if (!isActive) return;
-
-	// 	if (searchInputValue) {
-	// 		console.log('searchPhrase');
-	// 		const matchingProducts = productsList.filter(product =>
-	// 			product.name.toLowerCase().includes(searchInputValue.toLowerCase())
-	// 		);
-	// 		setProductsToAdd(matchingProducts);
-	// 	} else {
-	// 		setProductsToAdd(productsList);
-	// 	}
-	// }, [productsList]);
 
 	useEffect(() => {
 		isActive ? setProductsToAdd(productsList) : clearInput();
