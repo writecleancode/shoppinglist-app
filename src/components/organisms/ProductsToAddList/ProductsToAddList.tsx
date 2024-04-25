@@ -21,7 +21,7 @@ export const ProductsToAddList = ({
 	setProductsToAdd,
 	setCustomProduct,
 }: ProductsToAddListProps) => {
-	const { customProducts, setDefaultProducts, setCustomProducts } = useContext(ProductsContext);
+	const { updateProductsQuantity } = useContext(ProductsContext);
 	const [lastClickedProductId, setLastClickedProductId] = useState<number | string>(-1);
 	const [quantityNumber, setQuantityNumber] = useState(-1); // used for plus icon rotate animation - to prevent animation after custom product is replaced by another
 
@@ -59,27 +59,7 @@ export const ProductsToAddList = ({
 		]);
 		clearInput();
 
-		if (typeof productId === 'number') {
-			setDefaultProducts(prevProducts => [
-				...prevProducts.slice(0, productId - 1),
-				{
-					...prevProducts[productId - 1],
-					quantity: prevProducts[productId - 1].quantity + quantityChanger,
-				},
-				...prevProducts.slice(productId),
-			]);
-		} else {
-			const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
-
-			setCustomProducts(prevProducts => [
-				...prevProducts.slice(0, checkedProductIndex),
-				{
-					...prevProducts[checkedProductIndex],
-					quantity: prevProducts[checkedProductIndex].quantity + quantityChanger,
-				},
-				...prevProducts.slice(checkedProductIndex + 1),
-			]);
-		}
+		updateProductsQuantity(productId, quantityChanger);
 	};
 
 	return (

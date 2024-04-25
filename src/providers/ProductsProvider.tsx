@@ -14,6 +14,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	handleBoughtStatus: () => {},
 	removeBoughtProducts: () => {},
 	updateProductsList: () => {},
+	updateProductsQuantity: () => {},
 	updateProductCategory: () => {},
 	updateCustomProductsQuantity: () => {},
 });
@@ -131,6 +132,30 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		}
 	};
 
+	const updateProductsQuantity = (productId: number | string, quantityChanger: 1 | -1) => {
+		if (typeof productId === 'number') {
+			setDefaultProducts(prevProducts => [
+				...prevProducts.slice(0, productId - 1),
+				{
+					...prevProducts[productId - 1],
+					quantity: prevProducts[productId - 1].quantity + quantityChanger,
+				},
+				...prevProducts.slice(productId),
+			]);
+		} else {
+			const checkedProductIndex = customProducts.map(product => product.id).indexOf(productId);
+
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, checkedProductIndex),
+				{
+					...prevProducts[checkedProductIndex],
+					quantity: prevProducts[checkedProductIndex].quantity + quantityChanger,
+				},
+				...prevProducts.slice(checkedProductIndex + 1),
+			]);
+		}
+	};
+
 	const updateProductCategory = (
 		categoryChangeProductId: string | number | null,
 		clickedCategory: { name: string; imgSrc: string }
@@ -172,7 +197,10 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		if (customProducts.length !== 0 && checkedProductIndex >= 0) {
 			setCustomProducts(prevProducts => [
 				...prevProducts.slice(0, checkedProductIndex),
-				{ ...prevProducts[checkedProductIndex], quantity: customProduct.quantity },
+				{
+					...prevProducts[checkedProductIndex],
+					quantity: customProduct.quantity,
+				},
 				...prevProducts.slice(checkedProductIndex + 1),
 			]);
 		} else {
@@ -194,6 +222,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				handleBoughtStatus,
 				removeBoughtProducts,
 				updateProductsList,
+				updateProductsQuantity,
 				updateProductCategory,
 				updateCustomProductsQuantity,
 			}}>

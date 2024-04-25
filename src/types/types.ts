@@ -56,6 +56,7 @@ export type ProductsContextType = {
 	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
 	removeBoughtProducts: () => void;
 	updateProductsList: (editedProduct: ProductType) => void;
+	updateProductsQuantity: (productId: number | string, quantityChanger: 1 | -1) => void;
 	updateProductCategory: (
 		categoryChangeProductId: string | number | null,
 		clickedCategory: { name: string; imgSrc: string }
