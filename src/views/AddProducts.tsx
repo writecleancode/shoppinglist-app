@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
-import { v4 as uuid } from 'uuid';
 import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
 import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
 import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
@@ -18,14 +17,10 @@ export const initialProductState = {
 };
 
 export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) => {
-	const { defaultProducts, customProducts, productsList, setCustomProducts } = useContext(ProductsContext);
+	const { defaultProducts, productsList, updateCustomProductsQuantity } = useContext(ProductsContext);
 	const [productsToAdd, setProductsToAdd] = useState<never[] | ProductType[]>(defaultProducts);
 	const [customProduct, setCustomProduct] = useState(initialProductState);
 	const [searchInputValue, setSearchInputValue] = useState('');
-
-	const clearInput = () => {
-		setSearchInputValue('');
-	};
 
 	const handleCustomProducts = () => {
 		// if (customProduct.quantity >= 0) {
@@ -40,15 +35,19 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 		handleCustomProducts();
 	};
 
-	const sortedProductsToAdd = productsToAdd.toSorted((a, b) => {
-		if (a.name < b.name) {
-			return -1;
-		} else if (a.name > b.name) {
-			return 1;
-		} else {
-			return 0;
-		}
-	});
+	const clearInput = () => {
+		setSearchInputValue('');
+	};
+
+	// const sortedProductsToAdd = productsToAdd.toSorted((a, b) => {
+	// 	if (a.name < b.name) {
+	// 		return -1;
+	// 	} else if (a.name > b.name) {
+	// 		return 1;
+	// 	} else {
+	// 		return 0;
+	// 	}
+	// });
 
 	// useEffect(() => {
 	// 	if (!isActive) return;
@@ -69,19 +68,7 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 	}, [isActive]);
 
 	useEffect(() => {
-		if (customProduct.name === '') return;
-
-		const checkedProductIndex = customProducts.map(product => product.name).indexOf(customProduct.name);
-
-		if (customProducts.length !== 0 && checkedProductIndex >= 0) {
-			setCustomProducts(prevProducts => [
-				...prevProducts.slice(0, checkedProductIndex),
-				{ ...prevProducts[checkedProductIndex], quantity: customProduct.quantity },
-				...prevProducts.slice(checkedProductIndex + 1),
-			]);
-		} else {
-			setCustomProducts(prevProducts => [{ id: uuid(), ...customProduct }, ...prevProducts]);
-		}
+		updateCustomProductsQuantity(customProduct);
 	}, [customProduct.quantity]);
 
 	return (

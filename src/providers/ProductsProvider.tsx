@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
+import { CustomProductType, ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
 
 export const ProductsContext = createContext<ProductsContextType>({
 	defaultProducts: [],
@@ -15,6 +15,7 @@ export const ProductsContext = createContext<ProductsContextType>({
 	removeBoughtProducts: () => {},
 	updateProductsList: () => {},
 	updateProductCategory: () => {},
+	updateCustomProductsQuantity: () => {},
 });
 
 export const ProductsProvider = ({ children }: ProductsProviderProps) => {
@@ -163,6 +164,22 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		}
 	};
 
+	const updateCustomProductsQuantity = (customProduct: CustomProductType) => {
+		if (customProduct.name === '') return;
+
+		const checkedProductIndex = customProducts.map(product => product.name).indexOf(customProduct.name);
+
+		if (customProducts.length !== 0 && checkedProductIndex >= 0) {
+			setCustomProducts(prevProducts => [
+				...prevProducts.slice(0, checkedProductIndex),
+				{ ...prevProducts[checkedProductIndex], quantity: customProduct.quantity },
+				...prevProducts.slice(checkedProductIndex + 1),
+			]);
+		} else {
+			setCustomProducts(prevProducts => [{ id: uuid(), ...customProduct }, ...prevProducts]);
+		}
+	};
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -178,6 +195,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				removeBoughtProducts,
 				updateProductsList,
 				updateProductCategory,
+				updateCustomProductsQuantity,
 			}}>
 			{children}
 		</ProductsContext.Provider>

@@ -60,6 +60,7 @@ export type ProductsContextType = {
 		categoryChangeProductId: string | number | null,
 		clickedCategory: { name: string; imgSrc: string }
 	) => void;
+	updateCustomProductsQuantity: (customProduct: CustomProductType) => void;
 };
 
 export type AddProductsProps = {
