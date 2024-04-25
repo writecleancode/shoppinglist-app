@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 import { categories } from 'src/data/categories';
 import {
 	AppShadowLayerBright,
@@ -9,10 +11,12 @@ import {
 	Title,
 	Wrapper,
 } from './ChangeCategoryPanel.styles';
-import { useContext } from 'react';
-import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
 
-export const ChangeCategoryPanel = ({ handleChangeCategory }) => {
+export type ChangeCategoryPanelProps = {
+	handleChangeCategory: (clickedCategory: { name: string; imgSrc: string }) => void;
+};
+
+export const ChangeCategoryPanel = ({ handleChangeCategory }: ChangeCategoryPanelProps) => {
 	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel } = useContext(ChangeCategoryContext);
 
 	return (
@@ -21,7 +25,7 @@ export const ChangeCategoryPanel = ({ handleChangeCategory }) => {
 			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isCategoryPanelOpen}>
 				<Header>
 					<Title>Change category</Title>
-					<CloseButton onClick={closeCategoryPanel}>
+					<CloseButton onClick={closeCategoryPanel} aria-label='close "change category" panel'>
 						<img src='src/assets/icons/x-circle-white.svg' alt='' />
 					</CloseButton>
 				</Header>

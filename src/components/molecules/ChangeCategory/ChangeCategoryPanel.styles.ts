@@ -80,7 +80,6 @@ export const CategoriesListItem = styled.li<{ $isHighlighted: boolean | string }
 		min-width: max-content;
 		width: 100%;
 		box-shadow: ${({ $isHighlighted }) => ($isHighlighted ? '0px 0px 4px inset rgba(0, 0, 0, 0.03)' : 'none')};
-		/* color: #696969; */
 		color: #717171;
 		font-size: 1.4rem;
 		text-transform: uppercase;
