@@ -50,7 +50,6 @@ export type ProductsContextType = {
 	productsList: never[] | ProductType[];
 	shoppingProgress: number;
 	setDefaultProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
-	setCustomProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	countShoppingProgress: () => void;
 	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
