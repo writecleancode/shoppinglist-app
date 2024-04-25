@@ -11,8 +11,8 @@ export const Wrapper = styled.div<{ $isActive: boolean }>`
 	background-color: #f5f5f5;
 	translate: ${({ $isActive }) => ($isActive ? '0%' : '70%')};
 	opacity: ${({ $isActive }) => ($isActive ? '1' : '0')};
-	transition: translate 0.3s, opacity 0.3s;
 	pointer-events: ${({ $isActive }) => ($isActive ? 'auto' : 'none')};
+	transition: translate 0.3s, opacity 0.3s;
 
 	@media (min-width: 992px) and (min-height: 880px) {
 		border-radius: 24px;
@@ -32,11 +32,28 @@ export const SearchWrapper = styled.div`
 export const BackButton = styled.button`
 	padding: 0 0.6rem;
 	border: none;
-	border-radius: 100rem;
+	border-radius: 100px;
 	max-width: max-content;
 	background-color: #fff;
 
 	img {
 		width: 3.2rem;
+		transition: translate 0.25s;
+	}
+
+	&:hover {
+		img {
+			translate: -3px;
+		}
+	}
+
+	@media (min-width: 576px) {
+		padding: 0 1rem;
+
+		&:hover {
+			img {
+				translate: -4px;
+			}
+		}
 	}
 `;

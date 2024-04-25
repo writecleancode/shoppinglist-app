@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
-import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
-import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
-import { v4 as uuid } from 'uuid';
-import { ProductType } from 'src/types/types';
 import { ProductsContext } from 'src/providers/ProductsProvider';
+import { v4 as uuid } from 'uuid';
+import { SearchBar } from 'src/components/molecules/SearchBar/SearchBar';
+import { ProductsToAddList } from 'src/components/organisms/ProductsToAddList/ProductsToAddList';
+import { ProductType } from 'src/types/types';
+import { BackButton, SearchWrapper, Wrapper } from './AddProducts.styles';
 
 export const initialProductState = {
 	name: '',
@@ -104,7 +104,7 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddItemProps) => {
 		<Wrapper $isActive={isActive}>
 			<div>
 				<SearchWrapper>
-					<BackButton onClick={handleBackButton} aria-label='go back to items list' type='button'>
+					<BackButton onClick={handleBackButton} aria-label='go back to the list of product to buy'>
 						<img src='src/assets/icons/arrow-left.svg' alt='' />
 					</BackButton>
 					<SearchBar
