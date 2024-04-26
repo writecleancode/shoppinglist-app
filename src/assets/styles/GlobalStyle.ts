@@ -1,11 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-:root {
-    --diameter: 2.4rem;
-    --circularLineWidth: 2px;
-}
-
 *,
 *::before,
 *::after {
