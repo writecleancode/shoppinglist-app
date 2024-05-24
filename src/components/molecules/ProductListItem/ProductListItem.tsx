@@ -9,16 +9,16 @@ import { ProductNameButton, Wrapper } from './ProductListItem.styles';
 import { ProductListItemProps } from 'src/types/types';
 
 export const ProductListItem = ({
-	product: { id, name, category, userCategory, quantity, unit, isBought },
+	product: { firestoreId, id, name, category, userCategory, quantity, unit, isBought },
 }: ProductListItemProps) => {
 	const [clickedProductId, setClickedProductId] = useState<string | number>(-1);
 	const { handleBoughtStatus } = useContext(ProductsContext);
 	const { openEditPanel, dispatch } = useContext(EditProductContext);
 	const { openCategoryPanel } = useContext(ChangeCategoryContext);
 
-	const handleBoughtStatusButton = (productId: number | string, isBought: boolean) => {
+	const handleBoughtStatusButton = (firestoreId: string, productId: number | string, isBought: boolean) => {
 		setClickedProductId(productId);
-		handleBoughtStatus(productId, isBought);
+		handleBoughtStatus(firestoreId, productId, isBought);
 	};
 
 	const handleProductClick = () => {
@@ -31,7 +31,7 @@ export const ProductListItem = ({
 			<StatusButton
 				isBought={isBought}
 				animationType={id === clickedProductId ? (isBought ? 'uncheckAnimation' : 'checkAnimation') : 'noAnimation'}
-				onClick={() => handleBoughtStatusButton(id, isBought)}
+				onClick={() => handleBoughtStatusButton(firestoreId, id, isBought)}
 			/>
 			<ProductNameButton onClick={handleProductClick} aria-label={`${name} (click to edit product details)`}>
 				{name}
@@ -43,9 +43,7 @@ export const ProductListItem = ({
 			<CategoryIcon
 				$category={userCategory ? userCategory.name : category.name}
 				$isBought={isBought}
-				aria-label={`product category: ${
-					userCategory ? userCategory.name : category.name
-				} (click to change product category)`}
+				aria-label={`product category: ${userCategory ? userCategory.name : category.name} (click to change product category)`}
 				onClick={() => openCategoryPanel(userCategory ? userCategory.name : category.name, id)}>
 				<img src={userCategory ? userCategory.imgSrc : category.imgSrc} alt='' />
 			</CategoryIcon>
