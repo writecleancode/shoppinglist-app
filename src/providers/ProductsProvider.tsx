@@ -50,65 +50,54 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	const handleBoughtStatus = (firestoreId: string, productId: number | string, isBought: boolean) => {
 		const timeoutValue = isBought ? 400 : 650;
 
-		if (typeof productId === 'number') {
-			setTimeout(async () => {
-				const productRef = doc(db, 'defaultProducts', firestoreId);
-				const product = (await getDoc(productRef)).data()!;
+		const dataToUpdatedPath = typeof productId === 'number' ? 'defaultProducts' : 'customProducts';
 
-				await updateDoc(productRef, {
-					isBought: !product.isBought,
-				});
+		setTimeout(async () => {
+			const productRef = doc(db, dataToUpdatedPath, firestoreId);
+			const product = (await getDoc(productRef)).data()!;
 
-				// setDefaultProducts(prevProducts => [
-				// 	...prevProducts.slice(0, productId - 1),
-				// 	{
-				// 		...prevProducts[productId - 1],
-				// 		isBought: !prevProducts[productId - 1].isBought,
-				// 	},
-				// 	...prevProducts.slice(productId),
-				// ]);
-			}, timeoutValue);
-		} else {
-			setTimeout(async () => {
-				// const checkedProductIndex = customProducts.map(product => product.firestoreId).indexOf(firestoreId);
+			await updateDoc(productRef, {
+				isBought: !product.isBought,
+			});
+		}, timeoutValue);
 
-				// const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(product => ({
-				// 	firestoreId: product.id,
-				// 	...product.data(),
-				// }));
+		// if (typeof productId === 'number') {
+		// 	setTimeout(async () => {
+		// 		const productRef = doc(db, 'defaultProducts', firestoreId);
+		// 		const product = (await getDoc(productRef)).data()!;
 
+		// 		await updateDoc(productRef, {
+		// 			isBought: !product.isBought,
+		// 		});
 
+		// 		// setDefaultProducts(prevProducts => [
+		// 		// 	...prevProducts.slice(0, productId - 1),
+		// 		// 	{
+		// 		// 		...prevProducts[productId - 1],
+		// 		// 		isBought: !prevProducts[productId - 1].isBought,
+		// 		// 	},
+		// 		// 	...prevProducts.slice(productId),
+		// 		// ]);
+		// 	}, timeoutValue);
+		// } else {
+		// 	setTimeout(async () => {
+		// 		const productRef = doc(db, 'customProducts', firestoreId);
+		// 		const product = (await getDoc(productRef)).data()!;
 
+		// 		await updateDoc(productRef, {
+		// 			isBought: !product.isBought,
+		// 		});
 
-				// const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
-
-				// const firestoreId = customProductsList[checkedProductIndex].firestoreId;
-				// const productRef = doc(db, 'customProducts', firestoreId);
-				// const product = (await getDoc(productRef)).data()!;
-				// await updateDoc(productRef, {
-				// 	isBought: !product.isBought,
-				// });
-
-				const productRef = doc(db, 'customProducts', firestoreId)
-				const product = (await getDoc(productRef)).data()!
-
-				await updateDoc(productRef, {
-					isBought: !product.isBought
-				})
-
-
-
-
-				// setCustomProducts(prevProducts => [
-				// 	...prevProducts.slice(0, checkedProductIndex),
-				// 	{
-				// 		...prevProducts[checkedProductIndex],
-				// 		isBought: !prevProducts[checkedProductIndex].isBought,
-				// 	},
-				// 	...prevProducts.slice(checkedProductIndex + 1),
-				// ]);
-			}, timeoutValue);
-		}
+		// 		// setCustomProducts(prevProducts => [
+		// 		// 	...prevProducts.slice(0, checkedProductIndex),
+		// 		// 	{
+		// 		// 		...prevProducts[checkedProductIndex],
+		// 		// 		isBought: !prevProducts[checkedProductIndex].isBought,
+		// 		// 	},
+		// 		// 	...prevProducts.slice(checkedProductIndex + 1),
+		// 		// ]);
+		// 	}, timeoutValue);
+		// }
 	};
 
 	const removeBoughtProducts = () => {
@@ -131,36 +120,59 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		setDefaultProducts(resetDefaultProducts);
 	};
 
-	const updateProductsList = (editedProduct: ProductType) => {
+	const updateProductsList = async (editedProduct: ProductType) => {
 		if (typeof editedProduct.id === 'string') {
-			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
-			setCustomProducts(prevProducts => [...prevProducts.slice(0, productIndex), editedProduct, ...prevProducts.slice(productIndex + 1)]);
+			// const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
+			// setCustomProducts(prevProducts => [...prevProducts.slice(0, productIndex), editedProduct, ...prevProducts.slice(productIndex + 1)]);
+
+			const productRef = doc(db, 'customProducts', editedProduct.firestoreId);
+			await updateDoc(productRef, {
+				...editedProduct,
+			});
 		} else if (typeof editedProduct.id === 'number') {
-			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
+			// const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
+			const productRef = doc(db, 'defaultProducts', editedProduct.firestoreId);
 
 			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						userCategory: editedProduct.category,
-						quantity: editedProduct.quantity,
-						unit: editedProduct.unit,
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
+				// setDefaultProducts(prevProducts => [
+				// 	...prevProducts.slice(0, productIndex),
+				// 	{
+				// 		...prevProducts[productIndex],
+				// 		userCategory: editedProduct.category,
+				// 		quantity: editedProduct.quantity,
+				// 		unit: editedProduct.unit,
+				// 	},
+				// 	...prevProducts.slice(productIndex + 1),
+				// ]);
+
+				await updateDoc(productRef, {
+					userCategory: editedProduct.category,
+					quantity: editedProduct.quantity,
+					unit: editedProduct.unit,
+				});
 			} else {
-				setDefaultProducts(prevProducts => [
-					...prevProducts.slice(0, productIndex),
-					{
-						...prevProducts[productIndex],
-						quantity: -1,
-						unit: '',
-						isBought: false,
-					},
-					...prevProducts.slice(productIndex + 1),
-				]);
-				setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
+				// setDefaultProducts(prevProducts => [
+				// 	...prevProducts.slice(0, productIndex),
+				// 	{
+				// 		...prevProducts[productIndex],
+				// 		quantity: -1,
+				// 		unit: '',
+				// 		isBought: false,
+				// 	},
+				// 	...prevProducts.slice(productIndex + 1),
+				// ]);
+				// setCustomProducts(prevProducts => [...prevProducts, { ...editedProduct, id: uuid() }]);
+				await updateDoc(productRef, {
+					quantity: -1,
+					unit: '',
+					isBought: false,
+				});
+				const id = uuid();
+				await setDoc(doc(db, 'customProducts', id), {
+					...editedProduct,
+					firestoreId: id,
+					id,
+				});
 			}
 		}
 	};

@@ -22,7 +22,7 @@ export const ProductListItem = ({
 	};
 
 	const handleProductClick = () => {
-		dispatch({ type: actionTypes.setEditedProduct, id, name, category, userCategory, quantity, unit, isBought });
+		dispatch({ type: actionTypes.setEditedProduct, firestoreId, id, name, category, userCategory, quantity, unit, isBought });
 		openEditPanel();
 	};
 
