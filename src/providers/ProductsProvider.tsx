@@ -72,19 +72,33 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 			setTimeout(async () => {
 				// const checkedProductIndex = customProducts.map(product => product.firestoreId).indexOf(firestoreId);
 
-				const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(product => ({
-					firestoreId: product.id,
-					...product.data(),
-				}));
+				// const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(product => ({
+				// 	firestoreId: product.id,
+				// 	...product.data(),
+				// }));
 
-				const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
 
-				const firestoreId = customProductsList[checkedProductIndex].firestoreId;
-				const productRef = doc(db, 'customProducts', firestoreId);
-				const product = (await getDoc(productRef)).data()!;
+
+
+				// const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
+
+				// const firestoreId = customProductsList[checkedProductIndex].firestoreId;
+				// const productRef = doc(db, 'customProducts', firestoreId);
+				// const product = (await getDoc(productRef)).data()!;
+				// await updateDoc(productRef, {
+				// 	isBought: !product.isBought,
+				// });
+
+				const productRef = doc(db, 'customProducts', firestoreId)
+				const product = (await getDoc(productRef)).data()!
+
 				await updateDoc(productRef, {
-					isBought: !product.isBought,
-				});
+					isBought: !product.isBought
+				})
+
+
+
+
 				// setCustomProducts(prevProducts => [
 				// 	...prevProducts.slice(0, checkedProductIndex),
 				// 	{
