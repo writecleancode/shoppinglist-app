@@ -44,7 +44,7 @@ export const ProductListItem = ({
 				$category={userCategory ? userCategory.name : category.name}
 				$isBought={isBought}
 				aria-label={`product category: ${userCategory ? userCategory.name : category.name} (click to change product category)`}
-				onClick={() => openCategoryPanel(userCategory ? userCategory.name : category.name, id)}>
+				onClick={() => openCategoryPanel(userCategory ? userCategory.name : category.name, id, firestoreId)}>
 				<img src={userCategory ? userCategory.imgSrc : category.imgSrc} alt='' />
 			</CategoryIcon>
 		</Wrapper>

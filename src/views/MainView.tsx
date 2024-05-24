@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
 import { EditProductContext } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
-import { products, products2 } from 'src/data/products';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from 'src/firebase';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList';
@@ -11,9 +12,7 @@ import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 import { Wrapper } from './MainView.styles';
-
-import { addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore';
-import { db } from 'src/firebase';
+import { ProductType } from 'src/types/types';
 
 export const MainView = () => {
 	const [isAddProductActive, setAddProductState] = useState(false);
@@ -39,10 +38,13 @@ export const MainView = () => {
 	useEffect(() => {
 		const productsQuery = query(collection(db, 'defaultProducts'));
 		const unsub = onSnapshot(productsQuery, productsSnapshot => {
-			const productsList = productsSnapshot.docs.map(product => ({
-				firestoreId: product.id,
-				...product.data(),
-			}));
+			const productsList = productsSnapshot.docs.map(
+				product =>
+					({
+						firestoreId: product.id,
+						...product.data(),
+					} as ProductType)
+			);
 			setDefaultProducts(productsList);
 		});
 
@@ -64,10 +66,13 @@ export const MainView = () => {
 	useEffect(() => {
 		const productsQuery = query(collection(db, 'customProducts'));
 		const unsub = onSnapshot(productsQuery, productsSnapshot => {
-			const productsList = productsSnapshot.docs.map(product => ({
-				firestoreId: product.id,
-				...product.data(),
-			}));
+			const productsList = productsSnapshot.docs.map(
+				product =>
+					({
+						firestoreId: product.id,
+						...product.data(),
+					} as ProductType)
+			);
 			productsList.length && setCustomProducts(productsList);
 		});
 

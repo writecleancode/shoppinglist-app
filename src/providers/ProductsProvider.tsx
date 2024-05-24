@@ -1,9 +1,8 @@
 import { createContext, useState } from 'react';
+import { collection, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
+import { db } from 'src/firebase';
 import { v4 as uuid } from 'uuid';
 import { CustomProductType, ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
-
-import { addDoc, collection, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
-import { db } from 'src/firebase';
 
 export const ProductsContext = createContext<ProductsContextType>({
 	defaultProducts: [],
@@ -217,20 +216,29 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		}
 	};
 
-	const updateProductCategory = (categoryChangeProductId: string | number | null, clickedCategory: { name: string; imgSrc: string }) => {
-		if (typeof categoryChangeProductId === 'string') {
-			const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
-			setCustomProducts(prevProducts => [
-				...prevProducts.slice(0, productIndex),
-				{
-					...prevProducts[productIndex],
-					category: {
-						name: clickedCategory.name,
-						imgSrc: clickedCategory.imgSrc,
-					},
-				},
-				...prevProducts.slice(productIndex + 1),
-			]);
+	const updateProductCategory = async (
+		categoryChangeProductId: { id: string | number; firestoreId: string } | null,
+		clickedCategory: { name: string; imgSrc: string }
+	) => {
+		console.log(typeof categoryChangeProductId.id);
+		if (typeof categoryChangeProductId?.id === 'string') {
+			const productRef = doc(db, 'customProducts', categoryChangeProductId.firestoreId);
+			await updateDoc(productRef, {
+				caegory: clickedCategory,
+			});
+
+			// const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
+			// setCustomProducts(prevProducts => [
+			// 	...prevProducts.slice(0, productIndex),
+			// 	{
+			// 		...prevProducts[productIndex],
+			// 		category: {
+			// 			name: clickedCategory.name,
+			// 			imgSrc: clickedCategory.imgSrc,
+			// 		},
+			// 	},
+			// 	...prevProducts.slice(productIndex + 1),
+			// ]);
 		} else if (typeof categoryChangeProductId === 'number') {
 			const productIndex = defaultProducts.map(product => product.id).indexOf(categoryChangeProductId);
 			setDefaultProducts(prevProducts => [
@@ -250,10 +258,13 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	const updateCustomProductsQuantity = async (customProduct: CustomProductType) => {
 		if (customProduct.name === '') return;
 
-		const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(product => ({
-			firestoreId: product.id,
-			...product.data(),
-		}));
+		const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(
+			product =>
+				({
+					firestoreId: product.id,
+					...product.data(),
+				} as ProductType)
+		);
 
 		const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
 		// const firestoreId = checkedProductIndex >= 0 ? customProductsList[checkedProductIndex].firestoreId : null;
