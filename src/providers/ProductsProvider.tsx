@@ -96,11 +96,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	const updateProductsList = (editedProduct: ProductType) => {
 		if (typeof editedProduct.id === 'string') {
 			const productIndex = customProducts.map(product => product.id).indexOf(editedProduct.id);
-			setCustomProducts(prevProducts => [
-				...prevProducts.slice(0, productIndex),
-				editedProduct,
-				...prevProducts.slice(productIndex + 1),
-			]);
+			setCustomProducts(prevProducts => [...prevProducts.slice(0, productIndex), editedProduct, ...prevProducts.slice(productIndex + 1)]);
 		} else if (typeof editedProduct.id === 'number') {
 			const productIndex = defaultProducts.map(product => product.id).indexOf(editedProduct.id);
 
@@ -150,20 +146,14 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 				{
 					...prevProducts[checkedProductIndex],
 					quantity: prevProducts[checkedProductIndex].quantity + quantityChanger,
-					unit:
-						prevProducts[checkedProductIndex].quantity + quantityChanger < 0
-							? ''
-							: prevProducts[checkedProductIndex - 1].unit,
+					unit: prevProducts[checkedProductIndex].quantity + quantityChanger < 0 ? '' : prevProducts[checkedProductIndex - 1].unit,
 				},
 				...prevProducts.slice(checkedProductIndex + 1),
 			]);
 		}
 	};
 
-	const updateProductCategory = (
-		categoryChangeProductId: string | number | null,
-		clickedCategory: { name: string; imgSrc: string }
-	) => {
+	const updateProductCategory = (categoryChangeProductId: string | number | null, clickedCategory: { name: string; imgSrc: string }) => {
 		if (typeof categoryChangeProductId === 'string') {
 			const productIndex = customProducts.map(product => product.id).indexOf(categoryChangeProductId);
 			setCustomProducts(prevProducts => [

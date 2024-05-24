@@ -1,4 +1,4 @@
-import { Dispatch, FormEvent, useCallback, useContext } from 'react';
+import { ChangeEvent, Dispatch, useCallback, useContext } from 'react';
 import { debounce } from 'lodash';
 import { initialProductState } from 'src/views/AddProducts';
 import { ProductsContext } from 'src/providers/ProductsProvider';
@@ -28,9 +28,7 @@ export const SearchBar = ({
 		debounce((searchPhrase = '') => {
 			if (!searchPhrase) return setProductsToAdd(productsList);
 
-			const matchingProducts = productsList.filter(product =>
-				product.name.toLowerCase().includes(searchPhrase.toLowerCase())
-			);
+			const matchingProducts = productsList.filter(product => product.name.toLowerCase().includes(searchPhrase.toLowerCase()));
 			setProductsToAdd(matchingProducts);
 		}, 500),
 		[productsList]
@@ -50,10 +48,10 @@ export const SearchBar = ({
 		[customProduct]
 	);
 
-	const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-		setSearchInputValue(e.currentTarget.value);
-		updateProductsList(e.currentTarget.value);
-		handleCustomProduct(e.currentTarget.value);
+	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setSearchInputValue(e.target.value);
+		updateProductsList(e.target.value);
+		handleCustomProduct(e.target.value);
 	};
 
 	const handleClearInputButton = () => {
@@ -63,12 +61,7 @@ export const SearchBar = ({
 
 	return (
 		<Wrapper>
-			<SearchInput
-				name='searchInput'
-				placeholder='add new item'
-				value={searchInputValue}
-				onChange={handleInputChange}
-			/>
+			<SearchInput name='searchInput' placeholder='add new item' value={searchInputValue} onChange={handleInputChange} />
 			<ClearInputButton onClick={handleClearInputButton} aria-label='clear input'>
 				<img src='src/assets/icons/x-circle.svg' alt='' />
 			</ClearInputButton>
