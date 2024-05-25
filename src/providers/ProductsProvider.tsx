@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { collection, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from 'src/firebase';
 import { v4 as uuid } from 'uuid';
 import { CustomProductType, ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
@@ -100,23 +100,42 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	};
 
 	const removeBoughtProducts = () => {
-		const filteredCustomProducts = customProducts.filter(product => product.isBought === false);
-		const resetDefaultProducts = defaultProducts.map(product => {
-			if (product.isBought === true) {
-				return {
+		// const filteredCustomProducts = customProducts.filter(product => product.isBought === false);
+		// const resetDefaultProducts = defaultProducts.map(product => {
+		// 	if (product.isBought === true) {
+		// 		return {
+		// 			id: product.id,
+		// 			name: product.name,
+		// 			category: product.category,
+		// 			quantity: -1,
+		// 			unit: '',
+		// 			isBought: false,
+		// 		};
+		// 	} else {
+		// 		return product;
+		// 	}
+		// });
+
+		// setCustomProducts(filteredCustomProducts);
+		// setDefaultProducts(resetDefaultProducts);
+
+		customProducts.forEach(async product => {
+			product.isBought && (await deleteDoc(doc(db, 'customProducts', product.firestoreId)));
+		});
+
+		defaultProducts.forEach(async product => {
+			if (product.isBought) {
+				const productRef = doc(db, 'defaultProducts', product.firestoreId);
+				await setDoc(productRef, {
 					id: product.id,
 					name: product.name,
 					category: product.category,
 					quantity: -1,
 					unit: '',
 					isBought: false,
-				};
-			} else {
-				return product;
+				});
 			}
 		});
-		setCustomProducts(filteredCustomProducts);
-		setDefaultProducts(resetDefaultProducts);
 	};
 
 	const updateProductsList = async (editedProduct: ProductType) => {
