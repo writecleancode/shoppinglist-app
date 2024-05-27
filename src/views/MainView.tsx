@@ -6,6 +6,7 @@ import { products } from 'src/data/products';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList';
+import { EmptyShoppingList } from 'src/components/molecules/EmptyShoppingList.ts/EmptyShoppingList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
@@ -57,7 +58,7 @@ export const MainView = () => {
 				<Header />
 				<ProgressBar />
 			</div>
-			<ProductsList productsList={productsList} />
+			{productsList.some(product => product.quantity >= 10) ? <ProductsList productsList={productsList} /> : <EmptyShoppingList />}
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel />
