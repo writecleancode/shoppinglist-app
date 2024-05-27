@@ -6,7 +6,9 @@ import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from 'src/firebase';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
+import { LoadingGif } from 'src/components/atoms/LoadingGif/LoadingGif';
 import { ProductsList } from 'src/components/organisms/ProductsList/ProductsList';
+import { EmptyShoppingList } from 'src/components/molecules/EmptyShoppingList/EmptyShoppingList';
 import { AddButton } from 'src/components/atoms/AddButton/AddButton';
 import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
@@ -108,7 +110,14 @@ export const MainView = () => {
 				{/* <button onClick={sendDataToFirestore}>update</button> */}
 				<ProgressBar />
 			</div>
-			<ProductsList productsList={productsList} />
+			{!productsList.length ? (
+				<LoadingGif />
+			) : productsList.some(product => product.quantity >= 0) ? (
+				<ProductsList productsList={productsList} />
+			) : (
+				<EmptyShoppingList />
+			)}
+			{/* <ProductsList productsList={productsList} /> */}
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel />
