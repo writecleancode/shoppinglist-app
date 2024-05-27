@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { collection, deleteDoc, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, deleteField, doc, getDoc, getDocs, increment, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from 'src/firebase';
 import { v4 as uuid } from 'uuid';
 import { CustomProductType, ProductType, ProductsContextType, ProductsProviderProps } from 'src/types/types';
@@ -126,13 +126,11 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 		defaultProducts.forEach(async product => {
 			if (product.isBought) {
 				const productRef = doc(db, 'defaultProducts', product.firestoreId);
-				await setDoc(productRef, {
-					id: product.id,
-					name: product.name,
-					category: product.category,
+				await updateDoc(productRef, {
 					quantity: -1,
 					unit: '',
 					isBought: false,
+					userCategory: deleteField(),
 				});
 			}
 		});

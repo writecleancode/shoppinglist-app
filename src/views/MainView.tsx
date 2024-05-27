@@ -73,11 +73,11 @@ export const MainView = () => {
 						...product.data(),
 					} as ProductType)
 			);
-			productsList.length && setCustomProducts(productsList);
+			productsList.length ? setCustomProducts(productsList) : setCustomProducts([]);
 		});
 
 		return () => unsub();
-	});
+	}, []);
 
 	useEffect(() => {
 		setProductsList([...defaultProducts, ...customProducts]);
