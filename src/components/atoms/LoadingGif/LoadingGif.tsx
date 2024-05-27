@@ -1,11 +1,4 @@
-import styled from 'styled-components';
-
-export const Wrapper = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-`;
+import { Wrapper } from './LoadingGif.styles';
 
 export const LoadingGif = () => {
 	return (
