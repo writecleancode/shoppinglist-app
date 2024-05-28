@@ -50,18 +50,6 @@ export const MainView = () => {
 			setDefaultProducts(productsList);
 		});
 
-		// try {
-		// 	(async () => {
-		// 		const products = await getDocs(collection(db, 'defaultProducts'));
-		// 		const productsList = products.docs.map(product => ({
-		// 			firebaseId: product.id,
-		// 			...product.data(),
-		// 		}));
-		// 		setDefaultProducts(productsList);
-		// 	})();
-		// } catch (error) {
-		// 	console.log(error);
-		// }
 		return () => unsub();
 	}, []);
 
@@ -95,19 +83,10 @@ export const MainView = () => {
 		return () => window.removeEventListener('keydown', handleClosePanels);
 	}, [isEditPanelOpen, isCategoryPanelOpen]);
 
-	// const sendDataToFirestore = () => {
-	// 	products2.forEach(async product => {
-	// 		await addDoc(collection(db, 'defaultProducts'), {
-	// 			...product,
-	// 		});
-	// 	});
-	// };
-
 	return (
 		<Wrapper>
 			<div>
 				<Header />
-				{/* <button onClick={sendDataToFirestore}>update</button> */}
 				<ProgressBar />
 			</div>
 			{!productsList.length ? (
@@ -117,7 +96,6 @@ export const MainView = () => {
 			) : (
 				<EmptyShoppingList />
 			)}
-			{/* <ProductsList productsList={productsList} /> */}
 			<AddButton onClick={showAddProductView} />
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel />
