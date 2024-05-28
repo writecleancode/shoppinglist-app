@@ -53,28 +53,45 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 
 		setTimeout(async () => {
 			const productRef = doc(db, dataToUpdatedPath, firestoreId);
-			const product = (await getDoc(productRef)).data()!;
-
-			await updateDoc(productRef, {
-				isBought: !product.isBought,
-			});
+			try {
+				const product = (await getDoc(productRef)).data()!;
+				try {
+					await updateDoc(productRef, {
+						isBought: !product.isBought,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			} catch (error) {
+				console.log(error);
+			}
 		}, timeoutValue);
 	};
 
 	const removeBoughtProducts = () => {
 		customProducts.forEach(async product => {
-			product.isBought && (await deleteDoc(doc(db, 'customProducts', product.firestoreId)));
+			if (!product.isBought) return;
+
+			try {
+				await deleteDoc(doc(db, 'customProducts', product.firestoreId));
+			} catch (error) {
+				console.log(error);
+			}
 		});
 
 		defaultProducts.forEach(async product => {
 			if (product.isBought) {
 				const productRef = doc(db, 'defaultProducts', product.firestoreId);
-				await updateDoc(productRef, {
-					quantity: -1,
-					unit: '',
-					isBought: false,
-					userCategory: deleteField(),
-				});
+				try {
+					await updateDoc(productRef, {
+						quantity: -1,
+						unit: '',
+						isBought: false,
+						userCategory: deleteField(),
+					});
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		});
 	};
@@ -82,30 +99,47 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	const updateProductsList = async (editedProduct: ProductType) => {
 		if (typeof editedProduct.id === 'string') {
 			const productRef = doc(db, 'customProducts', editedProduct.firestoreId);
-			await updateDoc(productRef, {
-				...editedProduct,
-			});
+			try {
+				await updateDoc(productRef, {
+					...editedProduct,
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		} else if (typeof editedProduct.id === 'number') {
 			const productRef = doc(db, 'defaultProducts', editedProduct.firestoreId);
 
 			if (defaultProducts.map(product => product.name).includes(editedProduct.name)) {
-				await updateDoc(productRef, {
-					userCategory: editedProduct.category,
-					quantity: editedProduct.quantity,
-					unit: editedProduct.unit,
-				});
+				try {
+					await updateDoc(productRef, {
+						userCategory: editedProduct.category,
+						quantity: editedProduct.quantity,
+						unit: editedProduct.unit,
+					});
+				} catch (error) {
+					console.log(error);
+				}
 			} else {
-				await updateDoc(productRef, {
-					quantity: -1,
-					unit: '',
-					isBought: false,
-				});
+				try {
+					await updateDoc(productRef, {
+						quantity: -1,
+						unit: '',
+						isBought: false,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+
 				const id = uuid();
-				await setDoc(doc(db, 'customProducts', id), {
-					...editedProduct,
-					firestoreId: id,
-					id,
-				});
+				try {
+					await setDoc(doc(db, 'customProducts', id), {
+						...editedProduct,
+						firestoreId: id,
+						id,
+					});
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	};
@@ -113,18 +147,34 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	const updateProductsQuantity = async (firebaseId: string, productId: number | string, quantityChanger: 1 | -1) => {
 		if (typeof productId === 'number') {
 			const productRef = doc(db, 'defaultProducts', firebaseId);
-			const product = (await getDoc(productRef)).data()!;
-			await updateDoc(productRef, {
-				quantity: increment(quantityChanger),
-				unit: product.quantity + quantityChanger < 0 ? '' : product.unit,
-			});
+			try {
+				const product = (await getDoc(productRef)).data()!;
+				try {
+					await updateDoc(productRef, {
+						quantity: increment(quantityChanger),
+						unit: product.quantity + quantityChanger < 0 ? '' : product.unit,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			} catch (error) {
+				console.log(error);
+			}
 		} else {
 			const productRef = doc(db, 'customProducts', firebaseId);
-			const product = (await getDoc(productRef)).data()!;
-			await updateDoc(productRef, {
-				quantity: increment(quantityChanger),
-				unit: product.quantity + quantityChanger < 0 ? '' : product.unit,
-			});
+			try {
+				const product = (await getDoc(productRef)).data()!;
+				try {
+					await updateDoc(productRef, {
+						quantity: increment(quantityChanger),
+						unit: product.quantity + quantityChanger < 0 ? '' : product.unit,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	};
 
@@ -134,42 +184,62 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
 	) => {
 		if (typeof categoryChangeProductId?.id === 'string') {
 			const productRef = doc(db, 'customProducts', categoryChangeProductId.firestoreId);
-			await updateDoc(productRef, {
-				category: clickedCategory,
-			});
+			try {
+				await updateDoc(productRef, {
+					category: clickedCategory,
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		} else if (typeof categoryChangeProductId?.id === 'number') {
 			const productRef = doc(db, 'defaultProducts', categoryChangeProductId.firestoreId);
-			await updateDoc(productRef, {
-				userCategory: clickedCategory,
-			});
+			try {
+				await updateDoc(productRef, {
+					userCategory: clickedCategory,
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	};
 
 	const updateCustomProductsQuantity = async (customProduct: CustomProductType) => {
 		if (customProduct.name === '') return;
 
-		const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(
-			product =>
-				({
-					firestoreId: product.id,
-					...product.data(),
-				} as ProductType)
-		);
+		try {
+			const customProductsList = (await getDocs(collection(db, 'customProducts'))).docs.map(
+				product =>
+					({
+						firestoreId: product.id,
+						...product.data(),
+					} as ProductType)
+			);
 
-		const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
+			const checkedProductIndex = customProductsList.map(product => product.name).indexOf(customProduct.name);
 
-		if (customProductsList.length > 0 && checkedProductIndex >= 0) {
-			const firestoreId = customProductsList[checkedProductIndex].firestoreId;
-			const productRef = doc(db, 'customProducts', firestoreId);
-			await updateDoc(productRef, {
-				quantity: customProduct.quantity,
-			});
-		} else {
-			const id = uuid();
-			await setDoc(doc(db, 'customProducts', id), {
-				id,
-				...customProduct,
-			});
+			if (customProductsList.length > 0 && checkedProductIndex >= 0) {
+				const firestoreId = customProductsList[checkedProductIndex].firestoreId;
+				const productRef = doc(db, 'customProducts', firestoreId);
+				try {
+					await updateDoc(productRef, {
+						quantity: customProduct.quantity,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			} else {
+				const id = uuid();
+				try {
+					await setDoc(doc(db, 'customProducts', id), {
+						id,
+						...customProduct,
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
