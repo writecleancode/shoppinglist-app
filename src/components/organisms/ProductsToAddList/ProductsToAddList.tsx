@@ -6,13 +6,7 @@ import { ProductsToAddListProps } from 'src/types/types';
 
 let timeout: NodeJS.Timeout;
 
-export const ProductsToAddList = ({
-	products,
-	customProduct,
-	clearInput,
-	setProductsToAdd,
-	setCustomProduct,
-}: ProductsToAddListProps) => {
+export const ProductsToAddList = ({ products, customProduct, clearInput, setProductsToAdd, setCustomProduct }: ProductsToAddListProps) => {
 	const { updateProductsQuantity } = useContext(ProductsContext);
 	const [lastClickedProductId, setLastClickedProductId] = useState<number | string>(-1);
 	const [quantityNumber, setQuantityNumber] = useState(-1); // used for plus icon rotate animation - to prevent animation after custom product is replaced by another
@@ -37,7 +31,7 @@ export const ProductsToAddList = ({
 		clearInput();
 	};
 
-	const handleProductQuantity = (productId: number | string, index: number, direction: string) => {
+	const handleProductQuantity = (firestoreId: string, productId: number | string, index: number, direction: string) => {
 		const quantityChanger = direction === 'increase' ? 1 : -1;
 
 		handlePlusIconScale(productId);
@@ -52,7 +46,7 @@ export const ProductsToAddList = ({
 		]);
 		clearInput();
 
-		updateProductsQuantity(productId, quantityChanger);
+		updateProductsQuantity(firestoreId, productId, quantityChanger);
 	};
 
 	return (
@@ -62,10 +56,7 @@ export const ProductsToAddList = ({
 					<AddProductButton
 						onClick={() => handleCustomProductQuantity(-999, 'increase')}
 						aria-label={`add ${customProduct.name} to the list`}>
-						<PlusIcon
-							$isAdded={customProduct.quantity >= 0}
-							$quantity={quantityNumber}
-							$isAnimating={-999 === lastClickedProductId}>
+						<PlusIcon $isAdded={customProduct.quantity >= 0} $quantity={quantityNumber} $isAnimating={-999 === lastClickedProductId}>
 							<img src='src/assets/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{customProduct.name}
@@ -89,10 +80,10 @@ export const ProductsToAddList = ({
 						return 0;
 					}
 				})
-				.map(({ id, name, quantity, unit }, index) => (
+				.map(({ firestoreId, id, name, quantity, unit }, index) => (
 					<ProductToAdd key={id}>
 						<AddProductButton
-							onClick={() => handleProductQuantity(id, index, 'increase')}
+							onClick={() => handleProductQuantity(firestoreId, id, index, 'increase')}
 							aria-label={`add ${name} to the list`}>
 							<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
 								<img src='src/assets/icons/plus-big.svg' alt='' />
@@ -105,7 +96,7 @@ export const ProductsToAddList = ({
 						</QuantityOfProduct>
 						<DecreaseButton
 							$quantity={quantity}
-							onClick={() => handleProductQuantity(id, index, 'decrease')}
+							onClick={() => handleProductQuantity(firestoreId, id, index, 'decrease')}
 							aria-label={`decrease quantity of ${name}`}
 						/>
 					</ProductToAdd>

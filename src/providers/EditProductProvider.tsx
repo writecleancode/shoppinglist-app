@@ -4,6 +4,7 @@ import { EditProductContextType, EditProductProviderProps, ProductType } from 's
 const initialEditPanelState = false;
 
 const initialEditState = {
+	firestoreId: 'abc123',
 	id: 'abc123',
 	name: 'product name',
 	category: {
@@ -28,6 +29,7 @@ const reducer = (state: ProductType, action: Record<string, any>) => {
 	switch (action.type) {
 		case actionTypes.setEditedProduct:
 			return {
+				firestoreId: action.firestoreId,
 				id: action.id,
 				name: action.name,
 				category: {

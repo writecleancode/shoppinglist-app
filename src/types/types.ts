@@ -12,6 +12,7 @@ export type CustomProductType = {
 };
 
 export type ProductType = {
+	firestoreId: string;
 	id: number | string;
 	name: string;
 	category: {
@@ -30,8 +31,8 @@ export type ProductType = {
 export type ChangeCategoryContextType = {
 	isCategoryPanelOpen: boolean;
 	highlightedCategory: string;
-	categoryChangeProductId: string | number | null;
-	openCategoryPanel: (clickedCategory: string, clickedId?: number | string) => void;
+	categoryChangeProductId: null | { id: string | number; firestoreId: string } | null;
+	openCategoryPanel: (clickedCategory: string, clickedId?: number | string, firestoreId?: string) => void;
 	closeCategoryPanel: () => void;
 	setHighlightedCategory: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -50,13 +51,17 @@ export type ProductsContextType = {
 	productsList: never[] | ProductType[];
 	shoppingProgress: number;
 	setDefaultProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
+	setCustomProducts: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	setProductsList: React.Dispatch<React.SetStateAction<never[] | ProductType[]>>;
 	countShoppingProgress: () => void;
-	handleBoughtStatus: (productId: number | string, isBought: boolean) => void;
+	handleBoughtStatus: (firestoreId: string, productId: number | string, isBought: boolean) => void;
 	removeBoughtProducts: () => void;
 	updateProductsList: (editedProduct: ProductType) => void;
-	updateProductsQuantity: (productId: number | string, quantityChanger: 1 | -1) => void;
-	updateProductCategory: (categoryChangeProductId: string | number | null, clickedCategory: { name: string; imgSrc: string }) => void;
+	updateProductsQuantity: (firebaseId: string, productId: number | string, quantityChanger: 1 | -1) => void;
+	updateProductCategory: (
+		categoryChangeProductId: { id: string | number; firestoreId: string } | null,
+		clickedCategory: { name: string; imgSrc: string }
+	) => void;
 	updateCustomProductsQuantity: (customProduct: CustomProductType) => void;
 };
 

@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from 'src/providers/ProductsProvider';
 import { EditProductContext } from 'src/providers/EditProductProvider';
 import { ChangeCategoryContext } from 'src/providers/ChangeCategoryProvider';
-import { products } from 'src/data/products';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from 'src/firebase';
 import { Header } from 'src/components/atoms/Header/Header';
 import { ProgressBar } from 'src/components/atoms/ProgressBar/ProgressBar';
 import { LoadingGif } from 'src/components/atoms/LoadingGif/LoadingGif';
@@ -13,10 +14,11 @@ import { AddProducts } from './AddProducts';
 import { EditPanel } from 'src/components/molecules/EditPanel/EditPanel';
 import { ChangeCategoryPanel } from 'src/components/molecules/ChangeCategory/ChangeCategoryPanel';
 import { Wrapper } from './MainView.styles';
+import { ProductType } from 'src/types/types';
 
 export const MainView = () => {
 	const [isAddProductActive, setAddProductState] = useState(false);
-	const { defaultProducts, customProducts, productsList, setDefaultProducts, setProductsList, countShoppingProgress } =
+	const { defaultProducts, customProducts, productsList, setDefaultProducts, setCustomProducts, setProductsList, countShoppingProgress } =
 		useContext(ProductsContext);
 	const { isEditPanelOpen, closeEditPanel } = useContext(EditProductContext);
 	const { isCategoryPanelOpen, closeCategoryPanel } = useContext(ChangeCategoryContext);
@@ -36,7 +38,35 @@ export const MainView = () => {
 	};
 
 	useEffect(() => {
-		setDefaultProducts(products);
+		const productsQuery = query(collection(db, 'defaultProducts'));
+		const unsub = onSnapshot(productsQuery, productsSnapshot => {
+			const productsList = productsSnapshot.docs.map(
+				product =>
+					({
+						firestoreId: product.id,
+						...product.data(),
+					} as ProductType)
+			);
+			setDefaultProducts(productsList);
+		});
+
+		return () => unsub();
+	}, []);
+
+	useEffect(() => {
+		const productsQuery = query(collection(db, 'customProducts'));
+		const unsub = onSnapshot(productsQuery, productsSnapshot => {
+			const productsList = productsSnapshot.docs.map(
+				product =>
+					({
+						firestoreId: product.id,
+						...product.data(),
+					} as ProductType)
+			);
+			productsList.length ? setCustomProducts(productsList) : setCustomProducts([]);
+		});
+
+		return () => unsub();
 	}, []);
 
 	useEffect(() => {

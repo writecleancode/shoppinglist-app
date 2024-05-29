@@ -15,13 +15,13 @@ export const ChangeCategoryContext = createContext<ChangeCategoryContextType>({
 export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps) => {
 	const [isCategoryPanelOpen, setCategoryPanelState] = useState(initialCategoryPanelState);
 	const [highlightedCategory, setHighlightedCategory] = useState('');
-	const [categoryChangeProductId, setCategoryChangeProductId] = useState<null | string | number>(null);
+	const [categoryChangeProductId, setCategoryChangeProductId] = useState<null | { id: string | number; firestoreId: string }>(null);
 
-	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string) => {
+	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string, clickedFirestoreId?: string) => {
 		setHighlightedCategory(clickedCategory);
 		setCategoryPanelState(true);
 
-		clickedId && setCategoryChangeProductId(clickedId);
+		clickedId && clickedFirestoreId && setCategoryChangeProductId({ id: clickedId, firestoreId: clickedFirestoreId });
 	};
 
 	const closeCategoryPanel = () => {
