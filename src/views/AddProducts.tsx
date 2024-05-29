@@ -38,7 +38,7 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 	}, [customProduct.quantity]);
 
 	return (
-		<Wrapper $isActive={isActive}>
+		<Wrapper $isActive={isActive} inert={isActive ? undefined : ''}>
 			<div>
 				<SearchWrapper>
 					<BackButton onClick={handleBackButton} aria-label='go back to the list of product to buy'>

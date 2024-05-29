@@ -7,7 +7,7 @@ export const AppShadowLayerBright = styled(AppShadowLayer)`
 	transition: opacity 0.2s;
 `;
 
-export const Wrapper = styled.div<{ $isOpen: boolean }>`
+export const Wrapper = styled.div<{ $isOpen: boolean; inert: '' | undefined }>`
 	position: absolute;
 	top: 50%;
 	left: 50%;

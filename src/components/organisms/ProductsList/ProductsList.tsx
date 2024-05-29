@@ -4,11 +4,11 @@ import { BoughtProducts } from 'src/components/molecules/BoughtProducts/BoughtPr
 import { Wrapper } from './ProductsList.styles';
 import { ProductsListProps } from 'src/types/types';
 
-export const ProductsList = ({ productsList }: ProductsListProps) => {
+export const ProductsList = ({ productsList, isInert }: ProductsListProps) => {
 	const sortedProductsList = useSort(productsList);
 
 	return (
-		<Wrapper>
+		<Wrapper inert={isInert ? '' : undefined}>
 			<ProductsToBuy productsList={sortedProductsList} />
 			<BoughtProducts productsList={sortedProductsList} />
 		</Wrapper>

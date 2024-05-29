@@ -24,7 +24,7 @@ import {
 export const EditPanel = () => {
 	const { updateProductsList } = useContext(ProductsContext);
 	const { isEditPanelOpen, editedProduct, closeEditPanel, dispatch } = useContext(EditProductContext);
-	const { openCategoryPanel } = useContext(ChangeCategoryContext);
+	const { isCategoryPanelOpen, openCategoryPanel } = useContext(ChangeCategoryContext);
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		dispatch({ type: actionTypes.inputChange, key: e.target.name, value: e.target.value });
@@ -51,7 +51,7 @@ export const EditPanel = () => {
 	return (
 		<>
 			<AppShadowLayer $isOpen={isEditPanelOpen} onClick={closeEditPanel}></AppShadowLayer>
-			<Wrapper id='editPanel' tabIndex={0} $isOpen={isEditPanelOpen}>
+			<Wrapper id='editPanel' $isOpen={isEditPanelOpen} inert={isEditPanelOpen && !isCategoryPanelOpen ? undefined : ''}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />

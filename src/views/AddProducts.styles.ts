@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div<{ $isActive: boolean }>`
+export const Wrapper = styled.div<{ $isActive: boolean; inert: '' | undefined }>`
 	position: absolute;
 	inset: 0;
 	z-index: 2;

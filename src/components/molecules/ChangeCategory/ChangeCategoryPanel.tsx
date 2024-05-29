@@ -36,7 +36,7 @@ export const ChangeCategoryPanel = () => {
 	return (
 		<>
 			<AppShadowLayerBright $isOpen={isCategoryPanelOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
-			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isCategoryPanelOpen}>
+			<Wrapper id='changeCategoryPanel' $isOpen={isCategoryPanelOpen} inert={isCategoryPanelOpen ? undefined : ''}>
 				<Header>
 					<Title>Change category</Title>
 					<CloseButton onClick={closeCategoryPanel} aria-label='close "change category" panel'>

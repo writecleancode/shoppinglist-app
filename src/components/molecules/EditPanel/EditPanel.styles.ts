@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CategoryIcon } from 'src/components/atoms/CategoryIcon/CategoryIcon';
 
-export const Wrapper = styled.div<{ $isOpen: boolean }>`
+export const Wrapper = styled.div<{ $isOpen: boolean; inert: '' | undefined }>`
 	position: absolute;
 	bottom: 0;
 	left: 0;

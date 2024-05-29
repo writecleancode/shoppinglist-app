@@ -84,6 +84,7 @@ export type EditProductProviderProps = {
 
 export type ProductsListProps = {
 	productsList: ProductType[];
+	isInert: boolean;
 };
 
 export type ProductListItemProps = {
