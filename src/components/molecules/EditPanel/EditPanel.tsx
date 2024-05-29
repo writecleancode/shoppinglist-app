@@ -51,7 +51,7 @@ export const EditPanel = () => {
 	return (
 		<>
 			<AppShadowLayer $isOpen={isEditPanelOpen} onClick={closeEditPanel}></AppShadowLayer>
-			<Wrapper id='editPanel' tabIndex={0} $isOpen={isEditPanelOpen}>
+			<Wrapper id='editPanel' $isOpen={isEditPanelOpen} inert={isEditPanelOpen ? undefined : ''}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort onClick={closeEditPanel}>
 						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
@@ -64,9 +64,7 @@ export const EditPanel = () => {
 				</ControlChangesButtonsWrapper>
 				<MainInfoWrapper>
 					<NameInput type='text' name='name' value={editedProduct.name} onChange={handleInputChange} />
-					<CategoryButton
-						aria-label='change product category'
-						onClick={() => openCategoryPanel(editedProduct.category.name)}>
+					<CategoryButton aria-label='change product category' onClick={() => openCategoryPanel(editedProduct.category.name)}>
 						<CategoryIconCircle as='div' $category={editedProduct.category.name} $isBought={false}>
 							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
 						</CategoryIconCircle>
@@ -84,37 +82,18 @@ export const EditPanel = () => {
 						value={editedProduct.quantity > 0 ? editedProduct.quantity : ''}
 						onChange={handleQuantityChange}
 					/>
-					<UnitInput
-						type='text'
-						name='unit'
-						placeholder='unit'
-						maxLength={10}
-						value={editedProduct.unit}
-						onChange={handleInputChange}
-					/>
+					<UnitInput type='text' name='unit' placeholder='unit' maxLength={10} value={editedProduct.unit} onChange={handleInputChange} />
 					<UnitButtonsWrapper>
-						<UnitButton
-							onClick={() => handleUnitButtons('l')}
-							$isCurrentUnit={editedProduct.unit === 'l'}
-							aria-label='set unit: l'>
+						<UnitButton onClick={() => handleUnitButtons('l')} $isCurrentUnit={editedProduct.unit === 'l'} aria-label='set unit: l'>
 							l
 						</UnitButton>
-						<UnitButton
-							onClick={() => handleUnitButtons('ml')}
-							$isCurrentUnit={editedProduct.unit === 'ml'}
-							aria-label='set unit: ml'>
+						<UnitButton onClick={() => handleUnitButtons('ml')} $isCurrentUnit={editedProduct.unit === 'ml'} aria-label='set unit: ml'>
 							ml
 						</UnitButton>
-						<UnitButton
-							onClick={() => handleUnitButtons('kg')}
-							$isCurrentUnit={editedProduct.unit === 'kg'}
-							aria-label='set unit: kg'>
+						<UnitButton onClick={() => handleUnitButtons('kg')} $isCurrentUnit={editedProduct.unit === 'kg'} aria-label='set unit: kg'>
 							kg
 						</UnitButton>
-						<UnitButton
-							onClick={() => handleUnitButtons('g')}
-							$isCurrentUnit={editedProduct.unit === 'g'}
-							aria-label='set unit: g'>
+						<UnitButton onClick={() => handleUnitButtons('g')} $isCurrentUnit={editedProduct.unit === 'g'} aria-label='set unit: g'>
 							g
 						</UnitButton>
 					</UnitButtonsWrapper>

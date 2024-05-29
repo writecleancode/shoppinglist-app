@@ -20,7 +20,6 @@ export const ChangeCategoryProvider = ({ children }: ChangeCategoryProviderProps
 	const openCategoryPanel = (clickedCategory: string, clickedId?: number | string) => {
 		setHighlightedCategory(clickedCategory);
 		setCategoryPanelState(true);
-		document.getElementById('changeCategoryPanel')!.focus();
 
 		clickedId && setCategoryChangeProductId(clickedId);
 	};

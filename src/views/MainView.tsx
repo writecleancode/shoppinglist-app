@@ -55,18 +55,21 @@ export const MainView = () => {
 
 	return (
 		<Wrapper>
-			<div>
+			<div {...{ inert: isAddProductActive || isEditPanelOpen || isCategoryPanelOpen ? '' : undefined }}>
 				<Header />
 				<ProgressBar />
 			</div>
 			{!productsList.length ? (
 				<LoadingGif />
 			) : productsList.some(product => product.quantity >= 0) ? (
-				<ProductsList productsList={productsList} />
+				<ProductsList productsList={productsList} isInert={isAddProductActive || isEditPanelOpen || isCategoryPanelOpen} />
 			) : (
 				<EmptyShoppingList />
 			)}
-			<AddButton onClick={showAddProductView} />
+			<AddButton
+				onClick={showAddProductView}
+				{...{ inert: isAddProductActive || isEditPanelOpen || isCategoryPanelOpen ? '' : undefined }}
+			/>
 			<AddProducts isActive={isAddProductActive} hideAddProductView={hideAddProductView} />
 			<EditPanel />
 			<ChangeCategoryPanel />

@@ -17,8 +17,7 @@ import {
 export const ChangeCategoryPanel = () => {
 	const { updateProductCategory } = useContext(ProductsContext);
 	const { dispatch } = useContext(EditProductContext);
-	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel, categoryChangeProductId } =
-		useContext(ChangeCategoryContext);
+	const { isCategoryPanelOpen, highlightedCategory, closeCategoryPanel, categoryChangeProductId } = useContext(ChangeCategoryContext);
 
 	const handleChangeCategory = (clickedCategory: { name: string; imgSrc: string }) => {
 		if (categoryChangeProductId) {
@@ -37,7 +36,7 @@ export const ChangeCategoryPanel = () => {
 	return (
 		<>
 			<AppShadowLayerBright $isOpen={isCategoryPanelOpen} onClick={closeCategoryPanel}></AppShadowLayerBright>
-			<Wrapper id='changeCategoryPanel' tabIndex={0} $isOpen={isCategoryPanelOpen}>
+			<Wrapper id='changeCategoryPanel' $isOpen={isCategoryPanelOpen} inert={isCategoryPanelOpen ? undefined : ''}>
 				<Header>
 					<Title>Change category</Title>
 					<CloseButton onClick={closeCategoryPanel} aria-label='close "change category" panel'>

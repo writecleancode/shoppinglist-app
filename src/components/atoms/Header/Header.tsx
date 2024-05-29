@@ -19,9 +19,7 @@ export const Header = () => {
 			<H1>ShoppingList</H1>
 			<EllipsisButton
 				onClick={handleRemoveButtonState}
-				aria-label={
-					isRemoveButtonVisible ? 'hide "remove bought products" button' : 'show "remove bought products" button'
-				}>
+				aria-label={isRemoveButtonVisible ? 'hide "remove bought products" button' : 'show "remove bought products" button'}>
 				<img src='src/assets/icons/ellipsis-vertical.svg' alt='' />
 			</EllipsisButton>
 			<RemoveBoughtProductsButton

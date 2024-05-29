@@ -56,10 +56,7 @@ export type ProductsContextType = {
 	removeBoughtProducts: () => void;
 	updateProductsList: (editedProduct: ProductType) => void;
 	updateProductsQuantity: (productId: number | string, quantityChanger: 1 | -1) => void;
-	updateProductCategory: (
-		categoryChangeProductId: string | number | null,
-		clickedCategory: { name: string; imgSrc: string }
-	) => void;
+	updateProductCategory: (categoryChangeProductId: string | number | null, clickedCategory: { name: string; imgSrc: string }) => void;
 	updateCustomProductsQuantity: (customProduct: CustomProductType) => void;
 };
 
@@ -82,6 +79,7 @@ export type EditProductProviderProps = {
 
 export type ProductsListProps = {
 	productsList: ProductType[];
+	isInert: boolean;
 };
 
 export type ProductListItemProps = {

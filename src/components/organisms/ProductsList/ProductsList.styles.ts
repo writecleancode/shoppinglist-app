@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ inert: '' | undefined }>`
 	padding-bottom: 7rem;
 	background-color: ${({ theme }) => theme.colors.lightGrey};
 	overflow-y: auto;

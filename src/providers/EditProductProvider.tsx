@@ -92,14 +92,8 @@ export const EditProductProvider = ({ children }: EditProductProviderProps) => {
 	const [isEditPanelOpen, setEditPanelState] = useState(initialEditPanelState);
 	const [editedProduct, dispatch] = useReducer(reducer, initialEditState);
 
-	const openEditPanel = () => {
-		setEditPanelState(true);
-		document.getElementById('editPanel')!.focus();
-	};
-
-	const closeEditPanel = () => {
-		setEditPanelState(false);
-	};
+	const openEditPanel = () => setEditPanelState(true);
+	const closeEditPanel = () => setEditPanelState(false);
 
 	return (
 		<EditProductContext.Provider
