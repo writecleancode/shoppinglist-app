@@ -9,7 +9,7 @@ export const initialProductState = {
 	name: '',
 	category: {
 		name: 'other',
-		imgSrc: 'src/assets/img/category-icons/other.png',
+		imgSrc: '/img/category-icons/other.png',
 	},
 	quantity: -1,
 	unit: '',
@@ -42,7 +42,7 @@ export const AddProducts = ({ isActive, hideAddProductView }: AddProductsProps) 
 			<div>
 				<SearchWrapper>
 					<BackButton onClick={handleBackButton} aria-label='go back to the list of product to buy'>
-						<img src='src/assets/icons/arrow-left.svg' alt='' />
+						<img src='/icons/arrow-left.svg' alt='' />
 					</BackButton>
 					<SearchBar
 						searchInputValue={searchInputValue}

@@ -61,7 +61,7 @@ export const SearchBar = ({
 		<Wrapper>
 			<SearchInput name='searchInput' placeholder='add new item' value={searchInputValue} onChange={handleInputChange} />
 			<ClearInputButton onClick={handleClearInputButton} aria-label='clear input'>
-				<img src='src/assets/icons/x-circle.svg' alt='' />
+				<img src='/icons/x-circle.svg' alt='' />
 			</ClearInputButton>
 		</Wrapper>
 	);

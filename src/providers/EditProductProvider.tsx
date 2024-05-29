@@ -9,7 +9,7 @@ const initialEditState = {
 	name: 'product name',
 	category: {
 		name: 'other',
-		imgSrc: 'src/assets/img/category-icons/other.png',
+		imgSrc: '/img/category-icons/other.png',
 	},
 	quantity: -1,
 	unit: '',

@@ -15,18 +15,18 @@ export const Header = () => {
 
 	return (
 		<Wrapper>
-			<CartIcon src='src/assets/icons/cart.svg' alt='' />
+			<CartIcon src='/icons/cart.svg' alt='' />
 			<H1>ShoppingList</H1>
 			<EllipsisButton
 				onClick={handleRemoveButtonState}
 				aria-label={isRemoveButtonVisible ? 'hide "remove bought products" button' : 'show "remove bought products" button'}>
-				<img src='src/assets/icons/ellipsis-vertical.svg' alt='' />
+				<img src='/icons/ellipsis-vertical.svg' alt='' />
 			</EllipsisButton>
 			<RemoveBoughtProductsButton
 				$isVisible={isRemoveButtonVisible}
 				onClick={handleRemoveBoughtProductsButton}
 				tabIndex={isRemoveButtonVisible ? 0 : -1}>
-				<img src='src/assets/icons/trash.svg' alt='' />
+				<img src='/icons/trash.svg' alt='' />
 				Remove bought products
 			</RemoveBoughtProductsButton>
 		</Wrapper>

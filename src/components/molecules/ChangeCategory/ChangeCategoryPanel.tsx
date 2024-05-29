@@ -40,7 +40,7 @@ export const ChangeCategoryPanel = () => {
 				<Header>
 					<Title>Change category</Title>
 					<CloseButton onClick={closeCategoryPanel} aria-label='close "change category" panel'>
-						<img src='src/assets/icons/x-circle-white.svg' alt='' />
+						<img src='/icons/x-circle-white.svg' alt='' />
 					</CloseButton>
 				</Header>
 				<CategoriesWrapper>

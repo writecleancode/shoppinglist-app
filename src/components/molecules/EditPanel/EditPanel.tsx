@@ -54,11 +54,11 @@ export const EditPanel = () => {
 			<Wrapper id='editPanel' $isOpen={isEditPanelOpen} inert={isEditPanelOpen && !isCategoryPanelOpen ? undefined : ''}>
 				<ControlChangesButtonsWrapper>
 					<ControlChangesButton $isAbort onClick={closeEditPanel}>
-						<img src='src/assets/icons/arrow-left-small.svg' alt='' />
+						<img src='/icons/arrow-left-small.svg' alt='' />
 						abort
 					</ControlChangesButton>
 					<ControlChangesButton onClick={() => handleSaveChangesButton()}>
-						<img src='src/assets/icons/check-small.svg' alt='' />
+						<img src='/icons/check-small.svg' alt='' />
 						save
 					</ControlChangesButton>
 				</ControlChangesButtonsWrapper>
@@ -69,7 +69,7 @@ export const EditPanel = () => {
 							<img src={editedProduct.category.imgSrc} alt={`icon of category: ${editedProduct.category.imgSrc}`} />
 						</CategoryIconCircle>
 						<span>{editedProduct.category.name}</span>
-						<ChevronRight src='src/assets/icons/chevron-right.svg' alt='' />
+						<ChevronRight src='/icons/chevron-right.svg' alt='' />
 					</CategoryButton>
 				</MainInfoWrapper>
 				<QuantityWrapper>
@@ -102,13 +102,13 @@ export const EditPanel = () => {
 							onClick={() => handleQuantityButtons('decrease')}
 							disabled={editedProduct.quantity <= 0}
 							aria-label={`decrease quantity of ${editedProduct.name}`}>
-							<img src='src/assets/icons/minus.svg' alt='' />
+							<img src='/icons/minus.svg' alt='' />
 						</ChangeQuantityButton>
 						<ChangeQuantityButton
 							onClick={() => handleQuantityButtons('increase')}
 							disabled={editedProduct.quantity >= 9999999}
 							aria-label={`increase quantity of ${editedProduct.name}`}>
-							<img src='src/assets/icons/plus.svg' alt='' />
+							<img src='/icons/plus.svg' alt='' />
 						</ChangeQuantityButton>
 					</QuantityButtonWrapper>
 				</QuantityWrapper>

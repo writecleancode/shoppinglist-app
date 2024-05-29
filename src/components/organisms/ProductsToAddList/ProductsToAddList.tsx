@@ -57,7 +57,7 @@ export const ProductsToAddList = ({ products, customProduct, clearInput, setProd
 						onClick={() => handleCustomProductQuantity(-999, 'increase')}
 						aria-label={`add ${customProduct.name} to the list`}>
 						<PlusIcon $isAdded={customProduct.quantity >= 0} $quantity={quantityNumber} $isAnimating={-999 === lastClickedProductId}>
-							<img src='src/assets/icons/plus-big.svg' alt='' />
+							<img src='/icons/plus-big.svg' alt='' />
 						</PlusIcon>
 						{customProduct.name}
 					</AddProductButton>
@@ -86,7 +86,7 @@ export const ProductsToAddList = ({ products, customProduct, clearInput, setProd
 							onClick={() => handleProductQuantity(firestoreId, id, index, 'increase')}
 							aria-label={`add ${name} to the list`}>
 							<PlusIcon $isAdded={quantity >= 0} $quantity={quantity} $isAnimating={id === lastClickedProductId}>
-								<img src='src/assets/icons/plus-big.svg' alt='' />
+								<img src='/icons/plus-big.svg' alt='' />
 							</PlusIcon>
 							{name}
 						</AddProductButton>
