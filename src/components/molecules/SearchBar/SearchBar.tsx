@@ -43,7 +43,7 @@ export const SearchBar = ({
 				name: searchPhrase,
 			});
 		}, 500),
-		[customProduct]
+		[productsList, customProduct]
 	);
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
