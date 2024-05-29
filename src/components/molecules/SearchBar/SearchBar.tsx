@@ -36,9 +36,7 @@ export const SearchBar = ({
 
 	const handleCustomProduct = useCallback(
 		debounce((searchPhrase = '') => {
-			if (!searchPhrase) return setCustomProduct(initialProductState);
-
-			if (productsList.map(product => product.name).includes(searchPhrase)) return;
+			if (!searchPhrase || productsList.map(product => product.name).includes(searchPhrase)) return setCustomProduct(initialProductState);
 
 			setCustomProduct({
 				...initialProductState,
