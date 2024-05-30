@@ -29,9 +29,9 @@ Application useful for shopping. Main benefits in comparison to notepad:
 ## General info
 Going shopping with my girlfriend we had a **problem with the shopping list** - everyone had their own list to which they added products, and before shopping we shared our lists with each other. Just sharing the list was **inconvenient, on top of that some products were repeated**. Therefore, I came up with the idea of writing an app that would simplify certain processes and **solve the above problems**. This is how the idea for the “Shopping List App” was born.
 
-Just **sharing the list** with others allows you to easily and quickly **check what you are missing** when, for example, you stop by the store on your way home from work.
+**Sharing the list** with others allows you to easily and quickly **check what you are missing** when, for example, you stop by the store on your way home from work. Or when you are together in the store, you can split to get different products.
 
-Products are assigned to **categories** - products of the same category are **automatically placed next to each other** in the list, avoiding walking around the store.
+Products are assigned to **categories** - products of the same category are **automatically placed next to each other** in the list, avoiding walking back and forth across the store.
 
 The application's interface and some of its functionalities were inspired by the “Listonic” application
 
