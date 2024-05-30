@@ -1,6 +1,6 @@
 # Shopping List App
 
-[🌐 **LIVE DEMO**](https://shopping-list-a412d.web.app/)
+🌐 [**LIVE DEMO**](https://shopping-list-a412d.web.app/)
 
 Application useful for shopping. Main benefits in comparison to notepad:
 
@@ -74,10 +74,10 @@ The application's interface and some of its functionalities were inspired by the
 
 ## Application View
 
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/93ff72e5-5110-4df9-8be0-78af7e63474e)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/e4013f82-fc30-4948-9e61-aba09122a3b9)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/14427d5a-363a-4105-8d2b-ee26017f649b)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/d187b23e-98f8-49d4-b334-8f2983067c0c)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/ccd5b772-9afd-491e-aaa2-b47ab7768c58)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/29c733db-6b0c-4748-b27f-7658711ed8ce)
-![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/b7be889f-148c-4602-8b6a-0b3d9f9149fc)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/ec20616e-d721-4f83-a813-76845ea5a3d9)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/4c56759d-d807-4e7f-b3ce-569f2b178d92)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/9f1b8dc4-1d45-47a0-95d2-2bf014d4cd82)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/d156daa4-67ea-4d48-92b8-1061b6ea3452)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/c1b2563c-e72b-4416-b1d4-dcf306f6fd06)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/fcfdcdb3-8e8a-4af3-b8a3-395cfec4e12c)
+![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/2191bd52-e607-4bbc-8778-e17ff9c96a50)
