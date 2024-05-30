@@ -75,9 +75,15 @@ The application's interface and some of its functionalities were inspired by the
 ## Application View
 
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/ec20616e-d721-4f83-a813-76845ea5a3d9)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/4c56759d-d807-4e7f-b3ce-569f2b178d92)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/9f1b8dc4-1d45-47a0-95d2-2bf014d4cd82)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/d156daa4-67ea-4d48-92b8-1061b6ea3452)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/c1b2563c-e72b-4416-b1d4-dcf306f6fd06)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/fcfdcdb3-8e8a-4af3-b8a3-395cfec4e12c)
+
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/2191bd52-e607-4bbc-8778-e17ff9c96a50)
