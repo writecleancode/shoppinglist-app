@@ -35,7 +35,7 @@ Products are assigned to **categories** - products of the same category are **au
 
 The app is fully responsive. 📱💻🖥
 
-Lines of code rewritten from tutorials: 0 😀
+Lines of code rewritten from tutorials: 0 ✔
 
 The application's interface and some of its functionalities were inspired by the “Listonic” application.
 
