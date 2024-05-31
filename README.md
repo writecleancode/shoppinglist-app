@@ -33,7 +33,11 @@ Going shopping with my girlfriend we had a **problem with the shopping list** - 
 
 Products are assigned to **categories** - products of the same category are **automatically placed next to each other** in the list, avoiding walking back and forth across the store.
 
-The application's interface and some of its functionalities were inspired by the “Listonic” application
+The app is fully responsive. 📱💻🖥
+
+Lines of code rewritten from tutorials: 0 😀
+
+The application's interface and some of its functionalities were inspired by the “Listonic” application.
 
 
 
@@ -45,6 +49,7 @@ The application's interface and some of its functionalities were inspired by the
 - TypeScript
 - Firebase
 - Vite
+- SASS
 
 
 
