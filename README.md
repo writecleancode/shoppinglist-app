@@ -16,13 +16,13 @@ Application useful for shopping. Main benefits in comparison to notepad:
 
 # Table of contents
 
-* [General info](#general-info)
+1. [General info](#general-info)
 
-* [Technologies](#technologies)
+2. [Technologies](#technologies)
 
-* [Setup](#setup)
+3. [Setup](#setup)
 
-* [Application view](#application-view)
+4. [Application view](#application-view)
 
 
 
