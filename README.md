@@ -33,11 +33,38 @@ Going shopping with my girlfriend we had a **problem with the shopping list** - 
 
 Products are assigned to **categories** - products of the same category are **automatically placed next to each other** in the list, avoiding walking back and forth across the store.
 
-The app is fully responsive. 📱💻🖥
+The app was written based on a mobile-first approach and it's fully responsive 📱💻🖥
+
+Accessibility is at a high level ♿
+
+The app has it's own favicon ⚡
 
 Lines of code rewritten from tutorials: 0 ✔
 
-The application's interface and some of its functionalities were inspired by the “Listonic” application.
+The layout was designed by me in Figma 🖍
+
+Framework:
+- **React**
+
+Main React features:
+- **hooks: useState, useEffect, useContext, useCallback, custom hooks**
+- **(custom) providers**
+
+Backend used:
+- **Firebase**
+
+Styles:
+- **Styled Components**
+- **SASS**
+
+Language:
+- **Typescript**
+
+Build tool:
+- **Vite**
+
+Components structure:
+- **Atomic Design**
 
 
 
