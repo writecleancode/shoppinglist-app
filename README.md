@@ -2,27 +2,21 @@
 
 🌐 [**LIVE DEMO**](https://shopping-list-a412d.web.app/)
 
-Application useful for shopping. Main benefits in comparison to notepad:
+The goal of the app was to make making a shopping list faster and easier.
 
-* **faster product addition** thanks to list of common bought products
-* easy management of product **quantity**
-* support for **units** (l, ml, kg, g, custom units)
-* easy **editing** of products on the list
-* products devided into **categories**
-* easy **marking products as bought** (or unbought)
-* ability to **share the list with others**
-* **user-friendly** and eye-pleasing interface
 
 
 # Table of contents
 
 1. [General info](#general-info)
 
-2. [Technologies](#technologies)
+2. [Features](#features)
 
-3. [Setup](#setup)
+3. [Technologies](#technologies)
 
-4. [Application view](#application-view)
+4. [Setup](#setup)
+
+5. [Application view](#application-view)
 
 
 
@@ -41,7 +35,52 @@ The app has it's own favicon ⚡
 
 Lines of code rewritten from tutorials: 0 ✔
 
-The layout was designed by me in Figma 🖍
+The layout was designed in Figma 🖍
+
+The application's interface and some of its functionalities were inspired by “Listonic” application.
+
+
+
+## Features
+
+Main benefits in comparison to notepad:
+
+* **faster product addition** thanks to pre-prepared list of common bought products
+* easy management of product **quantity**
+* support for **units** (l, ml, kg, g, custom units)
+* easy **editing** of products on the list
+* products devided into **categories**
+* **automatic placement** of products of one category next to each other
+* easy **marking products as bought** (or unbought)
+* **quick removal** of purchased products (just 2 clicks)
+* ability to **share the list with others**
+* **user-friendly** and eye-pleasing interface
+
+## Technologies
+
+1. Vite
+
+2. TypeScript
+
+3. React
+
+    - Styled Components (with SASS)
+
+    - uuid
+
+4. Firebase
+
+5. Figma
+
+---
+
+More accurate informations about technologies used
+
+Build tool:
+- **Vite**
+
+Language:
+- **Typescript**
 
 Framework:
 - **React**
@@ -57,27 +96,11 @@ Styles:
 - **Styled Components**
 - **SASS**
 
-Language:
-- **Typescript**
-
-Build tool:
-- **Vite**
-
 Components structure:
 - **Atomic Design**
 
-
-
-## Technologies
-
-- React
-    - Styled Components
-    - uuid
-- TypeScript
-- Firebase
-- Vite
-- SASS
-
+Designed with:
+- **Figma**
 
 
 ## Setup
@@ -107,15 +130,21 @@ Components structure:
 ## Application View
 
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/ec20616e-d721-4f83-a813-76845ea5a3d9)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/4c56759d-d807-4e7f-b3ce-569f2b178d92)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/9f1b8dc4-1d45-47a0-95d2-2bf014d4cd82)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/d156daa4-67ea-4d48-92b8-1061b6ea3452)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/c1b2563c-e72b-4416-b1d4-dcf306f6fd06)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/fcfdcdb3-8e8a-4af3-b8a3-395cfec4e12c)
-
+***
+***
 ![application preview](https://github.com/writecleancode/shoppinglist-app/assets/143826285/2191bd52-e607-4bbc-8778-e17ff9c96a50)
